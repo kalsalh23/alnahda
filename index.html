@@ -95,7 +95,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
-#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
+#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
 </style>
 </head>
 <body data-lang="ar">
@@ -246,7 +246,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
   const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(radius*0.75,0),new THREE.MeshBasicMaterial({color:0x2E7A6E,wireframe:true,opacity:.6,transparent:true}));
   scene.add(inner);
   const details=[{t:"منصة النهضة الرقمية",d:"أرشيف تفاعلي للتراث الفكري العربي"},{t:"مختبر الابتكار الاجتماعي",d:"تصميم حلول مجتمعية قابلة للتطبيق"},{t:"حاضنة الصناعات الإبداعية",d:"برنامج احتضان للمشاريع التصميمية"},{t:"برنامج رواد الغد",d:"مسار تدريبي للشباب في الابتكار"},{t:"مركز ذكاء المدن",d:"أبحاث تطبيقية في المدن الذكية"},{t:"صندوق الابتكار",d:"تمويل مبكر للمشاريع البحثية"}];
-  const hotspots=[];
+  let paused=false;\n  const hotspots=[];
   for(let i=0;i<6;i++){
     const h=new THREE.Mesh(new THREE.SphereGeometry(0.06,8,8),new THREE.MeshBasicMaterial({color:0x988561}));
     const phi=Math.acos(-1+ (2*i+1)/6); const theta=Math.PI*(1+Math.sqrt(5))*i;
@@ -262,16 +262,16 @@ body[data-lang="en"] .hero h1{font-weight:300;}
     raycaster.setFromCamera(mouse,camera);
     const hits=raycaster.intersectObjects(hotspots);
     if(hits.length){
-      const h=hits[0].object; const info=details[h.userData.idx];
+      paused=true;\n      const h=hits[0].object; const info=details[h.userData.idx];
       card.innerHTML="<b>"+info.t+"</b>"+info.d;
       const v=h.position.clone(); v.project(camera);
       card.style.left=(v.x+1)/2*r.width+"px";
       card.style.top=(1-v.y)/2*r.height-60+"px";
       card.style.display="block";
-      clearTimeout(card._t); card._t=setTimeout(function(){card.style.display="none";},4000);
+      clearTimeout(card._t); card._t=setTimeout(function(){card.style.display="none";paused=false;},4000);
     }
   });
-  function animate(){requestAnimationFrame(animate);mesh.rotation.x+=0.003;mesh.rotation.y+=0.006;inner.rotation.x-=0.004;inner.rotation.y-=0.002;renderer.render(scene,camera);}
+  function animate(){requestAnimationFrame(animate);if(!paused){mesh.rotation.x+=0.003;mesh.rotation.y+=0.006;inner.rotation.x-=0.004;inner.rotation.y-=0.002;}renderer.render(scene,camera);}
   animate();
   window.addEventListener("resize",function(){camera.aspect=c.clientWidth/c.clientHeight;camera.updateProjectionMatrix();renderer.setSize(c.clientWidth,c.clientHeight);});
 })();
