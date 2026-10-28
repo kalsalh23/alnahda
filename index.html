@@ -43,7 +43,19 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
 .lang-switch{display:flex;border:1px solid rgba(5,66,57,.25);border-radius:100px;padding:3px;gap:2px;}
 .lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
 .lang-switch button.active{background:var(--teal-700);color:var(--cream);}
-@media(max-width:900px){.nav{display:none}.nav.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:var(--cream);padding:16px;gap:12px;z-index:50}.nav.open a{opacity:1}#menuBtn{display:block}}
+@media(max-width:900px){
+  .nav{display:none;transform:translateX(100%);transition:transform .3s ease;}
+  .nav.open{
+    display:flex;flex-direction:column;
+    position:fixed;top:0;right:0;bottom:0;
+    width:260px;background:var(--cream);
+    padding:20px 16px;gap:16px;z-index:60;
+    box-shadow:-4px 0 20px rgba(0,0,0,.08);
+    overflow-y:auto;transform:translateX(0);
+  }
+  .nav.open a{opacity:1;display:block;width:100%;padding:10px 0;border-bottom:1px solid rgba(5,66,57,.08);}
+  #menuBtn{display:block}
+}
 
 /* ============ HERO ============ */
 .hero{position:relative;overflow:hidden;padding-block:clamp(70px,11vw,140px) clamp(60px,9vw,110px);text-align:center;}
@@ -95,11 +107,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
-#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}.hero-verse{position:absolute;top:clamp(40px,7vw,80px);left:50%;transform:translateX(-50%);font-family:var(--f-display-ar);font-size:clamp(0.85rem,1.5vw,1.1rem);color:var(--teal-800);z-index:3;text-align:center;pointer-events:none;white-space:nowrap;letter-spacing:.01em;}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;display:none;justify-content:space-around;background:var(--cream);border-top:1px solid rgba(5,66,57,.12);padding:8px 0;z-index:60;}
-@media(max-width:900px){.bottom-nav{display:flex}}
-.bottom-nav a{font-size:.7rem;color:var(--teal-700);opacity:.65;display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;}
-.bottom-nav a.active{opacity:1;color:var(--teal-700);}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
+#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}.hero-verse{position:absolute;top:clamp(40px,7vw,80px);left:50%;transform:translateX(-50%);font-family:var(--f-display-ar);font-size:clamp(0.85rem,1.5vw,1.1rem);color:var(--teal-800);z-index:3;text-align:center;pointer-events:none;white-space:nowrap;letter-spacing:.01em;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
 </style>
 </head>
 <body data-lang="ar">
@@ -191,13 +199,6 @@ body[data-lang="en"] .hero h1{font-weight:300;}
   </div>
 </footer>
 
-<nav class="bottom-nav">
-  <a href="index.html" class="active"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
-  <a href="vision.html"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
-  <a href="projects.html"><span class="ar">المشاريع</span><span class="en">Projects</span></a>
-  <a href="about.html"><span class="ar">من نحن</span><span class="en">About</span></a>
-  <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
-</nav>
 <!-- Three.js Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
