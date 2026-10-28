@@ -95,7 +95,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
-#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
+#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
 </style>
 </head>
 <body data-lang="ar">
@@ -126,7 +126,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 
 <!-- HERO -->
 <section class="hero">
-  <div id="hero-3d"></div>
+  <div id="hero-3d"></div>\n  <div id="hotspot-card"></div>
   <svg class="hero-pattern" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
     <defs><pattern id="starPat" width="76" height="76" patternUnits="userSpaceOnUse"><path d="M38 8 L50 26 L68 38 L50 50 L38 68 L26 50 L8 38 L26 26 Z" fill="none" stroke="#054239" stroke-width="0.55" opacity="0.20"/><circle cx="38" cy="38" r="1.2" fill="#B9A779" opacity="0.5"/></pattern></defs>
     <rect width="400" height="400" fill="url(#starPat)"/>
@@ -245,7 +245,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
   scene.add(mesh);
   const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(radius*0.75,0),new THREE.MeshBasicMaterial({color:0x2E7A6E,wireframe:true,opacity:.6,transparent:true}));
   scene.add(inner);
-  const details=["منصة النهضة الرقمية","مختبر الابتكار الاجتماعي","حاضنة الصناعات الإبداعية","برنامج رواد الغد","مركز ذكاء المدن","صندوق الابتكار"];
+  const details=[{t:"منصة النهضة الرقمية",d:"أرشيف تفاعلي للتراث الفكري العربي"},{t:"مختبر الابتكار الاجتماعي",d:"تصميم حلول مجتمعية قابلة للتطبيق"},{t:"حاضنة الصناعات الإبداعية",d:"برنامج احتضان للمشاريع التصميمية"},{t:"برنامج رواد الغد",d:"مسار تدريبي للشباب في الابتكار"},{t:"مركز ذكاء المدن",d:"أبحاث تطبيقية في المدن الذكية"},{t:"صندوق الابتكار",d:"تمويل مبكر للمشاريع البحثية"}];
   const hotspots=[];
   for(let i=0;i<6;i++){
     const h=new THREE.Mesh(new THREE.SphereGeometry(0.06,8,8),new THREE.MeshBasicMaterial({color:0x988561}));
@@ -254,13 +254,22 @@ body[data-lang="en"] .hero h1{font-weight:300;}
     h.userData={idx:i}; mesh.add(h); hotspots.push(h);
   }
   const raycaster=new THREE.Raycaster(); const mouse=new THREE.Vector2();
+  const card=document.getElementById("hotspot-card");
   renderer.domElement.addEventListener("click",function(e){
     const r=renderer.domElement.getBoundingClientRect();
     mouse.x=((e.clientX-r.left)/r.width)*2-1;
     mouse.y=-((e.clientY-r.top)/r.height)*2+1;
     raycaster.setFromCamera(mouse,camera);
     const hits=raycaster.intersectObjects(hotspots);
-    if(hits.length){ alert(details[hits[0].object.userData.idx]); }
+    if(hits.length){
+      const h=hits[0].object; const info=details[h.userData.idx];
+      card.innerHTML="<b>"+info.t+"</b>"+info.d;
+      const v=h.position.clone(); v.project(camera);
+      card.style.left=(v.x+1)/2*r.width+"px";
+      card.style.top=(1-v.y)/2*r.height-60+"px";
+      card.style.display="block";
+      clearTimeout(card._t); card._t=setTimeout(function(){card.style.display="none";},4000);
+    }
   });
   function animate(){requestAnimationFrame(animate);mesh.rotation.x+=0.003;mesh.rotation.y+=0.006;inner.rotation.x-=0.004;inner.rotation.y-=0.002;renderer.render(scene,camera);}
   animate();
