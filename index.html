@@ -95,7 +95,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
-#hero-3d{position:absolute;inset:0;pointer-events:none;opacity:.55;}
+#hero-3d{position:absolute;inset:0;pointer-events:none;opacity:.55;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center;}
 </style>
 </head>
 <body data-lang="ar">
@@ -228,143 +228,40 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 
 <!-- Three.js Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"></script>
-
-<script>
-/* ---------- Language ---------- */
-function setLang(l){
-  document.documentElement.lang = l; document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
-  document.body.dataset.lang = l;
-  document.querySelectorAll('[data-lang-btn]').forEach(b => b.classList.toggle('active', b.dataset.langBtn === l));
-  try{ localStorage.setItem('irg-lang', l); }catch(e){}
-}
-(function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
-
-/* ---------- Reveal ---------- */
-(function(){const els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}const io=new IntersectionObserver((entries)=>{entries.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*80);io.unobserve(en.target);}});},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});els.forEach(e=>io.observe(e));})();
-
-/* ---------- Three.js 3D Carousel ---------- */
-(function() {
-  const container = document.getElementById('carousel-container');
-  const cards = container.querySelectorAll('.card-3d');
-  
-  if (cards.length === 0) return;
-
-  const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 1, 5000);
-  camera.position.set(0, 0, 1400);
-
-  const scene = new THREE.Scene();
-  const renderer = new THREE.CSS3DRenderer();
-  renderer.setSize(container.offsetWidth, container.offsetHeight);
-  renderer.domElement.style.position = 'absolute';
-  renderer.domElement.style.top = '0';
-  renderer.domElement.style.left = '0';
-  renderer.domElement.style.pointerEvents = 'none'; // Let container handle drag
-  container.appendChild(renderer.domElement);
-
-  const objects = [];
-  const radius = 650;
-  
-  // Create 3D objects from HTML cards
-  cards.forEach((card, i) => {
-    const object = new THREE.CSS3DObject(card);
-    const theta = (i / cards.length) * Math.PI * 2;
-    object.position.x = Math.sin(theta) * radius;
-    object.position.z = Math.cos(theta) * radius;
-    object.rotation.y = theta + Math.PI; // Face outward
-    
-    // Initial styles for 3D positioning
-    card.style.position = 'absolute';
-    card.style.width = '320px';
-    card.style.height = '420px';
-    card.style.left = '50%';
-    card.style.top = '50%';
-    card.style.marginLeft = '-160px';
-    card.style.marginTop = '-210px';
-    // Remove transition to prevent lag with Three.js
-    card.style.transition = 'none';
-
-    scene.add(object);
-    objects.push(object);
-  });
-
-  // Drag Interaction
-  let isDragging = false;
-  let startX = 0;
-  let currentRotation = 0;
-  let targetRotation = 0;
-  
-  // Auto-rotate
-  let autoRotate = true;
-  let autoRotateSpeed = 0.0015;
-
-  container.addEventListener('pointerdown', (e) => {
-    isDragging = true;
-    startX = e.clientX;
-    autoRotate = false;
-    container.style.cursor = 'grabbing'; e.preventDefault && e.preventDefault();
-  });
-
-  window.addEventListener('pointermove', (e) => {
-    if (!isDragging) return;
-    const deltaX = e.clientX - startX;
-    targetRotation += deltaX * 0.005;
-    startX = e.clientX;
-  });
-
-  window.addEventListener('pointerup', () => {
-    isDragging = false;
-    container.style.cursor = 'grab';
-    // Resume auto-rotate after a delay
-    setTimeout(() => { if(!isDragging) autoRotate = true; }, 3000);
-  });
-
-  function animate() {
-    requestAnimationFrame(animate);
-
-    if (autoRotate && !isDragging) {
-      targetRotation += autoRotateSpeed;
-    }
-
-    currentRotation += (targetRotation - currentRotation) * 0.1;
-    
-    // Rotate the entire scene or the objects
-    objects.forEach((obj, i) => {
-      const theta = (i / objects.length) * Math.PI * 2 + currentRotation;
-      obj.position.x = Math.sin(theta) * radius;
-      obj.position.z = Math.cos(theta) * radius;
-      obj.rotation.y = theta + Math.PI;
-    });
-
-    renderer.render(scene, camera);
-  }
-  
-  animate();
-
-  // Handle Resize
-  window.addEventListener('resize', () => {
-    camera.aspect = container.offsetWidth / container.offsetHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-  });
-})();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function(){
   const c=document.getElementById("hero-3d"); if(!c) return;
+  const isMobile=window.innerWidth<768;
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(45,c.clientWidth/c.clientHeight,0.1,1000);
-  camera.position.z=4;
+  camera.position.z=isMobile?5:4;
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(c.clientWidth,c.clientHeight);
   c.appendChild(renderer.domElement);
-  const geo=new THREE.IcosahedronGeometry(1.2,1);
+  const radius=isMobile?0.8:1.2;
+  const geo=new THREE.IcosahedronGeometry(radius,1);
   const mat=new THREE.MeshBasicMaterial({color:0xB9A779,wireframe:true});
   const mesh=new THREE.Mesh(geo,mat);
   scene.add(mesh);
-  const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(0.9,0),new THREE.MeshBasicMaterial({color:0x2E7A6E,wireframe:true,opacity:.6,transparent:true}));
+  const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(radius*0.75,0),new THREE.MeshBasicMaterial({color:0x2E7A6E,wireframe:true,opacity:.6,transparent:true}));
   scene.add(inner);
+  const details=["منصة النهضة الرقمية","مختبر الابتكار الاجتماعي","حاضنة الصناعات الإبداعية","برنامج رواد الغد","مركز ذكاء المدن","صندوق الابتكار"];
+  const hotspots=[];
+  for(let i=0;i<6;i++){
+    const h=new THREE.Mesh(new THREE.SphereGeometry(0.06,8,8),new THREE.MeshBasicMaterial({color:0x988561}));
+    const phi=Math.acos(-1+ (2*i+1)/6); const theta=Math.PI*(1+Math.sqrt(5))*i;
+    h.position.set(Math.cos(theta)*Math.sin(phi)*radius, Math.sin(theta)*Math.sin(phi)*radius, Math.cos(phi)*radius);
+    h.userData={idx:i}; mesh.add(h); hotspots.push(h);
+  }
+  const raycaster=new THREE.Raycaster(); const mouse=new THREE.Vector2();
+  renderer.domElement.addEventListener("click",function(e){
+    const r=renderer.domElement.getBoundingClientRect();
+    mouse.x=((e.clientX-r.left)/r.width)*2-1;
+    mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+    raycaster.setFromCamera(mouse,camera);
+    const hits=raycaster.intersectObjects(hotspots);
+    if(hits.length){ alert(details[hits[0].object.userData.idx]); }
+  });
   function animate(){requestAnimationFrame(animate);mesh.rotation.x+=0.003;mesh.rotation.y+=0.006;inner.rotation.x-=0.004;inner.rotation.y-=0.002;renderer.render(scene,camera);}
   animate();
   window.addEventListener("resize",function(){camera.aspect=c.clientWidth/c.clientHeight;camera.updateProjectionMatrix();renderer.setSize(c.clientWidth,c.clientHeight);});
