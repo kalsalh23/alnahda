@@ -126,7 +126,13 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 </header>
 
 <!-- HERO -->
-
+<section class="hero">
+  <div id="hero-3d"></div>
+  <div id="hotspot-card"></div>
+  <svg class="hero-pattern" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+    <defs><pattern id="starPat" width="76" height="76" patternUnits="userSpaceOnUse"><path d="M38 8 L50 26 L68 38 L50 50 L38 68 L26 50 L8 38 L26 26 Z" fill="none" stroke="#054239" stroke-width="0.55" opacity="0.20"/><circle cx="38" cy="38" r="1.2" fill="#B9A779" opacity="0.5"/></pattern></defs>
+    <rect width="400" height="400" fill="url(#starPat)"/>
+  </svg>
 
   <div class="wrap">
     <span class="eyebrow"><span class="ar">مجموعة الابتكار والنهضة</span><span class="en">Innovation &amp; Renaissance Group</span></span>
@@ -209,7 +215,8 @@ body[data-lang="en"] .hero h1{font-weight:300;}
   scene.add(pin);
   let pinT=0;
   const details=[{t:"منصة النهضة الرقمية",d:"أرشيف تفاعلي للتراث الفكري العربي"},{t:"مختبر الابتكار الاجتماعي",d:"تصميم حلول مجتمعية قابلة للتطبيق"},{t:"حاضنة الصناعات الإبداعية",d:"برنامج احتضان للمشاريع التصميمية"},{t:"برنامج رواد الغد",d:"مسار تدريبي للشباب في الابتكار"},{t:"مركز ذكاء المدن",d:"أبحاث تطبيقية في المدن الذكية"},{t:"صندوق الابتكار",d:"تمويل مبكر للمشاريع البحثية"}];
-  let paused=false;\n  const hotspots=[];
+  let paused=false;
+  const hotspots=[];
   for(let i=0;i<6;i++){
     const h=new THREE.Mesh(new THREE.SphereGeometry(0.06,8,8),new THREE.MeshBasicMaterial({color:0x988561}));
     const phi=Math.acos(-1+ (2*i+1)/6); const theta=Math.PI*(1+Math.sqrt(5))*i;
@@ -225,7 +232,8 @@ body[data-lang="en"] .hero h1{font-weight:300;}
     raycaster.setFromCamera(mouse,camera);
     const hits=raycaster.intersectObjects(hotspots);
     if(hits.length){
-      paused=true;\n      const h=hits[0].object; const info=details[h.userData.idx];
+      paused=true;
+      const h=hits[0].object; const info=details[h.userData.idx];
       card.innerHTML="<b>"+info.t+"</b>"+info.d;
       const v=h.position.clone(); v.project(camera);
       card.style.left=(v.x+1)/2*r.width+"px";
