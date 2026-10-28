@@ -95,6 +95,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
+#hero-3d{position:absolute;inset:0;pointer-events:none;opacity:.55;}
 </style>
 </head>
 <body data-lang="ar">
@@ -125,6 +126,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 
 <!-- HERO -->
 <section class="hero">
+  <div id="hero-3d"></div>
   <svg class="hero-pattern" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
     <defs><pattern id="starPat" width="76" height="76" patternUnits="userSpaceOnUse"><path d="M38 8 L50 26 L68 38 L50 50 L38 68 L26 50 L8 38 L26 26 Z" fill="none" stroke="#054239" stroke-width="0.55" opacity="0.20"/><circle cx="38" cy="38" r="1.2" fill="#B9A779" opacity="0.5"/></pattern></defs>
     <rect width="400" height="400" fill="url(#starPat)"/>
@@ -345,6 +347,27 @@ function setLang(l){
     camera.updateProjectionMatrix();
     renderer.setSize(container.offsetWidth, container.offsetHeight);
   });
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const c=document.getElementById("hero-3d"); if(!c) return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,c.clientWidth/c.clientHeight,0.1,1000);
+  camera.position.z=4;
+  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+  renderer.setSize(c.clientWidth,c.clientHeight);
+  c.appendChild(renderer.domElement);
+  const geo=new THREE.IcosahedronGeometry(1.2,1);
+  const mat=new THREE.MeshBasicMaterial({color:0xB9A779,wireframe:true});
+  const mesh=new THREE.Mesh(geo,mat);
+  scene.add(mesh);
+  const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(0.9,0),new THREE.MeshBasicMaterial({color:0x2E7A6E,wireframe:true,opacity:.6,transparent:true}));
+  scene.add(inner);
+  function animate(){requestAnimationFrame(animate);mesh.rotation.x+=0.003;mesh.rotation.y+=0.006;inner.rotation.x-=0.004;inner.rotation.y-=0.002;renderer.render(scene,camera);}
+  animate();
+  window.addEventListener("resize",function(){camera.aspect=c.clientWidth/c.clientHeight;camera.updateProjectionMatrix();renderer.setSize(c.clientWidth,c.clientHeight);});
 })();
 </script>
 </body>
