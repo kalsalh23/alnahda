@@ -205,7 +205,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
   scene.add(mesh);
   const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(radius*0.75,0),new THREE.MeshBasicMaterial({color:0x2E7A6E,wireframe:true,opacity:.6,transparent:true}));
   scene.add(inner);
-  const pin=new THREE.Group();pin.position.set(-radius-0.8,0,0);
+  const pin=new THREE.Group();pin.position.set(-radius-0.8,0.7,0);
   const pinHead=new THREE.Mesh(new THREE.ConeGeometry(0.45,0.8,18),new THREE.MeshBasicMaterial({color:0x001A16}));
   pinHead.position.y=0.4;pin.add(pinHead);
   const pinBody=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.16,0.55,18),new THREE.MeshBasicMaterial({color:0x2E7A6E}));
