@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>من نحن — مجموعة الابتكار والنهضة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --teal-900:#001A16; --teal-800:#002623; --teal-700:#054239; --teal-500:#2E7A6E;
+  --cream:#EDEBE0; --gold:#B9A779; --gold-dk:#988561; --umber:#6B1F2A; --white:#FFFFFF; --ink:#161616;
+  --f-display-ar:'Noto Kufi Arabic', sans-serif; --f-display-en:'Fraunces', serif;
+  --f-body-ar:'IBM Plex Sans Arabic', sans-serif; --f-body-en:'Inter', sans-serif;
+  --r:14px; --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--teal-700);font-family:var(--f-body-ar);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body[data-lang="en"]{font-family:var(--f-body-en);line-height:1.65;}
+h1,h2,h3,h4{font-family:var(--f-display-ar);font-weight:600;line-height:1.25;letter-spacing:-.01em;}
+body[data-lang="en"] h1,body[data-lang="en"] h2,body[data-lang="en"] h3,body[data-lang="en"] h4{font-family:var(--f-display-en);font-weight:400;line-height:1.15;letter-spacing:-.02em;}
+a{color:inherit;text-decoration:none} img,svg{display:block}
+body[data-lang="ar"] .en{display:none !important} body[data-lang="en"] .ar{display:none !important}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(20px,5vw,56px);}
+
+/* ============ HEADER ============ */
+.header{position:sticky;top:0;z-index:100;background:rgba(237,235,224,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(5,66,57,.12);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px;}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand .mark{width:44px;height:44px;object-fit:contain;flex:none;border-radius:50%;}
+.brand-txt{display:flex;flex-direction:column;line-height:1.15;}
+.brand-txt b{font-family:var(--f-display-ar);font-weight:600;font-size:.95rem;}
+body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:500;font-size:1.05rem;}
+.brand-txt span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk);font-weight:500;}
+.nav{display:flex;align-items:center;gap:30px;}
+.nav a{font-size:.86rem;font-weight:500;color:var(--teal-700);opacity:.78;transition:.25s;position:relative;}
+.nav a:hover,.nav a.active{opacity:1}
+.nav a::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:.3s;}
+.nav a:hover::after,.nav a.active::after{width:100%}
+.lang-switch{display:flex;border:1px solid rgba(5,66,57,.25);border-radius:100px;padding:3px;gap:2px;}
+.lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
+.lang-switch button.active{background:var(--teal-700);color:var(--cream);}
+@media(max-width:900px){.nav{display:none}}
+
+/* ============ PAGE HERO ============ */
+.page-hero{padding-block:clamp(60px,10vw,110px) clamp(40px,6vw,70px);text-align:center;border-bottom:1px solid rgba(5,66,57,.1);background:linear-gradient(180deg,var(--cream) 0%, #E6E3D5 100%);}
+.page-hero .kicker{display:block;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-dk);font-weight:600;margin-bottom:16px;}
+.page-hero h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--teal-800);margin-bottom:20px;}
+.page-hero p{color:rgba(5,66,57,.68);font-weight:300;font-size:1.05rem;max-width:600px;margin-inline:auto;}
+
+/* ============ SECTION BASE ============ */
+.section{padding-block:clamp(64px,9vw,128px);position:relative;}
+.section-head{margin-bottom:clamp(40px,6vw,64px);max-width:760px;}
+.section-head .kicker{display:block;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-dk);font-weight:600;margin-bottom:16px;}
+.section-head h2{font-size:clamp(1.7rem,3.8vw,2.9rem);color:var(--teal-800);margin-bottom:18px;}
+.section-head p{color:rgba(5,66,57,.68);font-weight:300;font-size:1.02rem;max-width:600px;}
+
+/* ============ TEAM ============ */
+.team{background:var(--teal-800);color:var(--cream);}
+.team .section-head h2{color:var(--cream);}
+.team .section-head p{color:rgba(237,235,224,.62);}
+.team .section-head .kicker{color:var(--gold);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.5vw,30px);}
+.member{text-align:center;}
+.avatar{width:100%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin-bottom:22px;position:relative;background:conic-gradient(from 210deg, var(--a), var(--b), var(--a));box-shadow:0 0 0 1px rgba(185,167,121,.35), 0 0 0 10px rgba(237,235,224,.03);}
+.avatar::before{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--teal-900);}
+.avatar span{position:relative;z-index:1;font-family:var(--f-display-ar);font-weight:600;font-size:clamp(1.6rem,3.4vw,2.4rem);color:var(--gold);letter-spacing:.02em;}
+body[data-lang="en"] .avatar span{font-family:var(--f-display-en);font-weight:400;}
+.member h4{font-size:1rem;color:var(--cream);margin-bottom:6px;}
+.member .role{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px;}
+.member p{font-size:.84rem;color:rgba(237,235,224,.55);font-weight:300;line-height:1.65;}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.team-grid{grid-template-columns:1fr;max-width:300px;margin-inline:auto}}
+
+/* ============ IDENTITY ============ */
+.identity{background:var(--cream);}
+.id-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,72px);}
+.id-block h3{font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gold-dk);margin-bottom:24px;font-family:var(--f-body-ar);}
+body[data-lang="en"] .id-block h3{font-family:var(--f-body-en);}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.sw{border-radius:10px;overflow:hidden;border:1px solid rgba(5,66,57,.12);}
+.sw .chip{height:64px;}
+.sw .meta{padding:8px 9px;background:var(--white);}
+.sw .meta b{display:block;font-size:.62rem;color:var(--teal-800);font-weight:600;}
+.sw .meta span{font-family:var(--f-display-en);font-size:.56rem;color:rgba(5,66,57,.5);}
+.type-spec{display:flex;flex-direction:column;gap:22px;}
+.type-row{border-top:1px solid rgba(5,66,57,.15);padding-top:18px;}
+.type-row .lbl{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dk);font-weight:700;margin-bottom:8px;}
+.type-row .samp-ar{font-family:var(--f-display-ar);font-weight:600;font-size:1.55rem;color:var(--teal-800);line-height:1.4;}
+.type-row .samp-en{font-family:var(--f-display-en);font-weight:400;font-size:1.7rem;color:var(--teal-800);line-height:1.2;}
+.type-row .body-samp{font-size:.92rem;color:rgba(5,66,57,.7);font-weight:300;line-height:1.8;}
+.type-row small{display:block;font-size:.7rem;color:rgba(5,66,57,.45);margin-top:6px;letter-spacing:.05em;}
+.logo-show{display:flex;align-items:center;gap:26px;background:var(--teal-800);border-radius:var(--r);padding:32px;margin-bottom:26px;}
+.logo-show .mark{width:80px;height:80px;object-fit:contain;flex:none;border-radius:50%;}
+.logo-show .txt b{display:block;font-family:var(--f-display-ar);font-size:1.15rem;color:var(--cream);font-weight:600;line-height:1.4;}
+body[data-lang="en"] .logo-show .txt b{font-family:var(--f-display-en);font-weight:400;font-size:1.3rem;}
+.logo-show .txt span{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);}
+@media(max-width:860px){.id-grid{grid-template-columns:1fr}}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--teal-900);color:rgba(237,235,224,.5);padding-block:36px;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.8rem;}
+.footer .brand .mark{width:36px;height:36px;object-fit:contain;border-radius:50%;}
+.footer .brand-txt b{color:rgba(237,235,224,.85);font-size:.85rem;}
+.footer .brand-txt span{color:rgba(185,167,121,.7);font-size:.6rem;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body data-lang="ar">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">
+      <img src="logo.jpg" class="mark" alt="IRG">
+      <span class="brand-txt">
+        <b class="ar">الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance</b>
+        <span>Group · IRG</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
+      <a href="vision.html"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
+      <a href="projects.html"><span class="ar">المشاريع</span><span class="en">Projects</span></a>
+      <a href="about.html" class="active"><span class="ar">من نحن</span><span class="en">About</span></a>
+      <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="lang-switch">
+      <button data-lang-btn="ar" class="active" onclick="setLang('ar')">ع</button>
+      <button data-lang-btn="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker"><span class="ar">من نحن</span><span class="en">About Us</span></span>
+    <h1><span class="ar">أربعة عقول، اتجاه واحد</span><span class="en">Four minds, one direction</span></h1>
+    <p><span class="ar">فريق صغير ومتعدد التخصصات، يجمع البحث والهندسة والتصميم والشراكة.</span><span class="en">A small, multidisciplinary team combining research, engineering, design and partnership.</span></p>
+  </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="section team">
+  <div class="wrap">
+    <div class="team-grid reveal">
+      <div class="member">
+        <div class="avatar" style="--a:#054239;--b:#B9A779;"><span>ل</span></div>
+        <h4><span class="ar">د. ليلى الحسيني</span><span class="en">Dr. Layla Al-Husseini</span></h4>
+        <div class="role"><span class="ar">المؤسِّسة والرئيسة التنفيذية</span><span class="en">Founder &amp; CEO</span></div>
+        <p><span class="ar">خبيرة في سياسات الابتكار والتنمية الثقافية، عملت بين البحث الأكاديمي والمؤسسات الدولية.</span><span class="en">An expert in innovation policy and cultural development, working between academia and international institutions.</span></p>
+      </div>
+      <div class="member">
+        <div class="avatar" style="--a:#2E7A6E;--b:#988561;"><span>ع</span></div>
+        <h4><span class="ar">عمر بن سليم</span><span class="en">Omar bin Sulaym</span></h4>
+        <div class="role"><span class="ar">مدير التقنية</span><span class="en">Chief Technology Officer</span></div>
+        <p><span class="ar">مهندس أنظمة وباحث في الذكاء الاصطناعي التطبيقي، يبني الأدوات التي تحمل المشاريع من الفكرة إلى الإنتاج.</span><span class="en">A systems engineer and applied-AI researcher, building the tools that carry projects from idea to production.</span></p>
+      </div>
+      <div class="member">
+        <div class="avatar" style="--a:#6B1F2A;--b:#B9A779;"><span>س</span></div>
+        <h4><span class="ar">سارة القاسمي</span><span class="en">Sara Al-Qasimi</span></h4>
+        <div class="role"><span class="ar">مديرة التصميم والهوية</span><span class="en">Design &amp; Identity Director</span></div>
+        <p><span class="ar">مصممة بصرية تعمل على تقاطع التراث والتصميم المعاصر، ومسؤولة عن النظام البصري للمجموعة.</span><span class="en">A visual designer working at the intersection of heritage and contemporary design, leading the group's visual system.</span></p>
+      </div>
+      <div class="member">
+        <div class="avatar" style="--a:#054239;--b:#6B1F2A;"><span>ي</span></div>
+        <h4><span class="ar">يوسف النعيمي</span><span class="en">Yousef Al-Nuaimi</span></h4>
+        <div class="role"><span class="ar">مدير الشراكات والمجتمع</span><span class="en">Partnerships &amp; Community</span></div>
+        <p><span class="ar">يبني الجسور بين القطاعين العام والخاص، ويقود مجتمع المستفيدين والمرشدين حول المشاريع.</span><span class="en">Builds bridges between public and private sectors, and leads the community of beneficiaries and mentors.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDENTITY SECTION -->
+<section class="section identity">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-inline:auto;text-align:center;">
+      <span class="kicker"><span class="ar">نظام الهوية</span><span class="en">Identity system</span></span>
+      <h2><span class="ar">اللون والخط والشكل</span><span class="en">Colour, type, form</span></h2>
+    </div>
+
+    <div class="id-grid">
+      <div class="reveal">
+        <div class="logo-show">
+          <img src="logo.jpg" class="mark" alt="شعار المجموعة">
+          <span class="txt">
+            <b class="ar">الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance</b>
+            <span>IRG · Est. 2025</span>
+          </span>
+        </div>
+        <div class="id-block">
+          <h3><span class="ar">لوحة الألوان</span><span class="en">Colour palette</span></h3>
+          <div class="swatches">
+            <div class="sw"><div class="chip" style="background:#054239"></div><div class="meta"><b>Deep Teal</b><span>#054239</span></div></div>
+            <div class="sw"><div class="chip" style="background:#002623"></div><div class="meta"><b>Pine</b><span>#002623</span></div></div>
+            <div class="sw"><div class="chip" style="background:#001A16"></div><div class="meta"><b>Midnight</b><span>#001A16</span></div></div>
+            <div class="sw"><div class="chip" style="background:#2E7A6E"></div><div class="meta"><b>Teal</b><span>#2E7A6E</span></div></div>
+            <div class="sw"><div class="chip" style="background:#EDEBE0"></div><div class="meta"><b>Wheat</b><span>#EDEBE0</span></div></div>
+            <div class="sw"><div class="chip" style="background:#B9A779"></div><div class="meta"><b>Gold</b><span>#B9A779</span></div></div>
+            <div class="sw"><div class="chip" style="background:#988561"></div><div class="meta"><b>Bronze</b><span>#988561</span></div></div>
+            <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #ddd"></div><div class="meta"><b>White</b><span>#FFFFFF</span></div></div>
+            <div class="sw"><div class="chip" style="background:#6B1F2A"></div><div class="meta"><b>Umber</b><span>#6B1F2A</span></div></div>
+            <div class="sw"><div class="chip" style="background:#4A151E"></div><div class="meta"><b>Oxblood</b><span>#4A151E</span></div></div>
+            <div class="sw"><div class="chip" style="background:#260F14"></div><div class="meta"><b>Mahogany</b><span>#260F14</span></div></div>
+            <div class="sw"><div class="chip" style="background:#161616"></div><div class="meta"><b>Ink</b><span>#161616</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="id-block">
+          <h3><span class="ar">الخطوط</span><span class="en">Typography</span></h3>
+          <div class="type-spec">
+            <div class="type-row">
+              <div class="lbl"><span class="ar">العنوان — كوفي</span><span class="en">Display — Arabic</span></div>
+              <div class="samp-ar">الابتكار والنهضة</div><small>Noto Kufi Arabic · 300–700</small>
+            </div>
+            <div class="type-row">
+              <div class="lbl"><span class="ar">العنوان — لاتيني</span><span class="en">Display — Latin</span></div>
+              <div class="samp-en">Innovation &amp; Renaissance</div><small>Fraunces · 300–600</small>
+            </div>
+            <div class="type-row">
+              <div class="lbl"><span class="ar">المتن — عربي</span><span class="en">Body — Arabic</span></div>
+              <div class="body-samp" style="font-family:var(--f-body-ar)">نعمل على تحويل الأفكار الكبيرة إلى مشاريع قابلة للقياس، والأثر الثقافي إلى بنية معرفية مستدامة.</div><small>IBM Plex Sans Arabic · 300–600</small>
+            </div>
+            <div class="type-row">
+              <div class="lbl"><span class="ar">المتن — لاتيني</span><span class="en">Body — Latin</span></div>
+              <div class="body-samp" style="font-family:var(--f-body-en)">We turn large ideas into measurable projects, and cultural impact into lasting knowledge infrastructure.</div><small>Inter · 300–600</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="brand">
+      <img src="logo.jpg" class="mark" alt="IRG">
+      <span class="brand-txt"><b class="ar">مجموعة الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance Group</b><span>IRG · 2025</span></span>
+    </div>
+    <div><span class="ar">© ٢٠٢٥ جميع الحقوق محفوظة</span><span class="en">© 2025 — All rights reserved</span></div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Language ---------- */
+function setLang(l){
+  document.documentElement.lang = l; document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+  document.body.dataset.lang = l;
+  document.querySelectorAll('[data-lang-btn]').forEach(b => b.classList.toggle('active', b.dataset.langBtn === l));
+  try{ localStorage.setItem('irg-lang', l); }catch(e){}
+}
+(function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
+
+/* ---------- Reveal ---------- */
+(function(){const els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}const io=new IntersectionObserver((entries)=>{entries.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*80);io.unobserve(en.target);}});},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});els.forEach(e=>io.observe(e));})();
+</script>
+</body>
+</html>

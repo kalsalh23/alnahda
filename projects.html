@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المشاريع — مجموعة الابتكار والنهضة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --teal-900:#001A16; --teal-800:#002623; --teal-700:#054239; --teal-500:#2E7A6E;
+  --cream:#EDEBE0; --gold:#B9A779; --gold-dk:#988561; --white:#FFFFFF; --ink:#161616;
+  --f-display-ar:'Noto Kufi Arabic', sans-serif; --f-display-en:'Fraunces', serif;
+  --f-body-ar:'IBM Plex Sans Arabic', sans-serif; --f-body-en:'Inter', sans-serif;
+  --r:14px; --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--teal-700);font-family:var(--f-body-ar);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body[data-lang="en"]{font-family:var(--f-body-en);line-height:1.65;}
+h1,h2,h3,h4{font-family:var(--f-display-ar);font-weight:600;line-height:1.25;letter-spacing:-.01em;}
+body[data-lang="en"] h1,body[data-lang="en"] h2,body[data-lang="en"] h3,body[data-lang="en"] h4{font-family:var(--f-display-en);font-weight:400;line-height:1.15;letter-spacing:-.02em;}
+a{color:inherit;text-decoration:none} img,svg{display:block}
+body[data-lang="ar"] .en{display:none !important} body[data-lang="en"] .ar{display:none !important}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(20px,5vw,56px);}
+
+/* ============ HEADER ============ */
+.header{position:sticky;top:0;z-index:100;background:rgba(237,235,224,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(5,66,57,.12);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px;}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand .mark{width:44px;height:44px;object-fit:contain;flex:none;border-radius:50%;}
+.brand-txt{display:flex;flex-direction:column;line-height:1.15;}
+.brand-txt b{font-family:var(--f-display-ar);font-weight:600;font-size:.95rem;}
+body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:500;font-size:1.05rem;}
+.brand-txt span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk);font-weight:500;}
+.nav{display:flex;align-items:center;gap:30px;}
+.nav a{font-size:.86rem;font-weight:500;color:var(--teal-700);opacity:.78;transition:.25s;position:relative;}
+.nav a:hover,.nav a.active{opacity:1}
+.nav a::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:.3s;}
+.nav a:hover::after,.nav a.active::after{width:100%}
+.lang-switch{display:flex;border:1px solid rgba(5,66,57,.25);border-radius:100px;padding:3px;gap:2px;}
+.lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
+.lang-switch button.active{background:var(--teal-700);color:var(--cream);}
+@media(max-width:900px){.nav{display:none}}
+
+/* ============ PAGE HERO ============ */
+.page-hero{padding-block:clamp(60px,10vw,110px) clamp(40px,6vw,70px);text-align:center;border-bottom:1px solid rgba(5,66,57,.1);background:linear-gradient(180deg,var(--cream) 0%, #E6E3D5 100%);}
+.page-hero .kicker{display:block;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-dk);font-weight:600;margin-bottom:16px;}
+.page-hero h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--teal-800);margin-bottom:20px;}
+.page-hero p{color:rgba(5,66,57,.68);font-weight:300;font-size:1.05rem;max-width:600px;margin-inline:auto;}
+
+/* ============ 3D PROJECTS SECTION ============ */
+.section-projects{padding-block:clamp(64px,9vw,128px);background:linear-gradient(180deg,#E6E3D5 0%, var(--cream) 100%);overflow:hidden;}
+#carousel-container{width:100%;height:600px;position:relative;cursor:grab;}
+#carousel-container:active{cursor:grabbing;}
+.card-3d{width:320px;height:420px;background:var(--cream);padding:30px;border-radius:18px;border:1px solid rgba(5,66,57,.15);box-shadow:0 20px 40px rgba(0,0,0,0.08);display:flex;flex-direction:column;user-select:none;transition:box-shadow 0.3s, border-color 0.3s;}
+.card-3d:hover{box-shadow:0 30px 60px rgba(5,66,57,0.15);border-color:var(--gold);}
+.card-3d .card-num{font-family:var(--f-display-en);font-size:.8rem;letter-spacing:.18em;color:var(--gold-dk);font-weight:500;margin-bottom:auto;}
+.card-3d .card-icon{width:40px;height:40px;color:var(--teal-500);margin-block:22px 18px;}
+.card-3d h3{font-size:1.2rem;color:var(--teal-800);margin-bottom:12px;}
+.card-3d p{font-size:.9rem;color:rgba(5,66,57,.66);font-weight:300;line-height:1.7;margin-bottom:20px;}
+.card-3d .tag{align-self:flex-start;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--teal-700);border:1px solid rgba(5,66,57,.22);border-radius:100px;padding:5px 13px;}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--teal-900);color:rgba(237,235,224,.5);padding-block:36px;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.8rem;}
+.footer .brand .mark{width:36px;height:36px;object-fit:contain;border-radius:50%;}
+.footer .brand-txt b{color:rgba(237,235,224,.85);font-size:.85rem;}
+.footer .brand-txt span{color:rgba(185,167,121,.7);font-size:.6rem;}
+</style>
+</head>
+<body data-lang="ar">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">
+      <img src="logo.jpg" class="mark" alt="IRG">
+      <span class="brand-txt">
+        <b class="ar">الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance</b>
+        <span>Group · IRG</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
+      <a href="vision.html"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
+      <a href="projects.html" class="active"><span class="ar">المشاريع</span><span class="en">Projects</span></a>
+      <a href="about.html"><span class="ar">من نحن</span><span class="en">About</span></a>
+      <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="lang-switch">
+      <button data-lang-btn="ar" class="active" onclick="setLang('ar')">ع</button>
+      <button data-lang-btn="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker"><span class="ar">المشاريع</span><span class="en">Projects</span></span>
+    <h1><span class="ar">ستة مسارات، نهضة واحدة</span><span class="en">Six tracks, one renaissance</span></h1>
+    <p><span class="ar">اسحب لليسار أو اليمين لاستكشاف مساراتنا. كل مشروع هو نقطة التقاء بين سؤال معرفي وحل تقني وحرفة تصميمية.</span><span class="en">Drag left or right to explore our tracks. Each project is where a knowledge question meets a technical solution and a design craft.</span></p>
+  </div>
+</section>
+
+<!-- 3D PROJECTS CAROUSEL -->
+<section class="section-projects">
+  <div id="carousel-container">
+    <!-- Cards will be injected and manipulated by Three.js -->
+    <div class="card-3d">
+      <div class="card-num">01</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M8 13h6M8 17h4"/></svg>
+      <h3><span class="ar">منصة النهضة الرقمية</span><span class="en">Digital Renaissance Platform</span></h3>
+      <p><span class="ar">أرشيف تفاعلي للتراث الفكري العربي، يعيد قراءة المخطوطات عبر الذكاء الاصطناعي والبحث الدلالي.</span><span class="en">An interactive archive of Arab intellectual heritage — re-reading manuscripts through AI and semantic search.</span></p>
+      <span class="tag"><span class="ar">تراث وتقنية</span><span class="en">Heritage × Tech</span></span>
+    </div>
+    <div class="card-3d">
+      <div class="card-num">02</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+      <h3><span class="ar">مختبر الابتكار الاجتماعي</span><span class="en">Social Innovation Lab</span></h3>
+      <p><span class="ar">مساحة تجريبية لتصميم حلول مجتمعية قابلة للتطبيق، بالشراكة مع القطاعين العام والخاص.</span><span class="en">An experimental space for designing deployable community solutions with public and private partners.</span></p>
+      <span class="tag"><span class="ar">أثر اجتماعي</span><span class="en">Social Impact</span></span>
+    </div>
+    <div class="card-3d">
+      <div class="card-num">03</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.2 5.6.7-4.1 4 1.1 5.6L12 15.8 7 18.5l1.1-5.6-4.1-4 5.6-.7z"/></svg>
+      <h3><span class="ar">حاضنة الصناعات الإبداعية</span><span class="en">Creative Industries Incubator</span></h3>
+      <p><span class="ar">برنامج احتضان للمشاريع التصميمية والفنية — من الفكرة الأولى إلى السوق، بدعم من مرشدين ومختبرات.</span><span class="en">An incubation program for design and art ventures — from first idea to market, with mentors and studios.</span></p>
+      <span class="tag"><span class="ar">إبداع</span><span class="en">Creative</span></span>
+    </div>
+    <div class="card-3d">
+      <div class="card-num">04</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L2 8l10 5 10-5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+      <h3><span class="ar">برنامج رواد الغد</span><span class="en">Tomorrow's Pioneers</span></h3>
+      <p><span class="ar">مسار تدريبي مكثّف للشباب في الابتكار وريادة الأعمال والقيادة، مبني على مشاريع حقيقية.</span><span class="en">An intensive track for young people in innovation, entrepreneurship and leadership — built on real projects.</span></p>
+      <span class="tag"><span class="ar">تعليم</span><span class="en">Education</span></span>
+    </div>
+    <div class="card-3d">
+      <div class="card-num">05</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+      <h3><span class="ar">مركز ذكاء المدن</span><span class="en">Urban Intelligence Center</span></h3>
+      <p><span class="ar">أبحاث تطبيقية في المدن الذكية والاستدامة العمرانية، مع أدوات مفتوحة لصناع القرار.</span><span class="en">Applied research in smart cities and urban sustainability, with open tools for decision-makers.</span></p>
+      <span class="tag"><span class="ar">مدن</span><span class="en">Urban</span></span>
+    </div>
+    <div class="card-3d">
+      <div class="card-num">06</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <h3><span class="ar">صندوق الابتكار</span><span class="en">Innovation Fund</span></h3>
+      <p><span class="ar">تمويل مبكر للمشاريع البحثية والتقنية ذات الأثر طويل المدى، مع حاضنة متابعة ودعم مؤسسي.</span><span class="en">Early-stage funding for research and technology ventures with long-term impact, with ongoing support.</span></p>
+      <span class="tag"><span class="ar">استثمار</span><span class="en">Investment</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="brand">
+      <img src="logo.jpg" class="mark" alt="IRG">
+      <span class="brand-txt"><b class="ar">مجموعة الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance Group</b><span>IRG · 2025</span></span>
+    </div>
+    <div><span class="ar">© ٢٠٢٥ جميع الحقوق محفوظة</span><span class="en">© 2025 — All rights reserved</span></div>
+  </div>
+</footer>
+
+<!-- Three.js Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"></script>
+
+<script>
+/* ---------- Language ---------- */
+function setLang(l){
+  document.documentElement.lang = l; document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+  document.body.dataset.lang = l;
+  document.querySelectorAll('[data-lang-btn]').forEach(b => b.classList.toggle('active', b.dataset.langBtn === l));
+  try{ localStorage.setItem('irg-lang', l); }catch(e){}
+}
+(function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
+
+/* ---------- Three.js 3D Carousel ---------- */
+(function() {
+  const container = document.getElementById('carousel-container');
+  const cards = container.querySelectorAll('.card-3d');
+  
+  if (cards.length === 0) return;
+
+  const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 1, 5000);
+  camera.position.set(0, 0, 1400);
+
+  const scene = new THREE.Scene();
+  const renderer = new THREE.CSS3DRenderer();
+  renderer.setSize(container.offsetWidth, container.offsetHeight);
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.pointerEvents = 'none';
+  container.appendChild(renderer.domElement);
+
+  const objects = [];
+  const radius = 650;
+  
+  cards.forEach((card, i) => {
+    const object = new THREE.CSS3DObject(card);
+    const theta = (i / cards.length) * Math.PI * 2;
+    object.position.x = Math.sin(theta) * radius;
+    object.position.z = Math.cos(theta) * radius;
+    object.rotation.y = theta + Math.PI;
+    
+    card.style.position = 'absolute';
+    card.style.width = '320px';
+    card.style.height = '420px';
+    card.style.left = '50%';
+    card.style.top = '50%';
+    card.style.marginLeft = '-160px';
+    card.style.marginTop = '-210px';
+    card.style.transition = 'none';
+
+    scene.add(object);
+    objects.push(object);
+  });
+
+  let isDragging = false;
+  let startX = 0;
+  let currentRotation = 0;
+  let targetRotation = 0;
+  let autoRotate = true;
+  let autoRotateSpeed = 0.0015;
+
+  container.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    autoRotate = false;
+    container.style.cursor = 'grabbing';
+  });
+
+  window.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const deltaX = e.clientX - startX;
+    targetRotation += deltaX * 0.005;
+    startX = e.clientX;
+  });
+
+  window.addEventListener('pointerup', () => {
+    isDragging = false;
+    container.style.cursor = 'grab';
+    setTimeout(() => { if(!isDragging) autoRotate = true; }, 3000);
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    if (autoRotate && !isDragging) {
+      targetRotation += autoRotateSpeed;
+    }
+
+    currentRotation += (targetRotation - currentRotation) * 0.1;
+    
+    objects.forEach((obj, i) => {
+      const theta = (i / objects.length) * Math.PI * 2 + currentRotation;
+      obj.position.x = Math.sin(theta) * radius;
+      obj.position.z = Math.cos(theta) * radius;
+      obj.rotation.y = theta + Math.PI;
+    });
+
+    renderer.render(scene, camera);
+  }
+  
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = container.offsetWidth / container.offsetHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+  });
+})();
+</script>
+</body>
+</html>

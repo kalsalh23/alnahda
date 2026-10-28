@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الرؤية — مجموعة الابتكار والنهضة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --teal-900:#001A16; --teal-800:#002623; --teal-700:#054239; --teal-500:#2E7A6E;
+  --cream:#EDEBE0; --gold:#B9A779; --gold-dk:#988561; --white:#FFFFFF; --ink:#161616;
+  --f-display-ar:'Noto Kufi Arabic', sans-serif; --f-display-en:'Fraunces', serif;
+  --f-body-ar:'IBM Plex Sans Arabic', sans-serif; --f-body-en:'Inter', sans-serif;
+  --r:14px; --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--teal-700);font-family:var(--f-body-ar);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body[data-lang="en"]{font-family:var(--f-body-en);line-height:1.65;}
+h1,h2,h3,h4{font-family:var(--f-display-ar);font-weight:600;line-height:1.25;letter-spacing:-.01em;}
+body[data-lang="en"] h1,body[data-lang="en"] h2,body[data-lang="en"] h3,body[data-lang="en"] h4{font-family:var(--f-display-en);font-weight:400;line-height:1.15;letter-spacing:-.02em;}
+a{color:inherit;text-decoration:none} img,svg{display:block}
+body[data-lang="ar"] .en{display:none !important} body[data-lang="en"] .ar{display:none !important}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(20px,5vw,56px);}
+
+/* ============ HEADER ============ */
+.header{position:sticky;top:0;z-index:100;background:rgba(237,235,224,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(5,66,57,.12);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px;}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand .mark{width:44px;height:44px;object-fit:contain;flex:none;border-radius:50%;}
+.brand-txt{display:flex;flex-direction:column;line-height:1.15;}
+.brand-txt b{font-family:var(--f-display-ar);font-weight:600;font-size:.95rem;}
+body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:500;font-size:1.05rem;}
+.brand-txt span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk);font-weight:500;}
+.nav{display:flex;align-items:center;gap:30px;}
+.nav a{font-size:.86rem;font-weight:500;color:var(--teal-700);opacity:.78;transition:.25s;position:relative;}
+.nav a:hover,.nav a.active{opacity:1}
+.nav a::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:.3s;}
+.nav a:hover::after,.nav a.active::after{width:100%}
+.lang-switch{display:flex;border:1px solid rgba(5,66,57,.25);border-radius:100px;padding:3px;gap:2px;}
+.lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
+.lang-switch button.active{background:var(--teal-700);color:var(--cream);}
+@media(max-width:900px){.nav{display:none}}
+
+/* ============ PAGE HERO ============ */
+.page-hero{padding-block:clamp(60px,10vw,110px) clamp(40px,6vw,70px);text-align:center;border-bottom:1px solid rgba(5,66,57,.1);background:linear-gradient(180deg,var(--cream) 0%, #E6E3D5 100%);}
+.page-hero .kicker{display:block;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-dk);font-weight:600;margin-bottom:16px;}
+.page-hero h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--teal-800);margin-bottom:20px;}
+.page-hero p{color:rgba(5,66,57,.68);font-weight:300;font-size:1.05rem;max-width:600px;margin-inline:auto;}
+
+/* ============ SECTION BASE ============ */
+.section{padding-block:clamp(64px,9vw,128px);position:relative;}
+.vision-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,6vw,80px);align-items:start;}
+.vision-lead{font-family:var(--f-display-ar);font-weight:500;font-size:clamp(1.25rem,2.5vw,1.85rem);line-height:1.65;color:var(--teal-800);}
+body[data-lang="en"] .vision-lead{font-family:var(--f-display-en);font-weight:400;line-height:1.45;}
+.vision-lead .hl{color:var(--gold-dk);}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(5,66,57,.14);border:1px solid rgba(5,66,57,.14);border-radius:var(--r);overflow:hidden;}
+.stat{background:var(--cream);padding:26px 22px;}
+.stat b{display:block;font-family:var(--f-display-ar);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--teal-700);line-height:1;margin-bottom:8px;}
+body[data-lang="en"] .stat b{font-family:var(--f-display-en);font-weight:400;}
+.stat span{font-size:.76rem;letter-spacing:.08em;color:rgba(5,66,57,.6);font-weight:500;}
+@media(max-width:860px){.vision-grid{grid-template-columns:1fr}}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--teal-900);color:rgba(237,235,224,.5);padding-block:36px;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.8rem;}
+.footer .brand .mark{width:36px;height:36px;object-fit:contain;border-radius:50%;}
+.footer .brand-txt b{color:rgba(237,235,224,.85);font-size:.85rem;}
+.footer .brand-txt span{color:rgba(185,167,121,.7);font-size:.6rem;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body data-lang="ar">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">
+      <img src="logo.jpg" class="mark" alt="IRG">
+      <span class="brand-txt">
+        <b class="ar">الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance</b>
+        <span>Group · IRG</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
+      <a href="vision.html" class="active"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
+      <a href="projects.html"><span class="ar">المشاريع</span><span class="en">Projects</span></a>
+      <a href="about.html"><span class="ar">من نحن</span><span class="en">About</span></a>
+      <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="lang-switch">
+      <button data-lang-btn="ar" class="active" onclick="setLang('ar')">ع</button>
+      <button data-lang-btn="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="kicker"><span class="ar">الرؤية</span><span class="en">The Vision</span></span>
+    <h1><span class="ar">نُعيد صياغة النهضة</span><span class="en">Reframing the Renaissance</span></h1>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="section">
+  <div class="wrap">
+    <div class="vision-grid">
+      <div class="reveal">
+        <p class="vision-lead">
+          <span class="ar">نؤمن أن <span class="hl">النهضة</span> ليست حدثاً مضى، بل <span class="hl">ممارسة يومية</span> تُبنى بالبحث والتصميم والشراكة. نعمل على تحويل الأفكار الكبيرة إلى مشاريع قابلة للقياس، والأثر الثقافي إلى بنية تحتية معرفية مستدامة.</span>
+          <span class="en">We believe the <span class="hl">Renaissance</span> is not a past event but a <span class="hl">daily practice</span> — built through research, design and partnership. We turn large ideas into measurable projects, and cultural impact into lasting knowledge infrastructure.</span>
+        </p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><b>12</b><span class="ar">مشروعاً نشطاً</span><span class="en">Active projects</span></div>
+        <div class="stat"><b>40+</b><span class="ar">شريكاً مؤسسياً</span><span class="en">Institutional partners</span></div>
+        <div class="stat"><b>08</b><span class="ar">دولاً</span><span class="en">Countries</span></div>
+        <div class="stat"><b>1.2k</b><span class="ar">مستفيداً</span><span class="en">Beneficiaries</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="brand">
+      <img src="logo.jpg" class="mark" alt="IRG">
+      <span class="brand-txt"><b class="ar">مجموعة الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance Group</b><span>IRG · 2025</span></span>
+    </div>
+    <div><span class="ar">© ٢٠٢٥ جميع الحقوق محفوظة</span><span class="en">© 2025 — All rights reserved</span></div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Language ---------- */
+function setLang(l){
+  document.documentElement.lang = l; document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+  document.body.dataset.lang = l;
+  document.querySelectorAll('[data-lang-btn]').forEach(b => b.classList.toggle('active', b.dataset.langBtn === l));
+  try{ localStorage.setItem('irg-lang', l); }catch(e){}
+}
+(function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
+
+/* ---------- Reveal ---------- */
+(function(){const els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}const io=new IntersectionObserver((entries)=>{entries.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*80);io.unobserve(en.target);}});},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});els.forEach(e=>io.observe(e));})();
+</script>
+</body>
+</html>
