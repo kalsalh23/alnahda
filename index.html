@@ -95,7 +95,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
-#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
+#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}.hero-verse{position:absolute;top:clamp(50px,8vw,100px);left:50%;transform:translateX(-50%);font-family:var(--f-display-ar);font-size:clamp(1.1rem,2.2vw,1.7rem);color:var(--teal-800);z-index:3;text-align:center;pointer-events:none;letter-spacing:.02em;line-height:1.6;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:100px;}
 </style>
 </head>
 <body data-lang="ar">
@@ -129,6 +129,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 <section class="hero">
   <div id="hero-3d"></div>
   <div id="hotspot-card"></div>
+  <div class="hero-verse"><span class="ar">وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ</span><span class="en">And say, "Do [as you will], for Allah will see your deeds, and [so will] His Messenger"</span></div>
   <svg class="hero-pattern" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
     <defs><pattern id="starPat" width="76" height="76" patternUnits="userSpaceOnUse"><path d="M38 8 L50 26 L68 38 L50 50 L38 68 L26 50 L8 38 L26 26 Z" fill="none" stroke="#054239" stroke-width="0.55" opacity="0.20"/><circle cx="38" cy="38" r="1.2" fill="#B9A779" opacity="0.5"/></pattern></defs>
     <rect width="400" height="400" fill="url(#starPat)"/>
