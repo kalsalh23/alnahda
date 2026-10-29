@@ -87,19 +87,6 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
 /* ============ 3D PROJECTS SECTION ============ */
-.section-projects{padding-block:clamp(64px,9vw,128px);background:linear-gradient(180deg,#E6E3D5 0%, var(--cream) 100%);overflow:hidden;}
-.section-head{text-align:center;margin-bottom:40px;}
-.section-head h2{font-size:clamp(1.7rem,3.8vw,2.9rem);color:var(--teal-800);margin-bottom:10px;}
-.section-head p{color:rgba(5,66,57,.68);font-weight:300;font-size:1rem;}
-#carousel-container{width:100%;height:600px;position:relative;cursor:grab;touch-action:none;}
-#carousel-container:active{cursor:grabbing;}
-.card-3d{width:320px;height:420px;background:var(--cream);padding:30px;border-radius:18px;border:1px solid rgba(5,66,57,.15);box-shadow:0 20px 40px rgba(0,0,0,0.08);display:flex;flex-direction:column;user-select:none;transition:box-shadow 0.3s, border-color 0.3s;}
-.card-3d:hover{box-shadow:0 30px 60px rgba(5,66,57,0.15);border-color:var(--gold);}
-.card-3d .card-num{font-family:var(--f-display-en);font-size:.8rem;letter-spacing:.18em;color:var(--gold-dk);font-weight:500;margin-bottom:auto;}
-.card-3d .card-icon{width:40px;height:40px;color:var(--teal-500);margin-block:22px 18px;}
-.card-3d h3{font-size:1.2rem;color:var(--teal-800);margin-bottom:12px;}
-.card-3d p{font-size:.9rem;color:rgba(5,66,57,.66);font-weight:300;line-height:1.7;margin-bottom:20px;}
-.card-3d .tag{align-self:flex-start;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--teal-700);border:1px solid rgba(5,66,57,.22);border-radius:100px;padding:5px 13px;}
 
 /* ============ FOOTER ============ */
 .footer{background:linear-gradient(180deg, var(--teal-900) 0%, #000f0d 100%);color:rgba(237,235,224,.7);padding-block:clamp(40px,6vw,70px) 28px;}
@@ -249,23 +236,29 @@ body[data-lang="en"] .orbit-overlay h3{font-family:var(--f-display-en);font-weig
   </div>
 </div>
 
-<!-- RENAISSANCE BOOK -->
+<!-- IDENTITY BOOK SECTION -->
 <section class="section-book">
   <div class="wrap">
-    <div class="book-head reveal">
-      <span class="eyebrow"><span class="ar">كتاب الهوية</span><span class="en">Identity Codex</span></span>
-      <h2><span class="ar">مجسم كتاب يحمل هوية المجموعة</span><span class="en">A sculpted codex of our identity</span></h2>
-      <p><span class="ar">قابل للتصفح بين الصفحات — من الرؤية إلى المشاريع والقيم، يتجسد النهض في كل صفحة.</span><span class="en">Flip between pages — vision, projects and values come alive in a tactile form.</span></p>
-    </div>
-    <div class="book-stage reveal">
-      <canvas id="book-codex-canvas"></canvas>
-      <div class="book-nav">
-        <button class="book-btn" id="book-prev"><span class="ar">السابق</span><span class="en">Prev</span></button>
-        <button class="book-btn" id="book-next"><span class="ar">التالي</span><span class="en">Next</span></button>
+    <div class="book-section-grid">
+      <div class="book-section-content reveal">
+        <span class="eyebrow"><span class="ar">هوية المجموعة</span><span class="en">Group Identity</span></span>
+        <h2><span class="ar">كتاب مجموعة الابتكار والنهضة</span><span class="en">Innovation & Renaissance Group Book</span></h2>
+        <p><span class="ar">استعرض صفحات الكتاب للتعرف على رؤيتنا وهويتنا ومجالات عملنا وطموحنا في ربط التراث الفكري بالابتكار التقني لبناء مستقبل معرفي مستدام.</span><span class="en">Flip through the book pages to discover our vision, identity, focus areas and ambition in connecting intellectual heritage with technological innovation.</span></p>
+        <div class="book-hint"><span class="ar">استخدم الأزرار للتنقل بين الصفحات</span><span class="en">Use the buttons to navigate pages</span></div>
+      </div>
+      <div class="book-showcase reveal">
+        <canvas id="identity-book-canvas"></canvas>
+        <div class="book-controls">
+          <button id="ib-prev" class="ib-btn">‹</button>
+          <span class="book-page-indicator"><span id="ib-current">١</span> / <span id="ib-total">٤</span></span>
+          <button id="ib-next" class="ib-btn">›</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- RENAISSANCE BOOK -->
 
 <!-- FOOTER -->
 <footer class="footer">
