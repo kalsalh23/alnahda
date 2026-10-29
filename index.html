@@ -108,7 +108,20 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 .footer .brand-txt b{color:rgba(237,235,224,.85);font-size:.85rem;}
 .footer .brand-txt span{color:rgba(185,167,121,.7);font-size:.6rem;}
 
-/* REVEAL */
+/* ============ ABOUT PREVIEW ============ */
+.section-about-preview{padding-block:clamp(64px,9vw,110px);background:var(--cream);}
+.preview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(40px,8vw,80px);align-items:center;}
+.preview-content .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--gold-dk);margin-bottom:18px;}
+.preview-content .eyebrow::before,.preview-content .eyebrow::after{content:"";width:28px;height:1px;background:var(--gold);}
+.preview-content h2{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--teal-800);margin-bottom:18px;line-height:1.25;}
+.preview-content p{color:rgba(5,66,57,.72);font-weight:300;font-size:1rem;margin-bottom:28px;line-height:1.9;}
+.preview-cards{display:grid;gap:16px;}
+.mini-card{background:var(--white);border:1px solid rgba(5,66,57,.12);border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+.mini-card:hover{transform:translateX(-6px);box-shadow:0 20px 40px rgba(5,66,57,.1);border-color:rgba(185,167,121,.5);}
+.mini-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(185,167,121,.18);color:var(--gold-dk);}
+.mini-card h4{font-size:1.05rem;color:var(--teal-800);}
+.mini-card p{font-size:.9rem;color:rgba(5,66,57,.68);margin:0;}
+@media(max-width:900px){.preview-grid{grid-template-columns:1fr;gap:40px;}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
 #hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}  .hero-verse{position:absolute;top:clamp(4px,1vw,12px);left:50%;transform:translateX(-50%);font-family:var(--f-display-ar);font-size:clamp(0.85rem,1.5vw,1.1rem);color:var(--teal-800);z-index:3;text-align:center;pointer-events:none;white-space:nowrap;letter-spacing:.01em;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:30px;}
@@ -177,6 +190,46 @@ body[data-lang="en"] .hero h1{font-weight:300;}
     <span>Impact</span><span>Craft</span><span>Renaissance</span><span>Knowledge</span>
   </div>
 </div>
+
+<!-- ABOUT PREVIEW -->
+<section class="section-about-preview">
+  <div class="wrap">
+    <div class="preview-grid">
+      <div class="preview-content reveal">
+        <span class="eyebrow"><span class="ar">من نحن</span><span class="en">About</span></span>
+        <h2><span class="ar">مجموعة تجمع بين التراث والابتكار لبناء مستقبل معرفي مستدام</span><span class="en">A group connecting heritage and innovation to build a sustainable knowledge future</span></h2>
+        <p><span class="ar">نعمل على تحويل الإرث الفكري العربي إلى مشاريع رقمية وتقنية ذات أثر، من خلال البحث والتصميم وبناء الحلول في مجالات الصناعات الدفاعية والتقنيات والصحة.</span><span class="en">We transform Arab intellectual heritage into digital and technological projects with impact through research, design and solution-building in defense, technologies and health.</span></p>
+        <div class="btn-row" style="justify-content:flex-start;">
+          <a href="about.html" class="btn btn-primary"><span class="ar">تعرف علينا</span><span class="en">Learn more</span></a>
+          <a href="projects.html" class="btn btn-ghost"><span class="ar">مشاريعنا</span><span class="en">Our projects</span></a>
+        </div>
+      </div>
+      <div class="preview-cards reveal">
+        <div class="mini-card">
+          <div class="mini-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h4><span class="ar">بحث ومعرفة</span><span class="en">Research & Knowledge</span></h4>
+          <p><span class="ar">إحياء التراث الفكري وتحويله إلى قيمة معاصرة</span><span class="en">Reviving intellectual heritage for modern value</span></p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h4><span class="ar">تقنيات مبتكرة</span><span class="en">Innovative Technologies</span></h4>
+          <p><span class="ar">حلول رقمية متقدمة تخدم المستقبل</span><span class="en">Advanced digital solutions for the future</span></p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h4><span class="ar">شراكات فعالة</span><span class="en">Strategic Partnerships</span></h4>
+          <p><span class="ar">بناء جسور بين القطاعين العام والخاص</span><span class="en">Bridging public and private sectors</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -276,6 +329,24 @@ function setLang(l){
   try{ localStorage.setItem('irg-lang', l); }catch(e){}
 }
 (function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
+
+/* ---------- Reveal on Scroll ---------- */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(e => e.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting){
+        setTimeout(()=>entry.target.classList.add('in'), i*80);
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+  els.forEach(e => io.observe(e));
+})();
 </script>
 </body>
 </html>
