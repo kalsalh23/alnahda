@@ -535,14 +535,53 @@ function renderProjects(cat){
         e.preventDefault();
         const cat = btn.dataset.cat;
         renderProjects(cat);
+        // Update filter buttons
+        document.querySelectorAll('.categories .category-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.category === cat);
+        });
       });
     });
 
-backBtn.addEventListener('click', () => {
-  projectsView.style.display = 'none';
-  categoryView.style.display = 'block';
-  window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
-});
+    // Top filter buttons click
+    document.querySelectorAll('.categories .category-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cat = btn.dataset.category;
+        document.querySelectorAll('.categories .category-btn').forEach(b => b.classList.toggle('active', b === btn));
+        if(cat === 'all'){
+          projectsView.style.display = 'none';
+          categoryView.style.display = 'block';
+          window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
+          return;
+        }
+        if(PROJECTS_DATA[cat]){
+          renderProjects(cat);
+        }
+      });
+    });
+
+    backBtn.addEventListener('click', () => {
+      projectsView.style.display = 'none';
+      categoryView.style.display = 'block';
+      document.querySelectorAll('.categories .category-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.category === 'all');
+      });
+      window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
+    });
+
+    // Handle URL parameters
+    (function(){
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('cat') || params.get('category');
+        if(cat && cat !== 'all' && PROJECTS_DATA[cat]){
+          document.querySelectorAll('.categories .category-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.category === cat);
+          });
+          renderProjects(cat);
+        }
+      } catch(e){}
+    })();
 </script>
 </body>
 </html>
