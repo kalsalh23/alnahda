@@ -283,7 +283,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
 
     <div id="category-view" class="category-view">
       <div class="category-cards">
-        <button class="category-card" data-cat="defense">
+        <button class="category-card" data-cat="defense" onclick="window.location.href='defense.html'">
           <div class="category-media">
             <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1200&q=80&auto=format&fit=crop" alt="Defense">
           </div>
@@ -292,7 +292,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
             <h3><span class="ar">حلول وتقنيات دفاعية</span><span class="en">Defense Solutions & Technologies</span></h3>
           </div>
         </button>
-        <button class="category-card" data-cat="tech">
+        <button class="category-card" data-cat="tech" onclick="window.location.href='tech.html'">
           <div class="category-media">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop" alt="Technology">
           </div>
@@ -301,7 +301,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
             <h3><span class="ar">تقنيات ناشئة وحلول رقمية</span><span class="en">Emerging Tech & Digital Solutions</span></h3>
           </div>
         </button>
-        <button class="category-card" data-cat="health">
+        <button class="category-card" data-cat="health" onclick="window.location.href='health.html'">
           <div class="category-media">
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&q=80&auto=format&fit=crop" alt="Health">
           </div>
@@ -369,9 +369,9 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
         <div class="footer-col">
           <h4><span class="ar">المشاريع</span><span class="en">Projects</span></h4>
           <ul>
-            <li><a href="projects.html"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></a></li>
-            <li><a href="projects.html"><span class="ar">التقنيات</span><span class="en">Technologies</span></a></li>
-            <li><a href="projects.html"><span class="ar">الصحة</span><span class="en">Health</span></a></li>
+            <li><a href="defense.html"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></a></li>
+            <li><a href="tech.html"><span class="ar">التقنيات</span><span class="en">Technologies</span></a></li>
+            <li><a href="health.html"><span class="ar">الصحة</span><span class="en">Health</span></a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -462,6 +462,8 @@ function closeProjectPreview(){
   document.getElementById('project-preview').classList.remove('active');
   document.getElementById('preview-text').innerHTML = '';
 }
+
+const PROJECTS_DATA = {
   defense: [
     { id: 101, titleAr: 'منصة المراقبة الذكية', titleEn: 'Smart Surveillance Platform', tagAr: 'الصناعات الدفاعية', tagEn: 'Defense Industries', descAr: 'نظام مراقبة ذكي قائم على الذكاء الاصطناعي لكشف وتحليل التهديدات في الوقت الفعلي.', descEn: 'AI-powered surveillance system for real-time threat detection and analysis.', img: 'https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1200&q=80&auto=format&fit=crop' },
     { id: 102, titleAr: 'نظام الاتصالات الآمن', titleEn: 'Secure Communications System', tagAr: 'الصناعات الدفاعية', tagEn: 'Defense Industries', descAr: 'شبكة اتصالات مشفرة عالية الأمان للعمليات الحساسة والتنسيق الميداني.', descEn: 'Encrypted high-security communication network for sensitive operations.', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop' },
