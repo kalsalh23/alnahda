@@ -171,23 +171,26 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
       animation:blink 1s infinite;
       vertical-align:middle;
     }
-    .project-preview-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
+    .project-preview-actions .btn{padding:12px 26px;font-size:.88rem;}
     .project-preview-close{
       position:absolute;
       top:16px;
       left:16px;
-      width:36px;
-      height:36px;
+      width:38px;
+      height:38px;
       border-radius:50%;
-      border:1px solid rgba(5,66,57,.2);
-      background:rgba(255,255,255,.6);
+      border:1px solid rgba(5,66,57,.25);
+      background:linear-gradient(180deg, rgba(255,255,255,.9) 0%, rgba(237,235,224,.9) 100%);
       cursor:pointer;
-      font-size:18px;
+      font-size:20px;
+      color:var(--teal-700);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 12px 30px rgba(0,26,22,.12);
+      transition:all .25s ease;
     }
+    .project-preview-close:hover{border-color:var(--gold);color:var(--gold-dk);transform:rotate(90deg);}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     @keyframes scaleIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
     @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
@@ -283,7 +286,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
 
     <div id="category-view" class="category-view">
       <div class="category-cards">
-        <button class="category-card" data-cat="defense" onclick="window.location.href='defense.html'">
+        <button class="category-card" data-cat="defense">
           <div class="category-media">
             <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1200&q=80&auto=format&fit=crop" alt="Defense">
           </div>
@@ -292,7 +295,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
             <h3><span class="ar">حلول وتقنيات دفاعية</span><span class="en">Defense Solutions & Technologies</span></h3>
           </div>
         </button>
-        <button class="category-card" data-cat="tech" onclick="window.location.href='tech.html'">
+        <button class="category-card" data-cat="tech">
           <div class="category-media">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop" alt="Technology">
           </div>
@@ -301,7 +304,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
             <h3><span class="ar">تقنيات ناشئة وحلول رقمية</span><span class="en">Emerging Tech & Digital Solutions</span></h3>
           </div>
         </button>
-        <button class="category-card" data-cat="health" onclick="window.location.href='health.html'">
+        <button class="category-card" data-cat="health">
           <div class="category-media">
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&q=80&auto=format&fit=crop" alt="Health">
           </div>
@@ -453,9 +456,9 @@ function openProjectPreview(id){
     span.textContent = sentences[i].trim() + '.  ';
     textEl.insertBefore(span, textEl.querySelector('.cursor'));
     i++;
-    setTimeout(typeNext, 600 + Math.random()*400);
+    setTimeout(typeNext, 450);
   }
-  setTimeout(typeNext, 400);
+  setTimeout(typeNext, 250);
 }
 
 function closeProjectPreview(){
@@ -536,6 +539,7 @@ function renderProjects(cat){
     document.querySelectorAll('.category-card').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         const cat = btn.dataset.cat;
         document.querySelectorAll('.categories .category-btn').forEach(b => {
           b.classList.toggle('active', b.dataset.category === cat);
@@ -550,8 +554,9 @@ function renderProjects(cat){
     document.querySelectorAll('.categories .category-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        const cat = btn.dataset.category;
-        document.querySelectorAll('.categories .category-btn').forEach(b => b.classList.toggle('active', b === btn));
+        e.stopPropagation();
+        const cat = btn.dataset.category || btn.dataset.cat;
+        document.querySelectorAll('.categories .category-btn').forEach(b => b.classList.toggle('active', b.dataset.category === cat));
         if(!cat || cat === 'all'){
           projectsView.style.display = 'none';
           categoryView.style.display = 'block';
@@ -560,6 +565,9 @@ function renderProjects(cat){
         }
         if(PROJECTS_DATA[cat]){
           renderProjects(cat);
+        } else {
+          projectsView.style.display = 'none';
+          categoryView.style.display = 'block';
         }
       });
     });
