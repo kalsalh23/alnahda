@@ -126,20 +126,24 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
 @media(max-width:600px){.footer-links{grid-template-columns:1fr;}}
 
 /* ============ SHOWCASE SECTION ============ */
-.section-showcase{padding-block:clamp(64px,9vw,120px);background:linear-gradient(180deg, var(--cream) 0%, #E6E3D5 100%);position:relative;overflow:hidden;}
-.showcase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(40px,8vw,90px);align-items:center;}
-.showcase-content .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--gold-dk);margin-bottom:18px;}
-.showcase-content .eyebrow::before,.showcase-content .eyebrow::after{content:"";width:28px;height:1px;background:var(--gold);}
-.showcase-content h2{font-size:clamp(1.9rem,4.2vw,3.2rem);color:var(--teal-800);margin-bottom:18px;line-height:1.22;}
-.showcase-content p{color:rgba(5,66,57,.74);font-weight:300;font-size:1rem;margin-bottom:28px;line-height:1.9;}
-.showcase-stats{display:flex;gap:clamp(24px,5vw,44px);margin-bottom:32px;flex-wrap:wrap;}
-.stat{display:flex;flex-direction:column;gap:6px;}
-.stat-num{font-family:var(--f-display-en);font-size:clamp(2rem,4vw,2.8rem);color:var(--teal-800);}
-.stat-label{font-size:.8rem;color:rgba(5,66,57,.68);letter-spacing:.08em;text-transform:uppercase;}
-.showcase-3d{position:relative;height:520px;}
-#showcase-canvas{width:100%;height:100%;display:block;border-radius:24px;}
-.showcase-glow{position:absolute;inset:10% 15%;background:radial-gradient(circle, rgba(185,167,121,.18) 0%, transparent 70%);filter:blur(60px);pointer-events:none;}
-@media(max-width:900px){.showcase-grid{grid-template-columns:1fr;gap:40px;}.showcase-3d{height:380px;}}
+.section-showcase{padding-block:clamp(70px,10vw,130px);background:linear-gradient(180deg,#E6E3D5 0%, var(--cream) 100%);position:relative;overflow:hidden;}
+.section-showcase::before{content:"";position:absolute;top:-20%;left:-10%;width:400px;height:400px;background:radial-gradient(circle, rgba(185,167,121,.12), transparent 70%);pointer-events:none;}
+.showcase-header{text-align:center;max-width:760px;margin:0 auto clamp(50px,7vw,80px);}
+.showcase-header .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--gold-dk);margin-bottom:16px;}
+.showcase-header .eyebrow::before,.showcase-header .eyebrow::after{content:"";width:28px;height:1px;background:var(--gold);}
+.showcase-header h2{font-size:clamp(2rem,4.5vw,3.4rem);color:var(--teal-800);margin-bottom:18px;line-height:1.2;}
+.showcase-header p{color:rgba(5,66,57,.72);font-weight:300;font-size:1.02rem;line-height:1.9;}
+.showcase-body{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,8vw,90px);align-items:center;}
+.showcase-3d{position:relative;height:480px;}
+#showcase-canvas{width:100%;height:100%;display:block;}
+.showcase-orbit{position:absolute;inset:15% 20%;border:1px solid rgba(185,167,121,.25);border-radius:50%;pointer-events:none;animation:rotate 30s linear infinite;}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.showcase-info{display:flex;flex-direction:column;gap:18px;}
+.info-card{background:var(--white);border:1px solid rgba(5,66,57,.12);border-radius:16px;padding:24px 28px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
+.info-card:hover{transform:translateX(-8px);box-shadow:0 24px 48px rgba(5,66,57,.12);border-color:rgba(185,167,121,.5);}
+.info-card h4{font-size:1.1rem;color:var(--teal-800);margin-bottom:8px;}
+.info-card p{color:rgba(5,66,57,.72);font-weight:300;line-height:1.8;}
+@media(max-width:900px){.showcase-body{grid-template-columns:1fr;gap:40px;}.showcase-3d{height:360px;}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
 #hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}  .hero-verse{position:absolute;top:clamp(4px,1vw,12px);left:50%;transform:translateX(-50%);font-family:var(--f-display-ar);font-size:clamp(0.85rem,1.5vw,1.1rem);color:var(--teal-800);z-index:3;text-align:center;pointer-events:none;white-space:nowrap;letter-spacing:.01em;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:30px;}
@@ -212,32 +216,33 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
 <!-- SHOWCASE SECTION -->
 <section class="section-showcase">
   <div class="wrap">
-    <div class="showcase-grid">
-      <div class="showcase-content reveal">
-        <span class="eyebrow"><span class="ar">نهضة معرفية</span><span class="en">Knowledge Renaissance</span></span>
-        <h2><span class="ar">نحو مستقبل يُبنى على تراث عريق وابتكار حديث</span><span class="en">Building the future on rich heritage and modern innovation</span></h2>
-        <p><span class="ar">نحوّل الإرث الفكري العربي إلى حلول عملية تخدم الإنسان، ونربط الماضي بالحاضر لنصنع غدًا أكثر إبداعًا واستدامة في مجالات الصناعات الدفاعية والتقنيات والصحة.</span><span class="en">We transform Arab intellectual heritage into practical solutions, connecting past and present to build a more creative and sustainable tomorrow in defense, technologies and health.</span></p>
-        <div class="showcase-stats">
-          <div class="stat">
-            <span class="stat-num">٦</span>
-            <span class="stat-label"><span class="ar">مسارات مشاريع</span><span class="en">Project Tracks</span></span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">٣</span>
-            <span class="stat-label"><span class="ar">مجالات رئيسية</span><span class="en">Core Domains</span></span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">+٢٠٢٥</span>
-            <span class="stat-label"><span class="ar">رؤية مستقبلية</span><span class="en">Forward Vision</span></span>
-          </div>
+    <div class="showcase-header reveal">
+      <span class="eyebrow"><span class="ar">مجموعة الابتكار والنهضة</span><span class="en">Innovation & Renaissance Group</span></span>
+      <h2><span class="ar">نربط التراث بالابتكار لنصنع مستقبلاً معرفياً</span><span class="en">Connecting heritage with innovation to build a knowledge-driven future</span></h2>
+      <p><span class="ar">مشاريعنا في الصناعات الدفاعية والتقنيات والصحة تجسد رؤيتنا في تحويل الإرث الفكري العربي إلى حلول عملية ذات أثر</span><span class="en">Our projects in defense, technologies and health reflect our vision of turning Arab intellectual heritage into practical solutions with impact</span></p>
+    </div>
+    <div class="showcase-body reveal">
+      <div class="showcase-3d">
+        <canvas id="showcase-canvas"></canvas>
+        <div class="showcase-orbit"></div>
+      </div>
+      <div class="showcase-info">
+        <div class="info-card">
+          <h4><span class="ar">هويتنا</span><span class="en">Our Identity</span></h4>
+          <p><span class="ar">مجموعة تعمل عند تقاطع التراث الفكري والابتكار التقني والتصميم المعاصر لبناء مشاريع مستدامة</span><span class="en">Working at the intersection of intellectual heritage, technology and design to build sustainable projects</span></p>
+        </div>
+        <div class="info-card">
+          <h4><span class="ar">مجالاتنا</span><span class="en">Our Focus</span></h4>
+          <p><span class="ar">الصناعات الدفاعية • التقنيات • الصحة</span><span class="en">Defense Industries • Technologies • Health</span></p>
+        </div>
+        <div class="info-card">
+          <h4><span class="ar">طموحنا</span><span class="en">Our Ambition</span></h4>
+          <p><span class="ar">إعادة إحياء الفكر العربي وإبرازه في المشهد العالمي عبر حلول مبتكرة</span><span class="en">Reviving Arab thought and showcasing it globally through innovative solutions</span></p>
         </div>
         <div class="btn-row" style="justify-content:flex-start;">
-          <a href="projects.html" class="btn btn-primary"><span class="ar">استكشف المشاريع</span><span class="en">Explore Projects</span></a>
+          <a href="projects.html" class="btn btn-primary"><span class="ar">مشاهدة المشاريع</span><span class="en">View Projects</span></a>
+          <a href="about.html" class="btn btn-ghost"><span class="ar">تعرف أكثر</span><span class="en">Learn More</span></a>
         </div>
-      </div>
-      <div class="showcase-3d reveal">
-        <canvas id="showcase-canvas"></canvas>
-        <div class="showcase-glow"></div>
       </div>
     </div>
   </div>
@@ -271,9 +276,9 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
         <div class="footer-col">
           <h4><span class="ar">المشاريع</span><span class="en">Projects</span></h4>
           <ul>
-            <li><a href="projects.html"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></a></li>
-            <li><a href="projects.html"><span class="ar">التقنيات</span><span class="en">Technologies</span></a></li>
-            <li><a href="projects.html"><span class="ar">الصحة</span><span class="en">Health</span></a></li>
+            <li><a href="projects.html?cat=defense"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></a></li>
+            <li><a href="projects.html?cat=tech"><span class="ar">التقنيات</span><span class="en">Technologies</span></a></li>
+            <li><a href="projects.html?cat=health"><span class="ar">الصحة</span><span class="en">Health</span></a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -380,59 +385,56 @@ function setLang(l){
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth/canvas.clientHeight, 0.1, 100);
-  camera.position.set(0, 0.8, 6);
+  camera.position.set(0, 0, 5.2);
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.5);
   scene.add(ambient);
-  const dir = new THREE.DirectionalLight(0xffffff, 0.9);
-  dir.position.set(4,6,6);
+  const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+  dir.position.set(4,5,4);
   scene.add(dir);
-  const gold = new THREE.PointLight(0xB9A779, 2.2, 10);
-  gold.position.set(-3,2,4);
+  const gold = new THREE.PointLight(0xB9A779, 1.8, 8);
+  gold.position.set(-2,1,3);
   scene.add(gold);
 
   const group = new THREE.Group();
-  const coreMat = new THREE.MeshStandardMaterial({color:0xB9A779, metalness:0.8, roughness:0.16, emissive:0xB9A779, emissiveIntensity:0.18});
-  const ringMat = new THREE.MeshStandardMaterial({color:0x054239, metalness:0.6, roughness:0.28});
-  const geoMat = new THREE.MeshStandardMaterial({color:0xEDEBE0, metalness:0.25, roughness:0.5});
+  const mat1 = new THREE.MeshStandardMaterial({color:0xB9A779, metalness:0.8, roughness:0.14});
+  const mat2 = new THREE.MeshStandardMaterial({color:0x054239, metalness:0.6, roughness:0.26});
+  const mat3 = new THREE.MeshStandardMaterial({color:0xEDEBE0, metalness:0.3, roughness:0.48});
 
-  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.9, 1), coreMat);
+  // Geometric lattice
+  for(let i=0;i<8;i++){
+    const geo = i%2===0 ? new THREE.OctahedronGeometry(0.4, 0) : new THREE.IcosahedronGeometry(0.36, 0);
+    const m = new THREE.Mesh(geo, i%3===0 ? mat1 : (i%3===1 ? mat2 : mat3));
+    const ang = (i/8)*Math.PI*2;
+    const r = 1.8;
+    m.position.set(Math.cos(ang)*r, Math.sin(ang*1.2)*0.3, Math.sin(ang)*r);
+    m.userData = {ang, r, baseY: m.position.y};
+    group.add(m);
+  }
+
+  const core = new THREE.Mesh(new THREE.DodecahedronGeometry(0.7, 0), mat1);
   group.add(core);
 
-  const ring1 = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.05, 16, 64), ringMat);
-  ring1.rotation.x = Math.PI/2;
-  group.add(ring1);
-  const ring2 = new THREE.Mesh(new THREE.TorusGeometry(2.0, 0.04, 16, 64), ringMat);
-  ring2.rotation.x = Math.PI/2.4;
-  ring2.rotation.y = Math.PI/6;
-  group.add(ring2);
-
-  const nodes = [];
-  for(let i=0;i<12;i++){
-    const n = new THREE.Mesh(new THREE.OctahedronGeometry(0.12, 0), geoMat);
-    const ang = (i/12)*Math.PI*2;
-    const r = 2.4;
-    n.position.set(Math.cos(ang)*r, Math.sin(ang)*0.4, Math.sin(ang)*r);
-    n.userData = {ang, r};
-    group.add(n);
-    nodes.push(n);
-  }
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.4, 0.03, 16, 64), mat2);
+  ring.rotation.x = Math.PI/2.2;
+  group.add(ring);
 
   scene.add(group);
 
   let t=0;
   function animate(){
     requestAnimationFrame(animate);
-    t += 0.01;
-    group.rotation.y = t*0.25;
-    core.rotation.x += 0.012;
-    core.rotation.y += 0.016;
-    ring1.rotation.z += 0.008;
-    ring2.rotation.z -= 0.006;
-    nodes.forEach((n,i)=>{
-      n.position.y = Math.sin(t + i)*0.25;
-      n.rotation.x += 0.02;
-      n.rotation.y += 0.015;
+    t += 0.008;
+    group.rotation.y = t*0.18;
+    core.rotation.x += 0.01;
+    core.rotation.y += 0.014;
+    ring.rotation.z += 0.006;
+    group.children.forEach((ch,i)=>{
+      if(i < 8){
+        ch.position.y = ch.userData.baseY + Math.sin(t + i)*0.18;
+        ch.rotation.x += 0.015;
+        ch.rotation.y += 0.012;
+      }
     });
     renderer.render(scene, camera);
   }
@@ -455,7 +457,7 @@ function setLang(l){
   const io = new IntersectionObserver((entries)=>{
     entries.forEach((entry,i)=>{
       if(entry.isIntersecting){
-        setTimeout(()=>entry.target.classList.add('in'), i*80);
+        setTimeout(()=>entry.target.classList.add('in'), i*70);
         io.unobserve(entry.target);
       }
     });
