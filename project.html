@@ -213,77 +213,113 @@ function setLang(l){
 
 /* ---------- Project Data ---------- */
 const PROJECTS = {
-  1: {
-    id: 1,
-    title: { ar: 'منصة النهضة الرقمية', en: 'Digital Renaissance Platform' },
-    tag:   { ar: 'منصة رقمية', en: 'Digital Platform' },
-    badge: { ar: 'تراث وتقنية', en: 'Heritage × Tech' },
-    desc:  { ar: 'أرشيف تفاعلي للتراث الفكري العربي، يعيد قراءة المخطوطات عبر الذكاء الاصطناعي والبحث الدلالي.', en: 'An interactive archive of Arab intellectual heritage — re-reading manuscripts through AI and semantic search.' },
+  101: {
+    id: 101,
+    title: { ar: 'منصة المراقبة الذكية', en: 'Smart Surveillance Platform' },
+    tag:   { ar: 'صناعات دفاعية', en: 'Defense' },
+    badge: { ar: 'الصناعات الدفاعية', en: 'Defense Industries' },
+    desc:  { ar: 'نظام مراقبة ذكي قائم على الذكاء الاصطناعي لكشف وتحليل التهديدات في الوقت الفعلي، مع تكامل كامل مع البنى التحتية الأمنية.', en: 'AI-powered surveillance system for real-time threat detection and analysis, fully integrated with security infrastructure.' },
     details: {
-      ar: ['مخطوطات عربية رقمية قابلة للتصفح والتفاعل', 'بحث دلالي مدعوم بالذكاء الاصطناعي', 'تحليل نصي تلقائي للمحتوى التراثي', 'واجهة تصفح بتصميم مستوحى من الفن الإسلامي', 'إتاحة مفتوحة للباحثين والمهتمين'],
-      en: ['Digitally browsable and interactive Arab manuscripts', 'AI-powered semantic search', 'Automatic textual analysis of heritage content', 'Browsing interface inspired by Islamic art', 'Open access for researchers and enthusiasts']
+      ar: ['كشف التهديدات بالذكاء الاصطناعي', 'تحليل الفيديو في الوقت الفعلي', 'تكامل مع أنظمة الأمن', 'واجهة مراقبة متكاملة', 'تقارير ذكية وتنبيهات فورية'],
+      en: ['AI-powered threat detection', 'Real-time video analytics', 'Security system integration', 'Unified monitoring interface', 'Smart reports and instant alerts']
     },
-    scene: 'renaissance'
+    scene: 'radar'
   },
-  2: {
-    id: 2,
-    title: { ar: 'مختبر الابتكار الاجتماعي', en: 'Social Innovation Lab' },
-    tag:   { ar: 'مختبر اجتماعي', en: 'Social Lab' },
-    badge: { ar: 'أثر اجتماعي', en: 'Social Impact' },
-    desc:  { ar: 'مساحة تجريبية لتصميم حلول مجتمعية قابلة للتطبيق، بالشراكة مع القطاعين العام والخاص.', en: 'An experimental space for designing deployable community solutions with public and private partners.' },
+  102: {
+    id: 102,
+    title: { ar: 'نظام الاتصالات الآمن', en: 'Secure Communications System' },
+    tag:   { ar: 'صناعات دفاعية', en: 'Defense' },
+    badge: { ar: 'الصناعات الدفاعية', en: 'Defense Industries' },
+    desc:  { ar: 'شبكة اتصالات مشفرة عالية الأمان للعمليات الحساسة والتنسيق الميداني مع ضمان سرية كاملة للبيانات.', en: 'Highly secure encrypted communication network for sensitive operations and field coordination with full data confidentiality.' },
     details: {
-      ar: ['حلول تستند إلى البحث الميداني والمشاركة المجتمعية', 'شراكات مع القطاعين العام والخاص', 'برامج احتضان للمبادرات الاجتماعية', 'تركيز على التعليم والصحة والبيئة', 'جسر بين الأبحاث الأكاديمية والتطبيق الميداني'],
-      en: ['Solutions based on field research and community participation', 'Public and private sector partnerships', 'Incubation programs for social initiatives', 'Focus on education, health, and environment', 'Bridge between academic research and field application']
+      ar: ['تشفير من طرف إلى طرف', 'شبكة مقاومة للتشويش', 'اتصال آمن بين وحدات متعددة', 'موثوقية عالية في البيئات الصعبة', 'إدارة مفاتيح متقدمة'],
+      en: ['End-to-end encryption', 'Jamming-resistant network', 'Secure multi-unit communication', 'High reliability in harsh environments', 'Advanced key management']
     },
     scene: 'network'
   },
-  3: {
-    id: 3,
-    title: { ar: 'حاضنة الصناعات الإبداعية', en: 'Creative Industries Incubator' },
-    tag:   { ar: 'حاضنة إبداعية', en: 'Creative Incubator' },
-    badge: { ar: 'إبداع', en: 'Creative' },
-    desc:  { ar: 'برنامج احتضان للمشاريع التصميمية والفنية — من الفكرة الأولى إلى السوق، بدعم من مرشدين ومختبرات.', en: 'An incubation program for design and art ventures — from first idea to market, with mentors and studios.' },
+  103: {
+    id: 103,
+    title: { ar: 'روبوتات الاستطلاع الذكية', en: 'Intelligent Reconnaissance Robots' },
+    tag:   { ar: 'صناعات دفاعية', en: 'Defense' },
+    badge: { ar: 'الصناعات الدفاعية', en: 'Defense Industries' },
+    desc:  { ar: 'روبوتات آلية موجهة عن بعد لأداء مهام الاستطلاع في البيئات الصعبة والخطرة مع استشعار ذكي وملاحة مستقلة.', en: 'Remotely operated robotic platforms for reconnaissance in hazardous environments with intelligent sensing and autonomous navigation.' },
     details: {
-      ar: ['بيئة إبداعية متكاملة مع ورش عمل واستوديوهات', 'شبكة من المرشدين والخبراء في التصميم', 'دعم من الفكرة حتى الإطلاق التجاري', 'مختبرات تصميم متخصصة ومتطورة', 'برامج تدريب تطبيقي للمصممين والفنانين'],
-      en: ['Integrated creative environment with workshops and studios', 'Mentor network of design experts', 'Support from ideation to commercial launch', 'Specialized and advanced design labs', 'Applied training programs for designers and artists']
-    },
-    scene: 'shapes'
-  },
-  4: {
-    id: 4,
-    title: { ar: 'برنامج رواد الغد', en: "Tomorrow's Pioneers" },
-    tag:   { ar: 'برنامج تدريبي', en: 'Training Program' },
-    badge: { ar: 'تعليم', en: 'Education' },
-    desc:  { ar: 'مسار تدريبي مكثّف للشباب في الابتكار وريادة الأعمال والقيادة، مبني على مشاريع حقيقية.', en: 'An intensive track for young people in innovation, entrepreneurship and leadership — built on real projects.' },
-    details: {
-      ar: ['تدريب مكثف في الابتكار وريادة الأعمال والقيادة', 'مشاريع حقيقية وتجارب عملية للإ jóvenes', 'إشراف من خبراء في مجالات الابتكار', 'جمع بين النظرية والتطبيق الميداني', 'تأهيل قادة ورواد أعمال للمستقبل'],
-      en: ['Intensive training in innovation, entrepreneurship and leadership', 'Real projects and hands-on experience for youth', 'Supervision by innovation experts', 'Combining theory with field application', 'Preparing future leaders and entrepreneurs']
+      ar: ['ملاحة مستقلة بالذكاء الاصطناعي', 'أجهزة استشعار متعددة', 'تحكم عن بُعد آمن', 'قدرة على العمل في التضاريس الصعبة', 'نقل بيانات آمن في الوقت الفعلي'],
+      en: ['AI-powered autonomous navigation', 'Multi-sensor array', 'Secure remote control', 'All-terrain capability', 'Real-time secure data transmission']
     },
     scene: 'pioneers'
   },
-  5: {
-    id: 5,
-    title: { ar: 'مركز ذكاء المدن', en: 'Urban Intelligence Center' },
-    tag:   { ar: 'مركز بحثي', en: 'Research Center' },
-    badge: { ar: 'مدن ذكية', en: 'Smart Cities' },
-    desc:  { ar: 'أبحاث تطبيقية في المدن الذكية والاستدامة العمرانية، مع أدوات مفتوحة لصناع القرار.', en: 'Applied research in smart cities and urban sustainability, with open tools for decision-makers.' },
+  201: {
+    id: 201,
+    title: { ar: 'منصة الذكاء الاصطناعي المؤسسي', en: 'Enterprise AI Platform' },
+    tag:   { ar: 'تقنيات', en: 'Technologies' },
+    badge: { ar: 'التقنيات', en: 'Technologies' },
+    desc:  { ar: 'منصة شاملة لدمج الذكاء الاصطناعي في العمليات المؤسسية مع حلول مخصصة لكل قطاع وأدوات تحليل متقدمة.', en: 'Comprehensive platform for integrating AI into enterprise operations with sector-specific solutions and advanced analytics.' },
     details: {
-      ar: ['أبحاث في المدن الذكية والاستدامة العمرانية', 'أدوات تحليل البيانات الحضرية', 'نماذج محاكاة للتخطيط العمراني', 'دعم اتخاذ القرارات لصناع القرار', 'الاستدامة البيئية والمدن المستقبلية'],
-      en: ['Research in smart cities and urban sustainability', 'Urban data analysis tools', 'Simulation models for urban planning', 'Decision support for policymakers', 'Environmental sustainability and future cities']
+      ar: ['نماذج ذكاء اصطناعي مخصصة', 'تحليل بيانات متقدم', 'أتمتة العمليات', 'تكامل مع الأنظمة الحالية', 'لوحة تحكم شاملة'],
+      en: ['Custom AI models', 'Advanced data analytics', 'Process automation', 'Legacy system integration', 'Comprehensive dashboard']
+    },
+    scene: 'network'
+  },
+  202: {
+    id: 202,
+    title: { ar: 'البنية التحتية السحابية الآمنة', en: 'Secure Cloud Infrastructure' },
+    tag:   { ar: 'تقنيات', en: 'Technologies' },
+    badge: { ar: 'التقنيات', en: 'Technologies' },
+    desc:  { ar: 'حلول سحابية آمنة وقابلة للتوسع مع أنظمة حماية متقدمة للبيانات الحساسة وبنية تحتية مرنة.', en: 'Secure scalable cloud solutions with advanced data protection and flexible infrastructure.' },
+    details: {
+      ar: ['حماية متعددة الطبقات', 'قابلية توسع تلقائية', 'نسخ احتياطي ذكي', 'امتثال للمعايير الأمنية', 'مراقبة على مدار الساعة'],
+      en: ['Multi-layer security', 'Auto-scaling', 'Intelligent backup', 'Security compliance', '24/7 monitoring']
+    },
+    scene: 'shapes'
+  },
+  203: {
+    id: 203,
+    title: { ar: 'إنترنت الأشياء الصناعي', en: 'Industrial IoT Solutions' },
+    tag:   { ar: 'تقنيات', en: 'Technologies' },
+    badge: { ar: 'التقنيات', en: 'Technologies' },
+    desc:  { ar: 'شبكات ذكية للمصانع والمدن تجمع البيانات وتحسن الكفاءة التشغيلية من خلال المراقبة والتحكم الذكي.', en: 'Smart networks for factories and cities collecting data to optimize operations through intelligent monitoring and control.' },
+    details: {
+      ar: ['أجهزة استشعار ذكية', 'تحليل البيانات في الوقت الفعلي', 'صيانة تنبؤية', 'تحكم آلي ذكي', 'تقارير كفاءة الطاقة'],
+      en: ['Smart sensors', 'Real-time data analytics', 'Predictive maintenance', 'Intelligent automation', 'Energy efficiency reports']
     },
     scene: 'city'
   },
-  6: {
-    id: 6,
-    title: { ar: 'صندوق الابتكار', en: 'Innovation Fund' },
-    tag:   { ar: 'صندوق استثماري', en: 'Investment Fund' },
-    badge: { ar: 'استثمار', en: 'Investment' },
-    desc:  { ar: 'تمويل مبكر للمشاريع البحثية والتقنية ذات الأثر طويل المدى، مع حاضنة متابعة ودعم مؤسسي.', en: 'Early-stage funding for research and technology ventures with long-term impact, with ongoing support.' },
+  301: {
+    id: 301,
+    title: { ar: 'نظام التشخيص الذكي', en: 'AI Diagnostic System' },
+    tag:   { ar: 'صحة', en: 'Health' },
+    badge: { ar: 'الصحة', en: 'Health' },
+    desc:  { ar: 'نظام تشخيص مدعوم بالذكاء الاصطناعي يساعد الأطباء في الكشف المبكر عن الأمراض بدقة عالية وسرعة فائقة.', en: 'AI-powered diagnostic system assisting clinicians in early disease detection with high accuracy and speed.' },
     details: {
-      ar: ['تمويل مبكر للمشاريع البحثية والتقنية', 'أثر طويل المدى ومستدام', 'حاضنة متابعة ودعم مؤسسي مستمر', 'مراقبة أداء المشاريع الممولة', 'دعم مشاريع ذات قيمة معرفية مضافة'],
-      en: ['Early-stage funding for research and technology ventures', 'Long-term and sustainable impact', 'Ongoing incubation and institutional support', 'Performance monitoring of funded ventures', 'Support for projects with added knowledge value']
+      ar: ['تشخيص مدعوم بالذكاء الاصطناعي', 'تحليل صور طبية ذكي', 'كشف مبكر للأمراض', 'دعم القرار الطبي', 'تكامل مع أنظمة المستشفيات'],
+      en: ['AI-assisted diagnosis', 'Intelligent medical imaging analysis', 'Early disease detection', 'Clinical decision support', 'Hospital system integration']
     },
-    scene: 'fund'
+    scene: 'network'
+  },
+  302: {
+    id: 302,
+    title: { ar: 'منصة الرعاية الصحية عن بعد', en: 'Telemedicine Platform' },
+    tag:   { ar: 'صحة', en: 'Health' },
+    badge: { ar: 'الصحة', en: 'Health' },
+    desc:  { ar: 'منصة متكاملة لتقديم الاستشارات الطبية عن بعد ومتابعة المرضى عن بُعد بأمان كامل وسهولة استخدام.', en: 'Integrated platform for secure remote medical consultations and patient monitoring with ease of use.' },
+    details: {
+      ar: ['استشارات فيديو آمنة', 'سجلات طبية رقمية', 'متابعة المريض عن بُعد', 'وصف إلكتروني', 'حفظ البيانات مشفر'],
+      en: ['Secure video consultations', 'Digital medical records', 'Remote patient monitoring', 'E-prescriptions', 'Encrypted data storage']
+    },
+    scene: 'shapes'
+  },
+  303: {
+    id: 303,
+    title: { ar: 'تقنيات التصوير الطبي المتقدمة', en: 'Advanced Medical Imaging' },
+    tag:   { ar: 'صحة', en: 'Health' },
+    badge: { ar: 'الصحة', en: 'Health' },
+    desc:  { ar: 'أجهزة وتقنيات تصوير طبي متطورة مع معالجة ذكية للصور وتحليل بالذكاء الاصطناعي لتحسين دقة التشخيص.', en: 'Advanced medical imaging technologies with intelligent image processing and AI analysis for improved diagnostic accuracy.' },
+    details: {
+      ar: ['تصوير عالي الدقة', 'معالجة صور ذكية بالذكاء الاصطناعي', 'تحليل تشخيصي مساعد', 'تقليل وقت الفحص', 'نتائج دقيقة وسريعة'],
+      en: ['High-resolution imaging', 'AI-powered image processing', 'AI-assisted diagnostic analysis', 'Reduced scan time', 'Fast accurate results']
+    },
+    scene: 'city'
   }
 };
 
@@ -579,31 +615,61 @@ proj.details[lang].forEach(d => {
     animate();
   }
 
-  /* ---------- Scene: Fund (Innovation Fund) ---------- */
-  else if(proj.scene === 'fund'){
+  /* ---------- Scene: Radar (Defense) ---------- */
+  else if(proj.scene === 'radar'){
     addGrid();
-    const coins = [];
-    for(let i=0;i<12;i++){
-      const c = new THREE.Mesh(new THREE.TorusKnotGeometry(0.32,0.12,64,16), goldMat);
-      const phi = Math.acos(-1 + (2*i+1)/12);
-      const theta = Math.PI*(1+Math.sqrt(5))*i;
-      const r = 2.6;
-      c.position.set(Math.cos(theta)*Math.sin(phi)*r, Math.sin(theta)*Math.sin(phi)*r, Math.cos(phi)*r);
-      c.userData = {base:c.position.clone(), speed:0.6+Math.random()*0.6, off:Math.random()*Math.PI*2};
-      scene.add(c);
-      coins.push(c);
+    const stars = addStars(180);
+
+    // Base
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(2.2, 2.4, 0.15, 32), tealMat);
+    base.position.y = -1.8;
+    scene.add(base);
+
+    // Tower
+    const tower = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.12, 1.2, 16), goldMat);
+    tower.position.y = -1.2;
+    scene.add(tower);
+
+    // Radar dish
+    const dish = new THREE.Mesh(new THREE.ConeGeometry(0.6, 0.25, 32), creamMat);
+    dish.rotation.x = Math.PI/2;
+    dish.position.y = -0.55;
+    scene.add(dish);
+
+    // Rotating beam
+    const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, 2.2, 8), new THREE.MeshBasicMaterial({color:0xB9A779, transparent:true, opacity:0.4}));
+    beam.rotation.x = Math.PI/2;
+    beam.position.y = -0.55;
+    scene.add(beam);
+
+    // Blips
+    const blips = [];
+    for(let i=0;i<6;i++){
+      const b = new THREE.Mesh(new THREE.SphereGeometry(0.04, 12, 12), new THREE.MeshBasicMaterial({color:0xB9A779}));
+      const ang = Math.random()*Math.PI*2;
+      const dist = 1 + Math.random()*1.2;
+      b.position.set(Math.cos(ang)*dist, -1.75, Math.sin(ang)*dist);
+      scene.add(b);
+      blips.push({mesh:b, ang, dist, active:false});
     }
 
     let t=0;
     function animate(){
       requestAnimationFrame(animate);
-      t += 0.015;
-      coins.forEach((c,i)=>{
-        const angle = t*c.userData.speed + c.userData.off;
-        c.position.copy(c.userData.base).add(new THREE.Vector3(Math.sin(angle)*0.4, Math.cos(angle)*0.4, 0));
-        c.rotation.y += 0.03;
-        c.rotation.z += 0.02;
+      t += 0.025;
+      dish.rotation.z = t;
+      beam.rotation.z = t;
+      blips.forEach(bp => {
+        const a = t % (Math.PI*2);
+        if(Math.abs(a - bp.ang) < 0.3){
+          bp.mesh.material.opacity = 1;
+          bp.active = true;
+        } else if(bp.active){
+          bp.mesh.material.opacity = Math.max(0, bp.mesh.material.opacity - 0.02);
+          if(bp.mesh.material.opacity <= 0) bp.active = false;
+        }
       });
+      stars.rotation.y += 0.0005;
       controls.update();
       renderer.render(scene, camera);
     }
