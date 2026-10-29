@@ -524,9 +524,10 @@ function renderProjects(cat){
     });
     projectsGrid.appendChild(a);
   });
+  document.querySelectorAll('.categories .category-btn').forEach(b => b.classList.toggle('active', b.dataset.category === cat));
   categoryView.style.display = 'none';
   projectsView.style.display = 'block';
-  window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
+  window.scrollTo({top: document.querySelector('.section-projects')?.offsetTop - 80 || 0, behavior: 'smooth'});
 }
 
     // Category cards click
@@ -589,6 +590,9 @@ function renderProjects(cat){
         } else {
           projectsView.style.display = 'none';
           categoryView.style.display = 'block';
+          document.querySelectorAll('.categories .category-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.category === 'all');
+          });
         }
       } catch(e){
         projectsView.style.display = 'none';
