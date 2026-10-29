@@ -95,18 +95,102 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
 
 /* ============ PROJECTS GRID ============ */
 .projects-view{margin-top:clamp(20px,4vw,40px);}
-.project-card{position:relative;background:var(--white);border-radius:20px;border:1px solid rgba(5,66,57,.12);overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s,filter .4s;cursor:pointer;display:flex;flex-direction:column;text-decoration:none;color:inherit;}
-.project-card:hover{transform:translateY(-12px) scale(1.015);box-shadow:0 50px 80px rgba(5,66,57,.18);border-color:var(--gold);filter:saturate(1.02);}
-.project-card::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(185,167,121,.14), transparent 65%);
-  opacity:0;
-  transition:opacity .35s ease;
-  pointer-events:none;
-}
-.project-card:hover::after{opacity:1;}
+    .project-card{position:relative;background:var(--white);border-radius:20px;border:1px solid rgba(5,66,57,.12);overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s,filter .4s;cursor:pointer;display:flex;flex-direction:column;text-decoration:none;color:inherit;}
+    .project-card:hover{transform:translateY(-12px) scale(1.015);box-shadow:0 50px 80px rgba(5,66,57,.18);border-color:var(--gold);filter:saturate(1.02);}
+    .project-card::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(185,167,121,.14), transparent 65%);
+      opacity:0;
+      transition:opacity .35s ease;
+      pointer-events:none;
+    }
+    .project-card:hover::after{opacity:1;}
+
+    /* Project Preview Overlay */
+    .project-preview-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,26,22,.72);
+      backdrop-filter:blur(10px) saturate(120%);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:200;
+      padding:20px;
+    }
+    .project-preview-overlay.active{display:flex;animation:fadeIn .25s ease;}
+    .project-preview-modal{
+      width:min(680px,92vw);
+      background:var(--cream);
+      border-radius:20px;
+      border:1px solid rgba(185,167,121,.4);
+      box-shadow:0 60px 120px rgba(0,0,0,.4);
+      overflow:hidden;
+      position:relative;
+      animation:scaleIn .3s cubic-bezier(.2,.7,.3,1);
+    }
+    .project-preview-header{
+      padding:26px 30px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      border-bottom:1px solid rgba(5,66,57,.1);
+    }
+    .project-preview-kicker{
+      font-size:.72rem;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--gold-dk);
+      font-weight:600;
+    }
+    .project-preview-title{
+      font-size:clamp(1.6rem,4vw,2.4rem);
+      color:var(--teal-800);
+    }
+    .project-preview-body{
+      padding:20px 30px 26px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .project-preview-text{
+      font-size:1rem;
+      color:rgba(5,66,57,.8);
+      line-height:1.9;
+      min-height:120px;
+      white-space:pre-wrap;
+    }
+    .project-preview-text .cursor{
+      display:inline-block;
+      width:8px;
+      height:1.2em;
+      background:var(--gold-dk);
+      margin-right:4px;
+      animation:blink 1s infinite;
+      vertical-align:middle;
+    }
+    .project-preview-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .project-preview-close{
+      position:absolute;
+      top:16px;
+      left:16px;
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      border:1px solid rgba(5,66,57,.2);
+      background:rgba(255,255,255,.6);
+      cursor:pointer;
+      font-size:18px;
+    }
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes scaleIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 .project-card .card-media{aspect-ratio:16/10;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--teal-900),var(--teal-700));}
 .project-card .card-media::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(185,167,121,.25),transparent 70%);opacity:0;transition:opacity .4s;}
 .project-card:hover .card-media::after{opacity:1;}
@@ -222,8 +306,23 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
   </div>
 </section>
 
-<!-- PROJECT MODALS -->
-<div class="modals" style="display:none"></div>
+<!-- PROJECT PREVIEW OVERLAY -->
+<div class="project-preview-overlay" id="project-preview">
+  <div class="project-preview-modal">
+    <button class="project-preview-close" onclick="closeProjectPreview()">×</button>
+    <div class="project-preview-header">
+      <span class="project-preview-kicker" id="preview-kicker"></span>
+      <h2 class="project-preview-title" id="preview-title"></h2>
+    </div>
+    <div class="project-preview-body">
+      <div class="project-preview-text" id="preview-text"></div>
+      <div class="project-preview-actions">
+        <a href="#" class="btn btn-primary" id="preview-go"><span class="ar">عرض المشروع</span><span class="en">View Project</span></a>
+        <button class="btn btn-ghost" onclick="closeProjectPreview()"><span class="ar">إغلاق</span><span class="en">Close</span></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -264,7 +363,62 @@ function setLang(l){
 (function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
 
 /* ---------- Projects by Category ---------- */
-const PROJECTS_DATA = {
+const PROJECT_DETAILS = {
+  101: { ar: 'منصة المراقبة الذكية نظام متكامل يعتمد على الذكاء الاصطناعي لرصد المناطق الحساسة وتحليل الحركة. .  يستطيع النظام التعرف على الأنماط غير الطبيعية وإصدار تنبيهات فورية. .  يوفر تكاملاً آمنًا مع مراكز القيادة لاتخاذ قرارات سريعة ودقيقة.', en: 'Smart Surveillance Platform is an integrated AI system for monitoring sensitive areas and analyzing movement. .  It detects unusual patterns and issues instant alerts. .  It integrates securely with command centers for fast and accurate decisions.' },
+  102: { ar: 'نظام الاتصالات الآمن شبكة مشفرة من طرف إلى طرف تضمن سرية التواصل في العمليات الحساسة. .  مصمم للعمل في البيئات الصعبة مع مقاومة للتشويش. .  يدعم التنسيق بين الوحدات الميدانية ومراكز القيادة بأعلى مستويات الأمان.', en: 'Secure Communications System provides end-to-end encrypted network for sensitive operations. .  Designed for harsh environments with anti-jamming capability. .  Enables secure coordination between field units and command centers.' },
+  103: { ar: 'روبوتات الاستطلاع الذكية منصات آلية ذاتية الحركة قادرة على أداء مهام الاستطلاع في المناطق الخطرة. .  مزودة بأجهزة استشعار متقدمة ورؤية ذكية. .  تنقل البيانات بشكل آمن في الوقت الفعلي دون تعريض الأرواح للخطر.', en: 'Intelligent Reconnaissance Robots are autonomous platforms for hazardous area reconnaissance. .  Equipped with advanced sensors and smart vision. .  Transmit secure real-time data without risking human lives.' },
+  201: { ar: 'منصة الذكاء الاصطناعي المؤسسي تجمع بين نماذج ذكية وأتمتة متقدمة لرفع كفاءة المؤسسات. .  تدعم التكامل مع الأنظمة الحالية وتوفر تحليلات تنبؤية. .  تساعد على اتخاذ قرارات مبنية على بيانات دقيقة في كل مستوى.', en: 'Enterprise AI Platform combines smart models and advanced automation to boost efficiency. .  Integrates with existing systems and provides predictive analytics. .  Enables data-driven decisions across all levels.' },
+  202: { ar: 'البنية التحتية السحابية الآمنة حلول مرنة وقابلة للتوسع مع حماية متعددة الطبقات للبيانات. .  تضمن التوفر العالي والنسخ الاحتياطي الذكي. .  متوافقة مع أعلى معايير الأمان والامتثال التنظيمي.', en: 'Secure Cloud Infrastructure offers flexible scalable solutions with multi-layer protection. .  Ensures high availability and intelligent backup. .  Meets top security and compliance standards.' },
+  203: { ar: 'إنترنت الأشياء الصناعي شبكة من الأجهزة الذكية تراقب وتُحسّن العمليات الصناعية والمدنية. .  تتيح الصيانة التنبؤية وتقليل الهدر. .  تحول البيانات إلى قرارات فورية لتحسين الكفاءة والإنتاجية.', en: 'Industrial IoT Solutions connect smart devices to monitor and optimize operations. .  Enables predictive maintenance and waste reduction. .  Turns data into instant decisions for better efficiency.' },
+  301: { ar: 'نظام التشخيص الذكي مدعوم بالذكاء الاصطناعي لمساعدة الأطباء في الكشف المبكر عن الأمراض. .  يحلل الصور الطبية بدقة عالية ويقترح احتمالات التشخيص. .  يسرع الإجراءات الطبية ويحسن دقة النتائج ويقلل الأخطاء.', en: 'AI Diagnostic System assists clinicians in early disease detection. .  Analyzes medical images with high accuracy and suggests diagnoses. .  Speeds up care and improves diagnostic precision.' },
+  302: { ar: 'منصة الرعاية الصحية عن بعد تتيح الاستشارات الطبية الآمنة من أي مكان. .  تدعم السجلات الرقمية والوصفات الإلكترونية والمتابعة عن بُعد. .  توسع الوصول للرعاية الصحية خاصة في المناطق النائية.', en: 'Telemedicine Platform enables secure remote consultations anywhere. .  Supports digital records, e-prescriptions and remote monitoring. .  Expands healthcare access to remote areas.' },
+  303: { ar: 'تقنيات التصوير الطبي المتقدمة أجهزة حديثة ومعالجة ذكية لتحسين جودة الصور ودقة التشخيص. .  تقلل وقت الفحص وتقلل التعرض للإشعاع. .  توفر تحليلاً مدعوماً بالذكاء الاصطناعي لدعم القرار الطبي.', en: 'Advanced Medical Imaging delivers high-quality scans with smart processing. .  Reduces scan time and radiation exposure. .  Provides AI-assisted analysis to support clinical decisions.' }
+};
+
+function openProjectPreview(id){
+  const preview = document.getElementById('project-preview');
+  const kicker = document.getElementById('preview-kicker');
+  const title = document.getElementById('preview-title');
+  const textEl = document.getElementById('preview-text');
+  const go = document.getElementById('preview-go');
+  
+  // Find project data
+  let p = null;
+  for(let cat in PROJECTS_DATA){
+    const found = PROJECTS_DATA[cat].find(x => x.id == id);
+    if(found){ p = found; break; }
+  }
+  
+  kicker.textContent = document.documentElement.lang === 'en' ? p.tagEn : p.tagAr;
+  title.textContent = document.documentElement.lang === 'en' ? p.titleEn : p.titleAr;
+  go.href = `project.html?id=${id}`;
+  
+  textEl.innerHTML = '<span class="cursor"></span>';
+  preview.classList.add('active');
+  
+  const lang = document.documentElement.lang || 'ar';
+  const content = (PROJECT_DETAILS[id] && PROJECT_DETAILS[id][lang]) || (lang === 'en' ? p.descEn : p.descAr);
+  const sentences = content.split(' .  ');
+  
+  let i = 0;
+  function typeNext(){
+    if(i >= sentences.length){
+      textEl.innerHTML = sentences.map(s => s.trim()).join('.  ') + '.';
+      return;
+    }
+    const span = document.createElement('span');
+    span.textContent = sentences[i].trim() + '.  ';
+    textEl.insertBefore(span, textEl.querySelector('.cursor'));
+    i++;
+    setTimeout(typeNext, 600 + Math.random()*400);
+  }
+  setTimeout(typeNext, 400);
+}
+
+function closeProjectPreview(){
+  document.getElementById('project-preview').classList.remove('active');
+  document.getElementById('preview-text').innerHTML = '';
+}
   defense: [
     { id: 101, titleAr: 'منصة المراقبة الذكية', titleEn: 'Smart Surveillance Platform', tagAr: 'الصناعات الدفاعية', tagEn: 'Defense Industries', descAr: 'نظام مراقبة ذكي قائم على الذكاء الاصطناعي لكشف وتحليل التهديدات في الوقت الفعلي.', descEn: 'AI-powered surveillance system for real-time threat detection and analysis.', img: 'https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1200&q=80&auto=format&fit=crop' },
     { id: 102, titleAr: 'نظام الاتصالات الآمن', titleEn: 'Secure Communications System', tagAr: 'الصناعات الدفاعية', tagEn: 'Defense Industries', descAr: 'شبكة اتصالات مشفرة عالية الأمان للعمليات الحساسة والتنسيق الميداني.', descEn: 'Encrypted high-security communication network for sensitive operations.', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop' },
@@ -323,10 +477,7 @@ function renderProjects(cat){
     });
     a.addEventListener('click', (e) => {
       e.preventDefault();
-      document.body.style.opacity = '0.9';
-      setTimeout(() => {
-        window.location.href = a.href;
-      }, 160);
+      openProjectPreview(p.id);
     });
     projectsGrid.appendChild(a);
   });
