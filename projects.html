@@ -95,8 +95,18 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
 
 /* ============ PROJECTS GRID ============ */
 .projects-view{margin-top:clamp(20px,4vw,40px);}
-.project-card{position:relative;background:var(--white);border-radius:20px;border:1px solid rgba(5,66,57,.12);overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s;cursor:pointer;display:flex;flex-direction:column;text-decoration:none;color:inherit;}
-.project-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(5,66,57,.12);border-color:var(--gold);}
+.project-card{position:relative;background:var(--white);border-radius:20px;border:1px solid rgba(5,66,57,.12);overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s,filter .4s;cursor:pointer;display:flex;flex-direction:column;text-decoration:none;color:inherit;}
+.project-card:hover{transform:translateY(-12px) scale(1.015);box-shadow:0 50px 80px rgba(5,66,57,.18);border-color:var(--gold);filter:saturate(1.02);}
+.project-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(185,167,121,.14), transparent 65%);
+  opacity:0;
+  transition:opacity .35s ease;
+  pointer-events:none;
+}
+.project-card:hover::after{opacity:1;}
 .project-card .card-media{aspect-ratio:16/10;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--teal-900),var(--teal-700));}
 .project-card .card-media::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(185,167,121,.25),transparent 70%);opacity:0;transition:opacity .4s;}
 .project-card:hover .card-media::after{opacity:1;}
@@ -306,6 +316,18 @@ function renderProjects(cat){
       </div>
       <div class="card-footer"><span class="arrow">→</span></div>
     `;
+    a.addEventListener('mousemove', (e) => {
+      const rect = a.getBoundingClientRect();
+      a.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      a.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+    });
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.body.style.opacity = '0.9';
+      setTimeout(() => {
+        window.location.href = a.href;
+      }, 160);
+    });
     projectsGrid.appendChild(a);
   });
   categoryView.style.display = 'none';
