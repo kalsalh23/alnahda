@@ -535,10 +535,9 @@ function renderProjects(cat){
         e.preventDefault();
         const cat = btn.dataset.cat;
         renderProjects(cat);
-        // Update filter buttons
-        document.querySelectorAll('.categories .category-btn').forEach(b => {
-          b.classList.toggle('active', b.dataset.category === cat);
-        });
+        history.pushState({cat}, '', `#${cat}`);
+      });
+    });
       });
     });
 
@@ -560,12 +559,24 @@ function renderProjects(cat){
       });
     });
 
-    backBtn.addEventListener('click', () => {
-      projectsView.style.display = 'none';
-      categoryView.style.display = 'block';
-      document.querySelectorAll('.categories .category-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.category === 'all');
-      });
+backBtn.addEventListener('click', () => {
+  projectsView.style.display = 'none';
+  categoryView.style.display = 'block';
+  history.pushState({}, '', 'projects.html');
+  window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
+});
+
+// Handle URL hash
+(function(){
+  function handleHash(){
+    const hash = window.location.hash.replace('#','');
+    if(hash && PROJECTS_DATA[hash]){
+      renderProjects(hash);
+    }
+  }
+  window.addEventListener('hashchange', handleHash);
+  handleHash();
+})();
       window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
     });
 
