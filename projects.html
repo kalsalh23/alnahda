@@ -172,6 +172,10 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
       vertical-align:middle;
     }
     .project-preview-actions .btn{padding:12px 26px;font-size:.88rem;}
+    .btn-preview-view{background:linear-gradient(90deg, var(--teal-700) 0%, var(--teal-800) 100%);color:var(--cream);border:1px solid rgba(185,167,121,.5);box-shadow:0 18px 40px rgba(0,26,22,.18);}
+    .btn-preview-view:hover{background:linear-gradient(90deg, var(--teal-800) 0%, var(--teal-900) 100%);transform:translateY(-2px);}
+    .btn-preview-close{background:transparent;color:var(--teal-700);border:1px solid rgba(5,66,57,.4);backdrop-filter:blur(4px);}
+    .btn-preview-close:hover{border-color:var(--gold);color:var(--gold-dk);background:rgba(185,167,121,.12);transform:translateY(-2px);}
     .project-preview-close{
       position:absolute;
       top:16px;
@@ -336,10 +340,10 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
     </div>
     <div class="project-preview-body">
       <div class="project-preview-text" id="preview-text"></div>
-      <div class="project-preview-actions">
-        <a href="#" class="btn btn-primary" id="preview-go"><span class="ar">عرض المشروع</span><span class="en">View Project</span></a>
-        <button class="btn btn-ghost" onclick="closeProjectPreview()"><span class="ar">إغلاق</span><span class="en">Close</span></button>
-      </div>
+       <div class="project-preview-actions">
+         <a href="#" class="btn btn-preview-view" id="preview-go"><span class="ar">عرض المشروع</span><span class="en">View Project</span></a>
+         <button class="btn btn-preview-close" onclick="closeProjectPreview()"><span class="ar">إغلاق</span><span class="en">Close</span></button>
+       </div>
     </div>
   </div>
 </div>
