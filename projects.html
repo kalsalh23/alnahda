@@ -35,31 +35,31 @@ body[data-lang="ar"] .en{display:none !important} body[data-lang="en"] .ar{displ
 .brand-txt b{font-family:var(--f-display-ar);font-weight:600;font-size:.95rem;}
 body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:500;font-size:1.05rem;}
 .brand-txt span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk);font-weight:500;}
-  .nav{display:flex;align-items:center;gap:30px;}
-  .nav a{font-size:.86rem;font-weight:500;color:var(--teal-700);opacity:.78;transition:.25s;position:relative;}
-  .nav a:hover,.nav a.active{opacity:1}
-  .nav a::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:.3s;}
-  .nav a:hover::after,.nav a.active::after{width:100%}
-  .lang-switch{display:flex;border:1px solid rgba(5,66,57,.25);border-radius:100px;padding:3px;gap:2px;}
-  .lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
-  .lang-switch button.active{background:var(--teal-700);color:var(--cream);}
-  #menuBtn{display:none;background:transparent;border:1px solid rgba(5,66,57,.25);border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer;color:var(--teal-700);}
-  @media(max-width:900px){
-    #menuBtn{display:block;}
-    .nav{display:none;}
-    .nav.open{
-      display:flex;flex-direction:column;
-      position:fixed;top:78px;left:0;right:0;
-      width:100%;max-width:100%;
-      background:var(--cream);
-      padding:16px 20px 24px;gap:0;z-index:60;
-      box-shadow:0 12px 30px rgba(0,0,0,.08);
-      overflow-y:auto;transform:none;
-      border-bottom:1px solid rgba(5,66,57,.12);
-    }
-    .nav.open a{opacity:1;display:flex;width:100%;padding:12px 0;border-bottom:1px solid rgba(5,66,57,.08);font-size:.9rem;}
-    .nav.open a:last-child{border-bottom:none;}
+.nav{display:flex;align-items:center;gap:30px;}
+.nav a{font-size:.86rem;font-weight:500;color:var(--teal-700);opacity:.78;transition:.25s;position:relative;}
+.nav a:hover,.nav a.active{opacity:1}
+.nav a::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:.3s;}
+.nav a:hover::after,.nav a.active::after{width:100%}
+.lang-switch{display:flex;border:1px solid rgba(5,66,57,.25);border-radius:100px;padding:3px;gap:2px;}
+.lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
+.lang-switch button.active{background:var(--teal-700);color:var(--cream);}
+#menuBtn{display:none;background:transparent;border:1px solid rgba(5,66,57,.25);border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer;color:var(--teal-700);}
+@media(max-width:900px){
+  #menuBtn{display:block;}
+  .nav{display:none;}
+  .nav.open{
+    display:flex;flex-direction:column;
+    position:fixed;top:78px;left:0;right:0;
+    width:100%;max-width:100%;
+    background:var(--cream);
+    padding:16px 20px 24px;gap:0;z-index:60;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    overflow-y:auto;transform:none;
+    border-bottom:1px solid rgba(5,66,57,.12);
   }
+  .nav.open a{opacity:1;display:flex;width:100%;padding:12px 0;border-bottom:1px solid rgba(5,66,57,.08);font-size:.9rem;}
+  .nav.open a:last-child{border-bottom:none;}
+}
 
 /* ============ PAGE HERO ============ */
 .page-hero{padding-block:clamp(60px,10vw,110px) clamp(40px,6vw,70px);text-align:center;border-bottom:1px solid rgba(5,66,57,.1);background:linear-gradient(180deg,var(--cream) 0%, #E6E3D5 100%);}
@@ -67,7 +67,7 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
 .page-hero h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--teal-800);margin-bottom:20px;}
 .page-hero p{color:rgba(5,66,57,.68);font-weight:300;font-size:1.05rem;max-width:600px;margin-inline:auto;}
 
-/* ============ PROJECTS GRID ============ */
+/* ============ PROJECTS SECTION ============ */
 .section-projects{padding-block:clamp(64px,9vw,128px);background:linear-gradient(180deg,#E6E3D5 0%, var(--cream) 100%);overflow:hidden;}
 .section-head{text-align:center;margin-bottom:clamp(40px,6vw,64px);}
 .section-head h2{font-size:clamp(1.7rem,3.8vw,2.9rem);color:var(--teal-800);margin-bottom:10px;}
@@ -80,16 +80,29 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
 .category-btn:hover{border-color:var(--gold);color:var(--gold-dk);transform:translateY(-2px);}
 .category-btn.active{background:var(--teal-700);border-color:var(--teal-700);color:var(--cream);}
 
-    .project-card{display:flex;opacity:1;transform:none;position:relative;background:var(--white);border-radius:20px;border:1px solid rgba(5,66,57,.12);overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s;cursor:pointer;flex-direction:column;}
-    .project-card.hide{display:none !important;}
-    .project-card.show{display:flex !important;opacity:1;transform:none;}
+/* ============ CATEGORY CARDS ============ */
+.category-view{margin-bottom:clamp(40px,6vw,64px);}
+.category-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,3vw,28px);}
+.category-card{position:relative;border:0;background:transparent;cursor:pointer;border-radius:18px;overflow:hidden;text-align:right;box-shadow:0 20px 40px rgba(5,66,57,.12);transition:transform .35s ease,box-shadow .35s ease;}
+.category-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(5,66,57,.18);}
+.category-media{position:relative;aspect-ratio:16/10;}
+.category-media img{width:100%;height:100%;object-fit:cover;}
+.category-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,26,22,.15) 0%, rgba(0,26,22,.7) 100%);}
+.category-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:var(--cream);}
+.category-tag{align-self:flex-start;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;background:rgba(185,167,121,.25);border:1px solid rgba(185,167,121,.6);padding:6px 14px;border-radius:100px;margin-bottom:12px;}
+.category-overlay h3{font-size:1.25rem;margin-bottom:6px;}
+.category-overlay p{font-size:.9rem;opacity:.8;}
+
+/* ============ PROJECTS GRID ============ */
+.projects-view{margin-top:clamp(20px,4vw,40px);}
+.project-card{position:relative;background:var(--white);border-radius:20px;border:1px solid rgba(5,66,57,.12);overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s,border-color .4s;cursor:pointer;display:flex;flex-direction:column;text-decoration:none;color:inherit;}
 .project-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(5,66,57,.12);border-color:var(--gold);}
-.project-card .card-media{aspect-ratio:1;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--teal-900),var(--teal-700));}
+.project-card .card-media{aspect-ratio:16/10;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--teal-900),var(--teal-700));}
 .project-card .card-media::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(185,167,121,.25),transparent 70%);opacity:0;transition:opacity .4s;}
 .project-card:hover .card-media::after{opacity:1;}
 .project-card .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
 .project-card:hover .card-media img{transform:scale(1.08);}
-.project-card .card-tag{position:absolute;top:16px;right:16px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold-dk);background:rgba(237,235,224,.85);padding:6px 14px;border-radius:100px;border:1px solid rgba(185,167,121,.4);}
+.project-card .card-tag{position:absolute;top:16px;right:16px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold-dk);background:rgba(237,235,224,.9);padding:6px 14px;border-radius:100px;border:1px solid rgba(185,167,121,.4);}
 .project-card .card-body{padding:24px;display:flex;flex-direction:column;flex:1;}
 .project-card .card-num{font-family:var(--f-display-en);font-size:.75rem;letter-spacing:.2em;color:var(--gold-dk);font-weight:500;margin-bottom:12px;}
 .project-card h3{font-size:1.15rem;color:var(--teal-800);margin-bottom:10px;line-height:1.35;}
@@ -146,82 +159,55 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
 <section class="section-projects">
   <div class="wrap">
     <div class="section-head">
-      <h2><span class="ar">استكشف المشاريع</span><span class="en">Explore Projects</span></h2>
-      <p><span class="ar">انقر على أي مشروع للاطلاع على التفاصيل</span><span class="en">Tap any project to view details</span></p>
+      <h2><span class="ar">تصنيفات المشاريع</span><span class="en">Project Categories</span></h2>
+      <p><span class="ar">اختر تصنيفاً لعرض المشاريع المرتبطة به</span><span class="en">Select a category to view related projects</span></p>
     </div>
 
-    <div class="grid">
-      <a href="project.html?id=1" class="project-card" data-project="1">
-        <div class="card-media">
-          <div class="card-tag"><span class="ar">تراث وتقنية</span><span class="en">Heritage × Tech</span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-num">01</div>
-          <h3><span class="ar">منصة النهضة الرقمية</span><span class="en">Digital Renaissance Platform</span></h3>
-          <p><span class="ar">أرشيف تفاعلي للتراث الفكري العربي، يعيد قراءة المخطوطات عبر الذكاء الاصطناعي والبحث الدلالي.</span><span class="en">An interactive archive of Arab intellectual heritage — re-reading manuscripts through AI and semantic search.</span></p>
-        </div>
-        <div class="card-footer"><span class="arrow">→</span></div>
-      </a>
+    <div class="categories">
+      <button class="category-btn active" data-category="all"><span class="ar">الكل</span><span class="en">All</span></button>
+      <button class="category-btn" data-category="defense"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></button>
+      <button class="category-btn" data-category="tech"><span class="ar">التقنيات</span><span class="en">Technologies</span></button>
+      <button class="category-btn" data-category="health"><span class="ar">الصحة</span><span class="en">Health</span></button>
+    </div>
 
-      <a href="project.html?id=2" class="project-card" data-project="2">
-        <div class="card-media">
-          <div class="card-tag"><span class="ar">أثر اجتماعي</span><span class="en">Social Impact</span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-num">02</div>
-          <h3><span class="ar">مختبر الابتكار الاجتماعي</span><span class="en">Social Innovation Lab</span></h3>
-          <p><span class="ar">مساحة تجريبية لتصميم حلول مجتمعية قابلة للتطبيق، بالشراكة مع القطاعين العام والخاص.</span><span class="en">An experimental space for designing deployable community solutions with public and private partners.</span></p>
-        </div>
-        <div class="card-footer"><span class="arrow">→</span></div>
-      </a>
+    <div id="category-view" class="category-view">
+      <div class="category-cards">
+        <button class="category-card" data-cat="defense">
+          <div class="category-media">
+            <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1200&q=80&auto=format&fit=crop" alt="Defense">
+          </div>
+          <div class="category-overlay">
+            <span class="category-tag"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></span>
+            <h3><span class="ar">حلول وتقنيات دفاعية</span><span class="en">Defense Solutions & Technologies</span></h3>
+          </div>
+        </button>
+        <button class="category-card" data-cat="tech">
+          <div class="category-media">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop" alt="Technology">
+          </div>
+          <div class="category-overlay">
+            <span class="category-tag"><span class="ar">التقنيات</span><span class="en">Technologies</span></span>
+            <h3><span class="ar">تقنيات ناشئة وحلول رقمية</span><span class="en">Emerging Tech & Digital Solutions</span></h3>
+          </div>
+        </button>
+        <button class="category-card" data-cat="health">
+          <div class="category-media">
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&q=80&auto=format&fit=crop" alt="Health">
+          </div>
+          <div class="category-overlay">
+            <span class="category-tag"><span class="ar">الصحة</span><span class="en">Health</span></span>
+            <h3><span class="ar">رعاية صحية وتقنيات طبية</span><span class="en">Healthcare & Medical Technologies</span></h3>
+          </div>
+        </button>
+      </div>
+    </div>
 
-      <a href="project.html?id=3" class="project-card" data-project="3">
-        <div class="card-media">
-          <div class="card-tag"><span class="ar">إبداع</span><span class="en">Creative</span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-num">03</div>
-          <h3><span class="ar">حاضنة الصناعات الإبداعية</span><span class="en">Creative Industries Incubator</span></h3>
-          <p><span class="ar">برنامج احتضان للمشاريع التصميمية والفنية — من الفكرة الأولى إلى السوق، بدعم من مرشدين ومختبرات.</span><span class="en">An incubation program for design and art ventures — from first idea to market, with mentors and studios.</span></p>
-        </div>
-        <div class="card-footer"><span class="arrow">→</span></div>
-      </a>
-
-      <a href="project.html?id=4" class="project-card" data-project="4">
-        <div class="card-media">
-          <div class="card-tag"><span class="ar">تعليم</span><span class="en">Education</span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-num">04</div>
-          <h3><span class="ar">برنامج رواد الغد</span><span class="en">Tomorrow's Pioneers</span></h3>
-          <p><span class="ar">مسار تدريبي مكثّف للشباب في الابتكار وريادة الأعمال والقيادة، مبني على مشاريع حقيقية.</span><span class="en">An intensive track for young people in innovation, entrepreneurship and leadership — built on real projects.</span></p>
-        </div>
-        <div class="card-footer"><span class="arrow">→</span></div>
-      </a>
-
-      <a href="project.html?id=5" class="project-card" data-project="5">
-        <div class="card-media">
-          <div class="card-tag"><span class="ar">مدن</span><span class="en">Urban</span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-num">05</div>
-          <h3><span class="ar">مركز ذكاء المدن</span><span class="en">Urban Intelligence Center</span></h3>
-          <p><span class="ar">أبحاث تطبيقية في المدن الذكية والاستدامة العمرانية، مع أدوات مفتوحة لصناع القرار.</span><span class="en">Applied research in smart cities and urban sustainability, with open tools for decision-makers.</span></p>
-        </div>
-        <div class="card-footer"><span class="arrow">→</span></div>
-      </a>
-
-      <a href="project.html?id=6" class="project-card" data-project="6">
-        <div class="card-media">
-          <div class="card-tag"><span class="ar">استثمار</span><span class="en">Investment</span></div>
-        </div>
-        <div class="card-body">
-          <div class="card-num">06</div>
-          <h3><span class="ar">صندوق الابتكار</span><span class="en">Innovation Fund</span></h3>
-          <p><span class="ar">تمويل مبكر للمشاريع البحثية والتقنية ذات الأثر طويل المدى، مع حاضنة متابعة ودعم مؤسسي.</span><span class="en">Early-stage funding for research and technology ventures with long-term impact, with ongoing support.</span></p>
-        </div>
-        <div class="card-footer"><span class="arrow">→</span></div>
-      </a>
+    <div id="projects-view" class="projects-view" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+        <h3 style="font-size:1.4rem;color:var(--teal-800);"><span id="projects-title-ar" class="ar"></span><span id="projects-title-en" class="en"></span></h3>
+        <button id="back-to-categories" class="category-btn"><span class="ar">العودة للتصنيفات</span><span class="en">Back to Categories</span></button>
+      </div>
+      <div class="grid" id="projects-grid"></div>
     </div>
   </div>
 </section>
@@ -266,6 +252,79 @@ function setLang(l){
   try{ localStorage.setItem('irg-lang', l); }catch(e){}
 }
 (function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
+
+/* ---------- Projects by Category ---------- */
+const PROJECTS_DATA = {
+  defense: [
+    { id: 101, titleAr: 'منصة المراقبة الذكية', titleEn: 'Smart Surveillance Platform', tagAr: 'الصناعات الدفاعية', tagEn: 'Defense Industries', descAr: 'نظام مراقبة ذكي قائم على الذكاء الاصطناعي لكشف وتحليل التهديدات في الوقت الفعلي.', descEn: 'AI-powered surveillance system for real-time threat detection and analysis.', img: 'https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1200&q=80&auto=format&fit=crop' },
+    { id: 102, titleAr: 'نظام الاتصالات الآمن', titleEn: 'Secure Communications System', tagAr: 'الصناعات الدفاعية', tagEn: 'Defense Industries', descAr: 'شبكة اتصالات مشفرة عالية الأمان للعمليات الحساسة والتنسيق الميداني.', descEn: 'Encrypted high-security communication network for sensitive operations.', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop' },
+    { id: 103, titleAr: 'روبوتات الاستطلاع الذكية', titleEn: 'Intelligent Reconnaissance Robots', tagAr: 'الصناعات الدفاعية', tagEn: 'Defense Industries', descAr: 'روبوتات آلية موجهة عن بعد لأداء مهام الاستطلاع في البيئات الصعبة والخطرة.', descEn: 'Remotely operated robotic platforms for reconnaissance in hazardous environments.', img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80&auto=format&fit=crop' }
+  ],
+  tech: [
+    { id: 201, titleAr: 'منصة الذكاء الاصطناعي المؤسسي', titleEn: 'Enterprise AI Platform', tagAr: 'التقنيات', tagEn: 'Technologies', descAr: 'منصة شاملة لدمج الذكاء الاصطناعي في العمليات المؤسسية مع حلول مخصصة لكل قطاع.', descEn: 'Comprehensive platform for integrating AI into enterprise operations with tailored solutions.', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80&auto=format&fit=crop' },
+    { id: 202, titleAr: 'البنية التحتية السحابية الآمنة', titleEn: 'Secure Cloud Infrastructure', tagAr: 'التقنيات', tagEn: 'Technologies', descAr: 'حلول سحابية آمنة وقابلة للتوسع مع أنظمة حماية متقدمة للبيانات الحساسة.', descEn: 'Secure scalable cloud solutions with advanced protection for sensitive data.', img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80&auto=format&fit=crop' },
+    { id: 203, titleAr: 'إنترنت الأشياء الصناعي', titleEn: 'Industrial IoT Solutions', tagAr: 'التقنيات', tagEn: 'Technologies', descAr: 'شبكات ذكية للمصانع والمدن تجمع البيانات وتحسن الكفاءة التشغيلية.', descEn: 'Smart networks for factories and cities collecting data to optimize operations.', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80&auto=format&fit=crop' }
+  ],
+  health: [
+    { id: 301, titleAr: 'نظام التشخيص الذكي', titleEn: 'AI Diagnostic System', tagAr: 'الصحة', tagEn: 'Health', descAr: 'نظام تشخيص مدعوم بالذكاء الاصطناعي يساعد الأطباء في الكشف المبكر عن الأمراض بدقة عالية.', descEn: 'AI-powered diagnostic system assisting clinicians in early disease detection with high accuracy.', img: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&q=80&auto=format&fit=crop' },
+    { id: 302, titleAr: 'منصة الرعاية الصحية عن بعد', titleEn: 'Telemedicine Platform', tagAr: 'الصحة', tagEn: 'Health', descAr: 'منصة متكاملة لتقديم الاستشارات الطبية عن بعد ومتابعة المرضى عن بُعد بأمان كامل.', descEn: 'Integrated platform for secure remote consultations and patient monitoring.', img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80&auto=format&fit=crop' },
+    { id: 303, titleAr: 'تقنيات التصوير الطبي المتقدمة', titleEn: 'Advanced Medical Imaging', tagAr: 'الصحة', tagEn: 'Health', descAr: 'أجهزة وتقنيات تصوير طبي متطورة مع معالجة ذكية للصور لتحسين دقة التشخيص.', descEn: 'Advanced medical imaging technologies with intelligent image processing for better diagnosis.', img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80&auto=format&fit=crop' }
+  ]
+};
+
+const categoryView = document.getElementById('category-view');
+const projectsView = document.getElementById('projects-view');
+const projectsGrid = document.getElementById('projects-grid');
+const projectsTitleAr = document.getElementById('projects-title-ar');
+const projectsTitleEn = document.getElementById('projects-title-en');
+const backBtn = document.getElementById('back-to-categories');
+
+const categoryTitles = {
+  defense: { ar: 'الصناعات الدفاعية', en: 'Defense Industries' },
+  tech: { ar: 'التقنيات', en: 'Technologies' },
+  health: { ar: 'الصحة', en: 'Health' }
+};
+
+function renderProjects(cat){
+  projectsGrid.innerHTML = '';
+  const list = PROJECTS_DATA[cat] || [];
+  projectsTitleAr.textContent = categoryTitles[cat]?.ar || '';
+  projectsTitleEn.textContent = categoryTitles[cat]?.en || '';
+  list.forEach((p, idx) => {
+    const a = document.createElement('a');
+    a.href = `project.html?id=${p.id}`;
+    a.className = 'project-card';
+    a.innerHTML = `
+      <div class="card-media">
+        <img src="${p.img}" alt="${p.titleEn}">
+        <div class="card-tag"><span class="ar">${p.tagAr}</span><span class="en">${p.tagEn}</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-num">${String(idx+1).padStart(2,'0')}</div>
+        <h3><span class="ar">${p.titleAr}</span><span class="en">${p.titleEn}</span></h3>
+        <p><span class="ar">${p.descAr}</span><span class="en">${p.descEn}</span></p>
+      </div>
+      <div class="card-footer"><span class="arrow">→</span></div>
+    `;
+    projectsGrid.appendChild(a);
+  });
+  categoryView.style.display = 'none';
+  projectsView.style.display = 'block';
+  window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
+}
+
+document.querySelectorAll('.category-card').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const cat = btn.dataset.cat;
+    renderProjects(cat);
+  });
+});
+
+backBtn.addEventListener('click', () => {
+  projectsView.style.display = 'none';
+  categoryView.style.display = 'block';
+  window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
+});
 </script>
 </body>
 </html>
