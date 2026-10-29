@@ -29,21 +29,35 @@ body[data-lang="ar"] .en{display:none !important} body[data-lang="en"] .ar{displ
 /* ============ HEADER ============ */
 .header{position:sticky;top:0;z-index:100;background:rgba(237,235,224,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(5,66,57,.12);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px;}
+
+/* حاوية الشعار */
 .brand{display:flex;align-items:center;gap:14px;}
 .brand .mark{width:44px;height:44px;object-fit:contain;flex:none;border-radius:50%;}
 .brand-txt{display:flex;flex-direction:column;line-height:1.15;}
 .brand-txt b{font-family:var(--f-display-ar);font-weight:600;font-size:.95rem;}
 body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:500;font-size:1.05rem;}
 .brand-txt span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk);font-weight:500;}
+
+/* حاوية القائمة وزر اللغة (أقصى اليسار) */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-inline-start: auto; /* يدفع الحاوية بالكامل إلى أقصى اليسار */
+}
+
 .nav{display:flex;align-items:center;gap:30px;}
 .nav a{font-size:.86rem;font-weight:500;color:var(--teal-700);opacity:.78;transition:.25s;position:relative;}
 .nav a:hover,.nav a.active{opacity:1}
 .nav a::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;height:1px;width:0;background:var(--gold);transition:.3s;}
 .nav a:hover::after,.nav a.active::after{width:100%}
+
 .lang-switch{display:flex;border:1px solid rgba(5,66,57,.25);border-radius:100px;padding:3px;gap:2px;}
 .lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
 .lang-switch button.active{background:var(--teal-700);color:var(--cream);}
+
 #menuBtn{display:none;background:transparent;border:1px solid rgba(5,66,57,.25);border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer;color:var(--teal-700);}
+
 @media(max-width:900px){
   #menuBtn{display:block;}
   .nav{display:none;}
@@ -87,7 +101,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 .marquee-track span::after{content:"✦";color:var(--gold);font-size:.7rem;}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
-/* ============ VIDEO SECTION (Optimized for YouTube Shorts) ============ */
+/* ============ VIDEO SECTION ============ */
 .section-video{
   position:relative;
   padding-block:clamp(60px,9vw,110px);
@@ -102,12 +116,11 @@ body[data-lang="en"] .hero h1{font-weight:300;}
 .video-header h2{font-size:clamp(2rem,4vw,3rem);color:var(--cream);margin-bottom:16px;}
 .video-header p{color:rgba(237,235,224,.7);font-weight:300;font-size:1.05rem;max-width:600px;margin-inline:auto;}
 
-/* حاوية الفيديو العمودي (Shorts) */
 .video-container{
   position:relative;
   width:100%;
-  max-width: 380px; /* عرض مناسب للفيديو العمودي */
-  aspect-ratio: 9 / 16; /* نسبة أبعاد الفيديو العمودي */
+  max-width: 380px; 
+  aspect-ratio: 9 / 16; 
   margin:0 auto;
   border-radius:24px;
   background: #000;
@@ -117,8 +130,6 @@ body[data-lang="en"] .hero h1{font-weight:300;}
   display:flex;justify-content:center;align-items:center;
   z-index: 2;
 }
-
-/* تنسيق الـ iframe */
 .video-container iframe {
   position: absolute;
   top: 0;
@@ -161,6 +172,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
 <!-- HEADER -->
 <header class="header">
   <div class="wrap header-inner">
+    <!-- الشعار (يمين) -->
     <a href="index.html" class="brand">
       <img src="logo.jpg" class="mark" alt="IRG">
       <span class="brand-txt">
@@ -168,17 +180,21 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
         <span>Group · IRG</span>
       </span>
     </a>
-    <nav class="nav">
-      <a href="index.html" class="active"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
-      <a href="vision.html"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
-      <a href="projects.html"><span class="ar">المشاريع</span><span class="en">Projects</span></a>
-      <a href="about.html"><span class="ar">من نحن</span><span class="en">About</span></a>
-      <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
-    </nav>
-    <button id="menuBtn" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
-    <div class="lang-switch">
-      <button data-lang-btn="ar" class="active" onclick="setLang('ar')">ع</button>
-      <button data-lang-btn="en" onclick="setLang('en')">EN</button>
+
+    <!-- القائمة وزر اللغة (أقصى اليسار) -->
+    <div class="header-controls">
+      <div class="lang-switch">
+        <button data-lang-btn="ar" class="active" onclick="setLang('ar')">ع</button>
+        <button data-lang-btn="en" onclick="setLang('en')">EN</button>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="active"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
+        <a href="vision.html"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
+        <a href="projects.html"><span class="ar">المشاريع</span><span class="en">Projects</span></a>
+        <a href="about.html"><span class="ar">من نحن</span><span class="en">About</span></a>
+        <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
+      </nav>
+      <button id="menuBtn" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     </div>
   </div>
 </header>
@@ -227,7 +243,6 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
     </div>
     
     <div class="video-container">
-      <!-- تم دمج فيديو اليوتيوب (شورتس) -->
       <iframe 
         src="https://www.youtube.com/embed/2I03t-I4828?rel=0" 
         title="Innovation & Renaissance Group Video" 
@@ -292,7 +307,7 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
   </div>
 </footer>
 
-<!-- Three.js Library (Kept for Hero 3D Shape) -->
+<!-- Three.js Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
