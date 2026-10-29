@@ -44,17 +44,17 @@ body[data-lang="en"] .brand-txt b{font-family:var(--f-display-en);font-weight:50
 .lang-switch button{border:0;background:transparent;cursor:pointer;font-family:inherit;font-size:.74rem;font-weight:600;color:var(--teal-700);padding:6px 13px;border-radius:100px;transition:.25s;}
 .lang-switch button.active{background:var(--teal-700);color:var(--cream);}
 @media(max-width:900px){
-  .nav{display:none;transform:translateX(100%);transition:transform .3s ease;}
+  .nav{display:none;transform:translateX(-100%);transition:transform .3s ease;}
   .nav.open{
     display:flex;flex-direction:column;
-    position:fixed;top:0;right:0;bottom:0;
+    position:fixed;top:78px;left:0;bottom:0;right:auto;
     width:260px;background:var(--cream);
     padding:20px 16px;gap:16px;z-index:60;
-    box-shadow:-4px 0 20px rgba(0,0,0,.08);
+    box-shadow:4px 0 20px rgba(0,0,0,.08);
     overflow-y:auto;transform:translateX(0);
   }
   .nav.open a{opacity:1;display:block;width:100%;padding:10px 0;border-bottom:1px solid rgba(5,66,57,.08);}
-  #menuBtn{display:block}
+  #menuBtn{display:block;margin-right:auto;}
 }
 
 /* ============ HERO ============ */
@@ -129,7 +129,7 @@ body[data-lang="en"] .hero h1{font-weight:300;}
       <a href="about.html"><span class="ar">من نحن</span><span class="en">About</span></a>
       <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
     </nav>
-    <button id="menuBtn" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
+    <button id="menuBtn" style="margin-right:auto;" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
     <div class="lang-switch">
       <button data-lang-btn="ar" class="active" onclick="setLang('ar')">ع</button>
       <button data-lang-btn="en" onclick="setLang('en')">EN</button>
