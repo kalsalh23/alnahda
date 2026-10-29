@@ -452,13 +452,23 @@ function openProjectPreview(id){
       textEl.innerHTML = sentences.map(s => s.trim()).join('.  ') + '.';
       return;
     }
+    const current = sentences[i].trim();
+    let j = 0;
     const span = document.createElement('span');
-    span.textContent = sentences[i].trim() + '.  ';
     textEl.insertBefore(span, textEl.querySelector('.cursor'));
-    i++;
-    setTimeout(typeNext, 450);
+    function typeChar(){
+      if(j <= current.length){
+        span.textContent = current.substring(0,j) + '.  ';
+        j++;
+        setTimeout(typeChar, 40);
+      }else{
+        i++;
+        setTimeout(typeNext, 600);
+      }
+    }
+    typeChar();
   }
-  setTimeout(typeNext, 250);
+  setTimeout(typeNext, 300);
 }
 
 function closeProjectPreview(){
