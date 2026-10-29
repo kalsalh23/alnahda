@@ -134,9 +134,10 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
 .showcase-header h2{font-size:clamp(2rem,4.5vw,3.4rem);color:var(--teal-800);margin-bottom:18px;line-height:1.2;}
 .showcase-header p{color:rgba(5,66,57,.72);font-weight:300;font-size:1.02rem;line-height:1.9;}
 .showcase-body{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,8vw,90px);align-items:center;}
-.showcase-3d{position:relative;height:480px;}
+.showcase-3d{position:relative;height:520px;display:flex;align-items:center;justify-content:center;}
 #showcase-canvas{width:100%;height:100%;display:block;}
-.showcase-orbit{position:absolute;inset:15% 20%;border:1px solid rgba(185,167,121,.25);border-radius:50%;pointer-events:none;animation:rotate 30s linear infinite;}
+.book-nav{position:absolute;bottom:-10px;display:flex;gap:12px;}
+.book-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(5,66,57,.25);background:var(--white);cursor:pointer;font-size:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);}
 @keyframes rotate{to{transform:rotate(360deg)}}
 .showcase-info{display:flex;flex-direction:column;gap:18px;}
 .info-card{background:var(--white);border:1px solid rgba(5,66,57,.12);border-radius:16px;padding:24px 28px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
@@ -224,7 +225,10 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
     <div class="showcase-body reveal">
       <div class="showcase-3d">
         <canvas id="showcase-canvas"></canvas>
-        <div class="showcase-orbit"></div>
+        <div class="book-nav">
+          <button id="book-prev" class="book-btn">←</button>
+          <button id="book-next" class="book-btn">→</button>
+        </div>
       </div>
       <div class="showcase-info">
         <div class="info-card">
@@ -384,77 +388,146 @@ function setLang(l){
   renderer.setClearColor(0x000000, 0);
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth/canvas.clientHeight, 0.1, 100);
-  camera.position.set(0, 0.6, 5);
+  const camera = new THREE.PerspectiveCamera(38, canvas.clientWidth/canvas.clientHeight, 0.1, 100);
+  camera.position.set(0, 0.4, 6.2);
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.7);
   scene.add(ambient);
-  const dir = new THREE.DirectionalLight(0xffffff, 0.9);
-  dir.position.set(5,6,6);
+  const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+  dir.position.set(4,5,6);
   scene.add(dir);
-  const gold = new THREE.PointLight(0xB9A779, 1.6, 8);
+  const gold = new THREE.PointLight(0xB9A779, 1.4, 8);
   gold.position.set(-2,1,4);
   scene.add(gold);
 
-  const group = new THREE.Group();
+  const book = new THREE.Group();
 
-  // Book
-  const coverMat = new THREE.MeshStandardMaterial({color:0x054239, metalness:0.4, roughness:0.3});
-  const pageMat = new THREE.MeshStandardMaterial({color:0xF7F5EC, roughness:0.8});
-  const spineMat = new THREE.MeshStandardMaterial({color:0x001A16, metalness:0.5, roughness:0.25});
+  // Covers
+  const coverMat = new THREE.MeshStandardMaterial({color:0x002623, roughness:0.35, metalness:0.25});
+  const pageMat = new THREE.MeshStandardMaterial({color:0xFBF9F2, roughness:0.9});
+  const spineMat = new THREE.MeshStandardMaterial({color:0x001A16, roughness:0.3});
 
-  // Spine
-  const spine = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.6, 0.08), spineMat);
-  spine.position.x = -1.1;
-  group.add(spine);
+  const spine = new THREE.Mesh(new THREE.BoxGeometry(0.14, 3.0, 0.09), spineMat);
+  spine.position.x = -1.25;
+  book.add(spine);
 
-  // Cover left
-  const coverL = new THREE.Mesh(new THREE.BoxGeometry(1.1, 2.6, 0.06), coverMat);
-  coverL.position.x = -0.52;
-  group.add(coverL);
+  const coverLeft = new THREE.Mesh(new THREE.BoxGeometry(1.25, 3.0, 0.07), coverMat);
+  coverLeft.position.x = -0.58;
+  book.add(coverLeft);
 
-  // Pages
-  const pages = [];
-  for(let i=0;i<8;i++){
-    const p = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 2.4), pageMat);
-    p.position.set(-0.02 - i*0.008, 0, 0.035 + i*0.002);
-    p.rotation.y = 0.02 + i*0.015;
-    p.userData = {baseRot: p.rotation.y, open: false};
-    group.add(p);
-    pages.push(p);
+  // Title on cover
+  const titleCanvas = document.createElement('canvas');
+  titleCanvas.width = 256; titleCanvas.height = 512;
+  const ctx = titleCanvas.getContext('2d');
+  ctx.fillStyle = '#002623';
+  ctx.fillRect(0,0,256,512);
+  ctx.fillStyle = '#B9A779';
+  ctx.font = 'bold 22px "Noto Kufi Arabic"';
+  ctx.textAlign = 'center';
+  ctx.fillText('مجموعة', 128, 120);
+  ctx.fillText('الابتكار', 128, 150);
+  ctx.fillText('والنهضة', 128, 180);
+  ctx.font = '16px "Fraunces"';
+  ctx.fillText('INNOVATION', 128, 320);
+  ctx.fillText('& RENAISSANCE', 128, 345);
+  ctx.fillText('GROUP', 128, 370);
+  const titleTex = new THREE.CanvasTexture(titleCanvas);
+  const titleMat = new THREE.MeshBasicMaterial({map: titleTex});
+  const titlePlane = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 2.4), titleMat);
+  titlePlane.position.set(-0.58, 0, 0.036);
+  book.add(titlePlane);
+
+  // Pages group
+  const pagesGroup = new THREE.Group();
+  book.add(pagesGroup);
+
+  const pageContents = [
+    {ar:'رؤيتنا\nنبني جسوراً بين التراث الفكري العربي والابتكار التقني لنهضة معرفية معاصرة', en:'Our Vision\nBridging Arab intellectual heritage with technology for a modern renaissance'},
+    {ar:'مجالات العمل\nالصناعات الدفاعية • التقنيات • الصحة', en:'Focus Areas\nDefense Industries • Technologies • Health'},
+    {ar:'نهجنا\nالبحث • التصميم • الحلول التطبيقية', en:'Our Approach\nResearch • Design • Practical Solutions'},
+    {ar:'طموحنا\nإبراز الفكر العربي في المشهد العالمي', en:'Our Ambition\nShowcasing Arab thought on the global stage'}
+  ];
+
+  function createPage(textAr, textEn, index){
+    const page = new THREE.Group();
+    const plane = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 2.4), pageMat);
+    page.add(plane);
+    
+    const c = document.createElement('canvas');
+    c.width = 512; c.height = 1024;
+    const cx = c.getContext('2d');
+    cx.fillStyle = '#FBF9F2';
+    cx.fillRect(0,0,512,1024);
+    cx.fillStyle = '#054239';
+    cx.font = 'bold 28px "Noto Kufi Arabic"';
+    cx.textAlign = 'right';
+    cx.fillText(textAr.split('\n')[0], 480, 120);
+    cx.font = '20px "IBM Plex Sans Arabic"';
+    const linesAr = textAr.split('\n')[1].split(' ');
+    let y = 180;
+    for(let i=0;i<linesAr.length;i+=4){
+      cx.fillText(linesAr.slice(i,i+4).join(' '), 480, y); y += 36;
+    }
+    cx.fillStyle = '#988561';
+    cx.font = 'bold 24px "Fraunces"';
+    cx.textAlign = 'left';
+    cx.fillText(textEn.split('\n')[0], 32, 600);
+    cx.fillStyle = '#054239';
+    cx.font = '18px "Inter"';
+    const linesEn = textEn.split('\n')[1].split(' ');
+    y = 660;
+    for(let i=0;i<linesEn.length;i+=5){
+      cx.fillText(linesEn.slice(i,i+5).join(' '), 32, y); y += 32;
+    }
+    const tex = new THREE.CanvasTexture(c);
+    const mat = new THREE.MeshBasicMaterial({map: tex});
+    const txtPlane = new THREE.Mesh(new THREE.PlaneGeometry(0.92, 2.32), mat);
+    txtPlane.position.z = 0.001;
+    page.add(txtPlane);
+    
+    page.position.set(-0.02, 0, 0.04);
+    page.rotation.y = 0.01;
+    pagesGroup.add(page);
+    return page;
   }
+
+  const pageMeshes = pageContents.map((p,i) => createPage(p.ar, p.en, i));
 
   // Cover right
-  const coverR = new THREE.Mesh(new THREE.BoxGeometry(1.1, 2.6, 0.06), coverMat);
-  coverR.position.x = 0.56;
-  group.add(coverR);
+  const coverRight = new THREE.Mesh(new THREE.BoxGeometry(1.25, 3.0, 0.07), coverMat);
+  coverRight.position.x = 0.61;
+  book.add(coverRight);
 
-  // Emblem
-  const emblem = new THREE.Mesh(new THREE.CircleGeometry(0.18, 32), new THREE.MeshStandardMaterial({color:0xB9A779, metalness:0.7, roughness:0.25}));
-  emblem.position.set(-0.52, 0.8, 0.031);
-  group.add(emblem);
+  scene.add(book);
+  book.rotation.y = -0.15;
+  book.scale.set(0.9, 0.9, 0.9);
 
-  scene.add(group);
-  group.rotation.y = 0.25;
+  let currentPage = 0;
+  document.getElementById('book-next').addEventListener('click', ()=>{
+    if(currentPage < pageMeshes.length){
+      const p = pageMeshes[currentPage];
+      p.position.x = 0.5;
+      p.position.z = 0.08;
+      p.rotation.y = -Math.PI + 0.2;
+      currentPage++;
+    }
+  });
+  document.getElementById('book-prev').addEventListener('click', ()=>{
+    if(currentPage > 0){
+      currentPage--;
+      const p = pageMeshes[currentPage];
+      p.position.x = -0.02;
+      p.position.z = 0.04;
+      p.rotation.y = 0.01;
+    }
+  });
 
   let t=0;
-  let pageIndex = 0;
-  function flipPage(){
-    if(pageIndex < pages.length){
-      const p = pages[pageIndex];
-      p.rotation.y = -1.2;
-      p.position.x = 0.4;
-      pageIndex++;
-      setTimeout(flipPage, 900);
-    }
-  }
-  setTimeout(flipPage, 1200);
-
   function animate(){
     requestAnimationFrame(animate);
-    t += 0.006;
-    group.rotation.y = 0.25 + Math.sin(t*0.3)*0.08;
-    group.position.y = Math.sin(t)*0.12;
+    t += 0.005;
+    book.rotation.y = -0.15 + Math.sin(t)*0.06;
+    book.position.y = Math.sin(t*0.8)*0.08;
     renderer.render(scene, camera);
   }
   animate();
