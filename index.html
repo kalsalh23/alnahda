@@ -182,7 +182,7 @@ body[data-lang="en"] .orbit-overlay h3{font-family:var(--f-display-en);font-weig
 @media(max-width:900px){.showcase-body{grid-template-columns:1fr;gap:40px;}.showcase-3d{height:360px;}}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.in{opacity:1;transform:none;}
-#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.55;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}  .hero-verse{position:absolute;top:clamp(4px,1vw,12px);left:50%;transform:translateX(-50%);font-family:var(--f-display-ar);font-size:clamp(0.85rem,1.5vw,1.1rem);color:var(--teal-800);z-index:3;text-align:center;pointer-events:none;white-space:nowrap;letter-spacing:.01em;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:30px;}
+#hero-3d{position:absolute;inset:0;pointer-events:auto;opacity:.48;cursor:pointer;overflow:visible;}#hotspot-card{position:absolute;display:none;background:rgba(0,26,22,.92);color:#EDEBE0;padding:14px 18px;border-radius:12px;max-width:220px;font-size:.85rem;line-height:1.5;border:1px solid rgba(185,167,121,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:10;pointer-events:none;}#hotspot-card b{display:block;color:#B9A779;margin-bottom:4px;font-size:.95rem;}  .hero-verse{position:absolute;top:clamp(4px,1vw,12px);left:50%;transform:translateX(-50%);font-family:var(--f-display-ar);font-size:clamp(0.85rem,1.5vw,1.1rem);color:var(--teal-800);z-index:3;text-align:center;pointer-events:none;white-space:nowrap;letter-spacing:.01em;}@media(max-width:768px){#hero-3d{opacity:.35;transform:scale(.6);transform-origin:center top;margin-top:30px;}
 </style>
 </head>
 <body data-lang="ar">
@@ -329,11 +329,11 @@ body[data-lang="en"] .orbit-overlay h3{font-family:var(--f-display-en);font-weig
   const isMobile=window.innerWidth<768;
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(45,c.clientWidth/c.clientHeight,0.1,1000);
-  camera.position.z=isMobile?4.2:3.5;
+  camera.position.z=isMobile?4.2:3.0;
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(c.clientWidth,c.clientHeight);
   c.appendChild(renderer.domElement); renderer.domElement.style.pointerEvents="auto";
-  const radius=isMobile?1.05:1.5;
+  const radius=isMobile?1.05:1.15;
   const geo=new THREE.IcosahedronGeometry(radius,1);
   const mat=new THREE.MeshBasicMaterial({color:0xB9A779,wireframe:true});
   const mesh=new THREE.Mesh(geo,mat);
