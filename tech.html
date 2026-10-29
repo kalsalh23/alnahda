@@ -31,6 +31,7 @@
 <header class="header">
   <div class="wrap header-inner">
     <a href="index.html" class="brand"><img src="logo.jpg" class="mark" alt="IRG"><span class="brand-txt"><b class="ar">مجموعة الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance</b><span>Group · IRG</span></span></a>
+    <button id="menuBtn" style="display:none;background:transparent;border:1px solid rgba(5,66,57,.25);border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer;color:var(--teal-700);" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     <nav class="nav">
       <a href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a>
       <a href="vision.html"><span class="ar">الرؤية</span><span class="en">Vision</span></a>
@@ -38,7 +39,6 @@
       <a href="about.html"><span class="ar">من نحن</span><span class="en">About</span></a>
       <a href="contact.html"><span class="ar">تواصل</span><span class="en">Contact</span></a>
     </nav>
-    <button id="menuBtn" style="display:none;background:transparent;border:1px solid rgba(5,66,57,.25);border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer;color:var(--teal-700);" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
     <div class="lang-switch"><button data-lang-btn="ar" class="active" onclick="setLang('ar')">ع</button><button data-lang-btn="en" onclick="setLang('en')">EN</button></div>
   </div>
 </header>
