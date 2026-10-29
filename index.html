@@ -374,7 +374,7 @@ function setLang(l){
 }
 (function(){ let saved = null; try{ saved = localStorage.getItem('irg-lang'); }catch(e){} setLang(saved || 'ar'); })();
 
-/* ---------- Showcase 3D ---------- */
+/* ---------- Showcase 3D Book ---------- */
 (function(){
   const canvas = document.getElementById('showcase-canvas');
   if(!canvas || typeof THREE === 'undefined') return;
@@ -385,57 +385,76 @@ function setLang(l){
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth/canvas.clientHeight, 0.1, 100);
-  camera.position.set(0, 0, 5.2);
+  camera.position.set(0, 0.6, 5);
 
-  const ambient = new THREE.AmbientLight(0xffffff, 0.5);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambient);
-  const dir = new THREE.DirectionalLight(0xffffff, 0.8);
-  dir.position.set(4,5,4);
+  const dir = new THREE.DirectionalLight(0xffffff, 0.9);
+  dir.position.set(5,6,6);
   scene.add(dir);
-  const gold = new THREE.PointLight(0xB9A779, 1.8, 8);
-  gold.position.set(-2,1,3);
+  const gold = new THREE.PointLight(0xB9A779, 1.6, 8);
+  gold.position.set(-2,1,4);
   scene.add(gold);
 
   const group = new THREE.Group();
-  const mat1 = new THREE.MeshStandardMaterial({color:0xB9A779, metalness:0.8, roughness:0.14});
-  const mat2 = new THREE.MeshStandardMaterial({color:0x054239, metalness:0.6, roughness:0.26});
-  const mat3 = new THREE.MeshStandardMaterial({color:0xEDEBE0, metalness:0.3, roughness:0.48});
 
-  // Geometric lattice
+  // Book
+  const coverMat = new THREE.MeshStandardMaterial({color:0x054239, metalness:0.4, roughness:0.3});
+  const pageMat = new THREE.MeshStandardMaterial({color:0xF7F5EC, roughness:0.8});
+  const spineMat = new THREE.MeshStandardMaterial({color:0x001A16, metalness:0.5, roughness:0.25});
+
+  // Spine
+  const spine = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.6, 0.08), spineMat);
+  spine.position.x = -1.1;
+  group.add(spine);
+
+  // Cover left
+  const coverL = new THREE.Mesh(new THREE.BoxGeometry(1.1, 2.6, 0.06), coverMat);
+  coverL.position.x = -0.52;
+  group.add(coverL);
+
+  // Pages
+  const pages = [];
   for(let i=0;i<8;i++){
-    const geo = i%2===0 ? new THREE.OctahedronGeometry(0.4, 0) : new THREE.IcosahedronGeometry(0.36, 0);
-    const m = new THREE.Mesh(geo, i%3===0 ? mat1 : (i%3===1 ? mat2 : mat3));
-    const ang = (i/8)*Math.PI*2;
-    const r = 1.8;
-    m.position.set(Math.cos(ang)*r, Math.sin(ang*1.2)*0.3, Math.sin(ang)*r);
-    m.userData = {ang, r, baseY: m.position.y};
-    group.add(m);
+    const p = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 2.4), pageMat);
+    p.position.set(-0.02 - i*0.008, 0, 0.035 + i*0.002);
+    p.rotation.y = 0.02 + i*0.015;
+    p.userData = {baseRot: p.rotation.y, open: false};
+    group.add(p);
+    pages.push(p);
   }
 
-  const core = new THREE.Mesh(new THREE.DodecahedronGeometry(0.7, 0), mat1);
-  group.add(core);
+  // Cover right
+  const coverR = new THREE.Mesh(new THREE.BoxGeometry(1.1, 2.6, 0.06), coverMat);
+  coverR.position.x = 0.56;
+  group.add(coverR);
 
-  const ring = new THREE.Mesh(new THREE.TorusGeometry(1.4, 0.03, 16, 64), mat2);
-  ring.rotation.x = Math.PI/2.2;
-  group.add(ring);
+  // Emblem
+  const emblem = new THREE.Mesh(new THREE.CircleGeometry(0.18, 32), new THREE.MeshStandardMaterial({color:0xB9A779, metalness:0.7, roughness:0.25}));
+  emblem.position.set(-0.52, 0.8, 0.031);
+  group.add(emblem);
 
   scene.add(group);
+  group.rotation.y = 0.25;
 
   let t=0;
+  let pageIndex = 0;
+  function flipPage(){
+    if(pageIndex < pages.length){
+      const p = pages[pageIndex];
+      p.rotation.y = -1.2;
+      p.position.x = 0.4;
+      pageIndex++;
+      setTimeout(flipPage, 900);
+    }
+  }
+  setTimeout(flipPage, 1200);
+
   function animate(){
     requestAnimationFrame(animate);
-    t += 0.008;
-    group.rotation.y = t*0.18;
-    core.rotation.x += 0.01;
-    core.rotation.y += 0.014;
-    ring.rotation.z += 0.006;
-    group.children.forEach((ch,i)=>{
-      if(i < 8){
-        ch.position.y = ch.userData.baseY + Math.sin(t + i)*0.18;
-        ch.rotation.x += 0.015;
-        ch.rotation.y += 0.012;
-      }
-    });
+    t += 0.006;
+    group.rotation.y = 0.25 + Math.sin(t*0.3)*0.08;
+    group.position.y = Math.sin(t)*0.12;
     renderer.render(scene, camera);
   }
   animate();
