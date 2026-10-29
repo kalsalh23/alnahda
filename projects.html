@@ -529,12 +529,14 @@ function renderProjects(cat){
   window.scrollTo({top: categoryView.offsetTop - 100, behavior: 'smooth'});
 }
 
-document.querySelectorAll('.category-card').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const cat = btn.dataset.cat;
-    renderProjects(cat);
-  });
-});
+    // Category cards click
+    document.querySelectorAll('.category-card').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cat = btn.dataset.cat;
+        renderProjects(cat);
+      });
+    });
 
 backBtn.addEventListener('click', () => {
   projectsView.style.display = 'none';
