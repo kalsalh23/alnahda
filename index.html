@@ -136,8 +136,6 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
 .showcase-body{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,8vw,90px);align-items:center;}
 .showcase-3d{position:relative;height:540px;display:flex;align-items:center;justify-content:center;}
 #showcase-canvas{width:100%;height:100%;display:block;}
-.book-nav{position:absolute;bottom:-16px;display:flex;gap:14px;}
-.book-btn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(5,66,57,.3);background:var(--cream);cursor:pointer;font-size:20px;box-shadow:0 12px 36px rgba(0,0,0,.1);color:var(--teal-700);}
 @keyframes rotate{to{transform:rotate(360deg)}}
 .showcase-info{display:flex;flex-direction:column;gap:18px;}
 .info-card{background:var(--white);border:1px solid rgba(5,66,57,.12);border-radius:16px;padding:24px 28px;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;}
@@ -225,10 +223,6 @@ body[data-lang="en"] .footer-brand .brand-txt b{font-family:var(--f-display-en);
     <div class="showcase-body reveal">
       <div class="showcase-3d">
         <canvas id="showcase-canvas"></canvas>
-        <div class="book-nav">
-          <button id="book-prev" class="book-btn">‹</button>
-          <button id="book-next" class="book-btn">›</button>
-        </div>
       </div>
       <div class="showcase-info">
         <div class="info-card">
