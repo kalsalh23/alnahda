@@ -88,9 +88,14 @@ window.saveProject=async()=>{
     details_en:document.getElementById('pdten').value,
     updated_at:new Date().toISOString()
   };
-  if(id) await sb.from('projects').update(obj).eq('id',id);
-  else await sb.from('projects').insert([{...obj,sort_order:999}]);
-  closeModal();loadProj();toast('تم الحفظ');
+  if(id){
+    const r = await sb.from('projects').update(obj).eq('id',id);
+    if(r.error){toast('خطأ في التحديث');return;}
+  }else{
+    const r = await sb.from('projects').insert([{...obj,sort_order:Date.now()}]);
+    if(r.error){toast('خطأ في الإضافة');return;}
+  }
+  closeModal();await loadProj();toast('تم الحفظ');
 };
 
 window.saveContact=async()=>{
