@@ -18,9 +18,9 @@
         <div class="brand-text">
           <h1 class="ar">مجموعة الابتكار والنهضة</h1>
           <h1 class="en">Innovation & Renaissance Group</h1>
-          <span>لوحة التحكم</span>
+          <span>لوحة التحكم المتكاملة</span>
         </div>
-        <p>يرجى تسجيل الدخول للمتابعة</p>
+        <p>تحكم كامل بالموقع من مكان واحد</p>
       </div>
       <form id="loginForm" class="login-form">
         <div class="form-group">
@@ -31,7 +31,7 @@
           <label>كلمة المرور</label>
           <input type="password" id="password" value="reda@2027" required>
         </div>
-        <button type="submit" class="btn-primary login-submit">تسجيل الدخول</button>
+        <button type="submit" class="btn-primary login-submit">دخول إلى لوحة التحكم</button>
         <p class="error-msg" id="loginError"></p>
       </form>
     </div>
@@ -48,22 +48,15 @@
           </span>
         </a>
         <nav class="admin-nav">
-          <button class="nav-item active" data-section="overview"><span class="ar">نظرة عامة</span><span class="en">Overview</span></button>
-          <button class="nav-item" data-section="pages"><span class="ar">الصفحات</span><span class="en">Pages</span></button>
-          <button class="nav-item" data-section="projects"><span class="ar">المشاريع</span><span class="en">Projects</span></button>
-          <button class="nav-item" data-section="gallery"><span class="ar">المعرض</span><span class="en">Gallery</span></button>
-          <button class="nav-item" data-section="settings"><span class="ar">الإعدادات</span><span class="en">Settings</span></button>
-          <button class="nav-item" data-section="users"><span class="ar">المستخدمين</span><span class="en">Users</span></button>
+          <button class="nav-item active" data-section="overview"><i class="fas fa-chart-pie"></i> <span class="ar">نظرة عامة</span><span class="en">Overview</span></button>
+          <button class="nav-item" data-section="home"><i class="fas fa-home"></i> <span class="ar">الصفحة الرئيسية</span><span class="en">Home</span></button>
+          <button class="nav-item" data-section="projects"><i class="fas fa-layer-group"></i> <span class="ar">إدارة المشاريع</span><span class="en">Projects</span></button>
+          <button class="nav-item" data-section="pages"><i class="fas fa-file-alt"></i> <span class="ar">الصفحات</span><span class="en">Pages</span></button>
+          <button class="nav-item" data-section="site"><i class="fas fa-cog"></i> <span class="ar">إعدادات الموقع</span><span class="en">Site Settings</span></button>
         </nav>
         <div class="header-actions">
-          <a href="../index.html" target="_blank" class="view-site"><span class="ar">عرض الموقع</span><span class="en">View Site</span> <i class="fas fa-external-link-alt"></i></a>
-          <div class="admin-user">
-            <div class="user-info">
-              <span class="user-name">alnahda27@gmail.com</span>
-              <span class="user-role">مدير النظام</span>
-            </div>
-            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
-          </div>
+          <a href="../index.html" target="_blank" class="view-site"><span class="ar">فتح الموقع</span><span class="en">Open Site</span> <i class="fas fa-external-link-alt"></i></a>
+          <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> <span class="ar">خروج</span><span class="en">Logout</span></button>
         </div>
       </div>
     </header>
@@ -72,137 +65,72 @@
       <div class="page-header">
         <div class="page-title">
           <h1 id="pageTitle">نظرة عامة</h1>
-          <p>إدارة محتوى موقع مجموعة الابتكار والنهضة</p>
+          <p>تحكم كامل بمحتوى موقع مجموعة الابتكار والنهضة</p>
         </div>
+        <button class="btn-primary" id="saveAll"><i class="fas fa-save"></i> <span class="ar">حفظ جميع التغييرات</span><span class="en">Save All Changes</span></button>
       </div>
 
       <section class="content-section active" id="overview">
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
             <div class="stat-info">
-              <h3>5</h3>
-              <p><span class="ar">الصفحات النشطة</span><span class="en">Active Pages</span></p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
-            <div class="stat-info">
-              <h3>9</h3>
+              <h3 id="countProjects">9</h3>
               <p><span class="ar">المشاريع</span><span class="en">Projects</span></p>
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-images"></i></div>
+            <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
             <div class="stat-info">
-              <h3>2</h3>
-              <p><span class="ar">صور المعرض</span><span class="en">Gallery Images</span></p>
+              <h3>6</h3>
+              <p><span class="ar">الصفحات</span><span class="en">Pages</span></p>
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-eye"></i></div>
+            <div class="stat-icon"><i class="fas fa-edit"></i></div>
             <div class="stat-info">
-              <h3>1,248</h3>
-              <p><span class="ar">زيارات اليوم</span><span class="en">Today's Views</span></p>
+              <h3>تحكم كامل</h3>
+              <p><span class="ar">قابل للتعديل</span><span class="en">Fully Editable</span></p>
             </div>
           </div>
         </div>
         <div class="card">
           <div class="card-header">
-            <h2><span class="ar">أحدث النشاطات</span><span class="en">Recent Activity</span></h2>
+            <h2><span class="ar">تعليمات الاستخدام</span><span class="en">How to Use</span></h2>
           </div>
           <div class="card-body">
-            <ul class="activity-list">
-              <li>
-                <div class="activity-dot"></div>
-                <div class="activity-content">
-                  <p><span class="ar">تم تحديث صفحة المشاريع وربطها بالواقع الافتراضي</span><span class="en">Projects page updated with VR experience</span></p>
-                  <span class="activity-time"><span class="ar">منذ ساعتين</span><span class="en">2 hours ago</span></span>
-                </div>
-              </li>
-              <li>
-                <div class="activity-dot"></div>
-                <div class="activity-content">
-                  <p><span class="ar">تم إضافة قسم كتاب الهوية في الصفحة الرئيسية</span><span class="en">Identity Codex section added to homepage</span></p>
-                  <span class="activity-time"><span class="ar">منذ 4 ساعات</span><span class="en">4 hours ago</span></span>
-                </div>
-              </li>
-              <li>
-                <div class="activity-dot"></div>
-                <div class="activity-content">
-                  <p><span class="ar">تم توحيد شريط التنقل في جميع الصفحات</span><span class="en">Navigation unified across all pages</span></p>
-                  <span class="activity-time"><span class="ar">منذ 6 ساعات</span><span class="en">6 hours ago</span></span>
-                </div>
-              </li>
+            <ul class="guide-list">
+              <li><i class="fas fa-check"></i> <span class="ar">عدّل نصوص الصفحة الرئيسية من تبويب "الصفحة الرئيسية"</span><span class="en">Edit homepage text from "Home" tab</span></li>
+              <li><i class="fas fa-check"></i> <span class="ar">أضف أو عدّل المشاريع من تبويب "إدارة المشاريع"</span><span class="en">Add/edit projects from "Projects" tab</span></li>
+              <li><i class="fas fa-check"></i> <span class="ar">غير معلومات الاتصال من تبويب "إعدادات الموقع"</span><span class="en">Change contact info from "Site Settings" tab</span></li>
+              <li><i class="fas fa-check"></i> <span class="ar">اضغط "حفظ جميع التغييرات" لتطبيق التعديلات</span><span class="en">Click "Save All Changes" to apply</span></li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="pages">
+      <section class="content-section" id="home">
         <div class="card">
           <div class="card-header">
-            <h2><span class="ar">إدارة الصفحات</span><span class="en">Page Management</span></h2>
-            <button class="btn-primary"><i class="fas fa-plus"></i> <span class="ar">إضافة صفحة</span><span class="en">Add Page</span></button>
+            <h2><span class="ar">محتوى الصفحة الرئيسية</span><span class="en">Homepage Content</span></h2>
           </div>
           <div class="card-body">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th><span class="ar">اسم الصفحة</span><span class="en">Page Name</span></th>
-                  <th><span class="ar">الرابط</span><span class="en">URL</span></th>
-                  <th><span class="ar">الحالة</span><span class="en">Status</span></th>
-                  <th><span class="ar">الإجراءات</span><span class="en">Actions</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="ar">الرئيسية</span><span class="en">Home</span></td>
-                  <td>/index.html</td>
-                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
-                  <td class="table-actions">
-                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
-                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><span class="ar">المشاريع</span><span class="en">Projects</span></td>
-                  <td>/projects.html</td>
-                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
-                  <td class="table-actions">
-                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
-                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></td>
-                  <td>/defense.html</td>
-                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
-                  <td class="table-actions">
-                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
-                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><span class="ar">التقنيات</span><span class="en">Technologies</span></td>
-                  <td>/tech.html</td>
-                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
-                  <td class="table-actions">
-                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
-                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td><span class="ar">الصحة</span><span class="en">Health</span></td>
-                  <td>/health.html</td>
-                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
-                  <td class="table-actions">
-                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
-                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="form-group">
+              <label><span class="ar">عنوان الهيرو - عربي</span><span class="en">Hero Title - Arabic</span></label>
+              <input type="text" id="homeHeroAr" value="">
+            </div>
+            <div class="form-group">
+              <label><span class="ar">عنوان الهيرو - إنجليزي</span><span class="en">Hero Title - English</span></label>
+              <input type="text" id="homeHeroEn" value="">
+            </div>
+            <div class="form-group">
+              <label><span class="ar">نص الهيرو - عربي</span><span class="en">Hero Subtitle - Arabic</span></label>
+              <textarea id="homeSubAr" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label><span class="ar">نص الهيرو - إنجليزي</span><span class="en">Hero Subtitle - English</span></label>
+              <textarea id="homeSubEn" rows="3"></textarea>
+            </div>
           </div>
         </div>
       </section>
@@ -210,138 +138,76 @@
       <section class="content-section" id="projects">
         <div class="card">
           <div class="card-header">
-            <h2><span class="ar">إدارة المشاريع</span><span class="en">Project Management</span></h2>
-            <button class="btn-primary"><i class="fas fa-plus"></i> <span class="ar">إضافة مشروع</span><span class="en">Add Project</span></button>
+            <h2><span class="ar">قائمة المشاريع</span><span class="en">Projects List</span></h2>
+            <button class="btn-primary" id="addProject"><i class="fas fa-plus"></i> <span class="ar">إضافة مشروع</span><span class="en">Add Project</span></button>
           </div>
           <div class="card-body">
-            <div class="projects-grid">
-              <div class="project-item">
-                <div class="project-thumb" style="background:linear-gradient(135deg,rgba(0,26,22,.9) 0%,rgba(5,66,57,.9) 100%)"></div>
-                <div class="project-info">
-                  <h3><span class="ar">منصة المراقبة الذكية</span><span class="en">Smart Surveillance Platform</span></h3>
-                  <span class="project-category"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></span>
-                  <div class="project-actions">
-                    <button class="btn-sm"><span class="ar">تعديل</span><span class="en">Edit</span></button>
-                    <button class="btn-sm danger"><span class="ar">حذف</span><span class="en">Delete</span></button>
-                    <button class="btn-sm"><span class="ar">عرض VR</span><span class="en">View VR</span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="project-item">
-                <div class="project-thumb" style="background:linear-gradient(135deg,rgba(0,38,35,.9) 0%,rgba(46,122,110,.9) 100%)"></div>
-                <div class="project-info">
-                  <h3><span class="ar">نظام الاتصالات الآمن</span><span class="en">Secure Communications</span></h3>
-                  <span class="project-category"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></span>
-                  <div class="project-actions">
-                    <button class="btn-sm"><span class="ar">تعديل</span><span class="en">Edit</span></button>
-                    <button class="btn-sm danger"><span class="ar">حذف</span><span class="en">Delete</span></button>
-                    <button class="btn-sm"><span class="ar">عرض VR</span><span class="en">View VR</span></button>
-                  </div>
-                </div>
-              </div>
-              <div class="project-item">
-                <div class="project-thumb" style="background:linear-gradient(135deg,rgba(5,66,57,.9) 0%,rgba(185,167,121,.7) 100%)"></div>
-                <div class="project-info">
-                  <h3><span class="ar">منصة الذكاء الاصطناعي المؤسسي</span><span class="en">Enterprise AI Platform</span></h3>
-                  <span class="project-category"><span class="ar">التقنيات</span><span class="en">Technologies</span></span>
-                  <div class="project-actions">
-                    <button class="btn-sm"><span class="ar">تعديل</span><span class="en">Edit</span></button>
-                    <button class="btn-sm danger"><span class="ar">حذف</span><span class="en">Delete</span></button>
-                    <button class="btn-sm"><span class="ar">عرض VR</span><span class="en">View VR</span></button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="projects-editor" id="projectsEditor"></div>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="gallery">
+      <section class="content-section" id="pages">
         <div class="card">
           <div class="card-header">
-            <h2><span class="ar">معرض الصور</span><span class="en">Image Gallery</span></h2>
-            <button class="btn-primary"><i class="fas fa-upload"></i> <span class="ar">رفع صور</span><span class="en">Upload Images</span></button>
-          </div>
-          <div class="card-body">
-            <div class="gallery-grid">
-              <div class="gallery-item">
-                <img src="../logo.jpg" alt="IRG Logo">
-                <div class="gallery-overlay">
-                  <button class="gallery-btn"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-              <div class="gallery-item">
-                <img src="../logo.png" alt="IRG Logo PNG">
-                <div class="gallery-overlay">
-                  <button class="gallery-btn"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="settings">
-        <div class="card">
-          <div class="card-header">
-            <h2><span class="ar">إعدادات الموقع</span><span class="en">Site Settings</span></h2>
-          </div>
-          <div class="card-body">
-            <div class="form-row">
-              <div class="form-group">
-                <label><span class="ar">اسم الموقع</span><span class="en">Site Name</span></label>
-                <input type="text" value="مجموعة الابتكار والنهضة">
-              </div>
-              <div class="form-group">
-                <label><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></label>
-                <input type="email" value="info@irg.group">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label><span class="ar">رقم الهاتف</span><span class="en">Phone</span></label>
-                <input type="text" value="+966 00 000 0000">
-              </div>
-              <div class="form-group">
-                <label><span class="ar">العنوان</span><span class="en">Address</span></label>
-                <input type="text" value="حماه، سوريا">
-              </div>
-            </div>
-            <button class="btn-primary"><i class="fas fa-save"></i> <span class="ar">حفظ التغييرات</span><span class="en">Save Changes</span></button>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="users">
-        <div class="card">
-          <div class="card-header">
-            <h2><span class="ar">إدارة المستخدمين</span><span class="en">User Management</span></h2>
+            <h2><span class="ar">الصفحات المتاحة</span><span class="en">Available Pages</span></h2>
           </div>
           <div class="card-body">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th><span class="ar">المستخدم</span><span class="en">User</span></th>
-                  <th><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></th>
-                  <th><span class="ar">الدور</span><span class="en">Role</span></th>
-                  <th><span class="ar">الحالة</span><span class="en">Status</span></th>
+                  <th><span class="ar">الصفحة</span><span class="en">Page</span></th>
+                  <th>الملف</th>
+                  <th><span class="ar">عرض</span><span class="en">View</span></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><span class="ar">المدير العام</span><span class="en">Administrator</span></td>
-                  <td>alnahda27@gmail.com</td>
-                  <td><span class="badge primary"><span class="ar">مدير</span><span class="en">Admin</span></span></td>
-                  <td><span class="badge success"><span class="ar">نشط</span><span class="en">Active</span></span></td>
-                </tr>
+                <tr><td>الرئيسية / Home</td><td>index.html</td><td><a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
+                <tr><td>المشاريع / Projects</td><td>projects.html</td><td><a href="../projects.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
+                <tr><td>الصناعات الدفاعية / Defense</td><td>defense.html</td><td><a href="../defense.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
+                <tr><td>التقنيات / Tech</td><td>tech.html</td><td><a href="../tech.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
+                <tr><td>الصحة / Health</td><td>health.html</td><td><a href="../health.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
+                <tr><td>عرض الواقع الافتراضي / VR View</td><td>project-vr.html</td><td><a href="../project-vr.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="site">
+        <div class="card">
+          <div class="card-header">
+            <h2><span class="ar">معلومات الموقع</span><span class="en">Site Information</span></h2>
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></label>
+                <input type="email" id="siteEmail" value="">
+              </div>
+              <div class="form-group">
+                <label><span class="ar">رقم الهاتف</span><span class="en">Phone</span></label>
+                <input type="text" id="sitePhone" value="">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label><span class="ar">العنوان - عربي</span><span class="en">Address - Arabic</span></label>
+                <input type="text" id="siteAddrAr" value="">
+              </div>
+              <div class="form-group">
+                <label><span class="ar">العنوان - إنجليزي</span><span class="en">Address - English</span></label>
+                <input type="text" id="siteAddrEn" value="">
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
   </div>
 
-  <script src="assets/js/admin.js"></script>
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/js/admin-pro.js"></script>
 </body>
 </html>
