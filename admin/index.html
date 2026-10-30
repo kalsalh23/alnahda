@@ -3,202 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لوحة التحكم | مجموعة الابتكار والنهضة</title>
+  <title>لوحة تحكم الموقع | مجموعة الابتكار والنهضة</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/admin.css">
+  <link rel="stylesheet" href="assets/css/admin-clean.css">
 </head>
 <body>
-  <div class="login-wrapper" id="loginScreen">
-    <div class="login-card">
-      <div class="login-header">
-        <img src="../logo.jpg" alt="IRG Logo" class="login-logo">
-        <div class="brand-text">
-          <h1 class="ar">مجموعة الابتكار والنهضة</h1>
-          <h1 class="en">Innovation & Renaissance Group</h1>
-          <span>لوحة التحكم المتكاملة</span>
-        </div>
-        <p>تحكم كامل بالموقع من مكان واحد</p>
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <div class="login-head">
+        <img src="../logo.jpg" alt="IRG">
+        <h1>مجموعة الابتكار والنهضة</h1>
+        <p>لوحة تحكم الموقع</p>
       </div>
       <form id="loginForm" class="login-form">
-        <div class="form-group">
+        <div class="field">
           <label>البريد الإلكتروني</label>
           <input type="email" id="email" value="alnahda27@gmail.com" required>
         </div>
-        <div class="form-group">
+        <div class="field">
           <label>كلمة المرور</label>
           <input type="password" id="password" value="reda@2027" required>
         </div>
-        <button type="submit" class="btn-primary login-submit">دخول إلى لوحة التحكم</button>
-        <p class="error-msg" id="loginError"></p>
+        <button type="submit" class="login-btn">تسجيل الدخول</button>
+        <div class="login-error" id="loginError"></div>
       </form>
     </div>
   </div>
 
-  <div class="dashboard" id="dashboard" style="display:none">
-    <header class="admin-header">
-      <div class="header-inner">
-        <a href="../index.html" class="brand">
-          <img src="../logo.jpg" class="mark" alt="IRG">
-          <span class="brand-txt">
-            <b class="ar">مجموعة الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance</b>
-            <span>Group · IRG</span>
-          </span>
-        </a>
-        <nav class="admin-nav">
-          <button class="nav-item active" data-section="overview"><i class="fas fa-chart-pie"></i> <span class="ar">نظرة عامة</span><span class="en">Overview</span></button>
-          <button class="nav-item" data-section="home"><i class="fas fa-home"></i> <span class="ar">الصفحة الرئيسية</span><span class="en">Home</span></button>
-          <button class="nav-item" data-section="projects"><i class="fas fa-layer-group"></i> <span class="ar">إدارة المشاريع</span><span class="en">Projects</span></button>
-          <button class="nav-item" data-section="pages"><i class="fas fa-file-alt"></i> <span class="ar">الصفحات</span><span class="en">Pages</span></button>
-          <button class="nav-item" data-section="site"><i class="fas fa-cog"></i> <span class="ar">إعدادات الموقع</span><span class="en">Site Settings</span></button>
-        </nav>
-        <div class="header-actions">
-          <a href="../index.html" target="_blank" class="view-site"><span class="ar">فتح الموقع</span><span class="en">Open Site</span> <i class="fas fa-external-link-alt"></i></a>
-          <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> <span class="ar">خروج</span><span class="en">Logout</span></button>
+  <div class="app" id="dashboard" style="display:none">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../logo.jpg" alt="IRG">
+        <div>
+          <strong>مجموعة الابتكار والنهضة</strong>
+          <span>لوحة التحكم</span>
         </div>
       </div>
-    </header>
-
-    <main class="main-content">
-      <div class="page-header">
-        <div class="page-title">
-          <h1 id="pageTitle">نظرة عامة</h1>
-          <p>تحكم كامل بمحتوى موقع مجموعة الابتكار والنهضة</p>
-        </div>
-        <button class="btn-primary" id="saveAll"><i class="fas fa-save"></i> <span class="ar">حفظ جميع التغييرات</span><span class="en">Save All Changes</span></button>
+      <nav class="menu">
+        <button class="menu-item active" data-tab="dashboard-tab"><i class="fas fa-home"></i> الرئيسية</button>
+        <button class="menu-item" data-tab="projects-tab"><i class="fas fa-th-large"></i> إدارة المشاريع</button>
+        <button class="menu-item" data-tab="contact-tab"><i class="fas fa-envelope"></i> معلومات التواصل</button>
+        <button class="menu-item" data-tab="vision-tab"><i class="fas fa-eye"></i> صفحة الرؤية</button>
+        <button class="menu-item" data-tab="about-tab"><i class="fas fa-users"></i> صفحة من نحن</button>
+        <button class="menu-item" data-tab="home-tab"><i class="fas fa-pager"></i> الصفحة الرئيسية</button>
+        <button class="menu-item" data-tab="pages-tab"><i class="fas fa-link"></i> روابط الصفحات</button>
+      </nav>
+      <div class="sidebar-foot">
+        <a href="../index.html" target="_blank"><i class="fas fa-external-link-alt"></i> عرض الموقع</a>
+        <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
       </div>
+    </aside>
 
-      <section class="content-section active" id="overview">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
-            <div class="stat-info">
-              <h3 id="countProjects">9</h3>
-              <p><span class="ar">المشاريع</span><span class="en">Projects</span></p>
+    <main class="content">
+      <header class="topbar">
+        <h1 id="tabTitle">الرئيسية</h1>
+        <div class="topbar-user">
+          <span>alnahda27@gmail.com</span>
+          <button class="save-all" id="saveAll"><i class="fas fa-cloud-upload-alt"></i> حفظ التغييرات</button>
+        </div>
+      </header>
+
+      <section class="tab active" id="dashboard-tab">
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon blue"><i class="fas fa-th-large"></i></div>
+            <div>
+              <h2 id="projCount">9</h2>
+              <p>إجمالي المشاريع</p>
             </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
-            <div class="stat-info">
-              <h3>6</h3>
-              <p><span class="ar">الصفحات</span><span class="en">Pages</span></p>
+          <div class="card">
+            <div class="card-icon green"><i class="fas fa-file-alt"></i></div>
+            <div>
+              <h2>6</h2>
+              <p>صفحات الموقع</p>
             </div>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-edit"></i></div>
-            <div class="stat-info">
-              <h3>تحكم كامل</h3>
-              <p><span class="ar">قابل للتعديل</span><span class="en">Fully Editable</span></p>
+          <div class="card">
+            <div class="card-icon gold"><i class="fas fa-database"></i></div>
+            <div>
+              <h2>Supabase</h2>
+              <p>متصل وقابل للحفظ</p>
             </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header">
-            <h2><span class="ar">تعليمات الاستخدام</span><span class="en">How to Use</span></h2>
+        <div class="panel">
+          <div class="panel-head">
+            <h2>آخر التحديثات</h2>
           </div>
-          <div class="card-body">
-            <ul class="guide-list">
-              <li><i class="fas fa-check"></i> <span class="ar">عدّل نصوص الصفحة الرئيسية من تبويب "الصفحة الرئيسية"</span><span class="en">Edit homepage text from "Home" tab</span></li>
-              <li><i class="fas fa-check"></i> <span class="ar">أضف أو عدّل المشاريع من تبويب "إدارة المشاريع"</span><span class="en">Add/edit projects from "Projects" tab</span></li>
-              <li><i class="fas fa-check"></i> <span class="ar">غير معلومات الاتصال من تبويب "إعدادات الموقع"</span><span class="en">Change contact info from "Site Settings" tab</span></li>
-              <li><i class="fas fa-check"></i> <span class="ar">اضغط "حفظ جميع التغييرات" لتطبيق التعديلات</span><span class="en">Click "Save All Changes" to apply</span></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="home">
-        <div class="card">
-          <div class="card-header">
-            <h2><span class="ar">محتوى الصفحة الرئيسية</span><span class="en">Homepage Content</span></h2>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label><span class="ar">عنوان الهيرو - عربي</span><span class="en">Hero Title - Arabic</span></label>
-              <input type="text" id="homeHeroAr" value="">
-            </div>
-            <div class="form-group">
-              <label><span class="ar">عنوان الهيرو - إنجليزي</span><span class="en">Hero Title - English</span></label>
-              <input type="text" id="homeHeroEn" value="">
-            </div>
-            <div class="form-group">
-              <label><span class="ar">نص الهيرو - عربي</span><span class="en">Hero Subtitle - Arabic</span></label>
-              <textarea id="homeSubAr" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label><span class="ar">نص الهيرو - إنجليزي</span><span class="en">Hero Subtitle - English</span></label>
-              <textarea id="homeSubEn" rows="3"></textarea>
+          <div class="panel-body">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="dot"></div>
+                <div>
+                  <strong>لوحة التحكم جاهزة للتحكم الكامل</strong>
+                  <span>يمكنك الآن تعديل جميع أجزاء الموقع</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="projects">
-        <div class="card">
-          <div class="card-header">
-            <h2><span class="ar">قائمة المشاريع</span><span class="en">Projects List</span></h2>
-            <button class="btn-primary" id="addProject"><i class="fas fa-plus"></i> <span class="ar">إضافة مشروع</span><span class="en">Add Project</span></button>
+      <section class="tab" id="projects-tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>قائمة المشاريع</h2>
+            <button class="btn" id="addProject"><i class="fas fa-plus"></i> إضافة مشروع جديد</button>
           </div>
-          <div class="card-body">
-            <div class="projects-editor" id="projectsEditor"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="pages">
-        <div class="card">
-          <div class="card-header">
-            <h2><span class="ar">الصفحات المتاحة</span><span class="en">Available Pages</span></h2>
-          </div>
-          <div class="card-body">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th><span class="ar">الصفحة</span><span class="en">Page</span></th>
-                  <th>الملف</th>
-                  <th><span class="ar">عرض</span><span class="en">View</span></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>الرئيسية / Home</td><td>index.html</td><td><a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
-                <tr><td>المشاريع / Projects</td><td>projects.html</td><td><a href="../projects.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
-                <tr><td>الصناعات الدفاعية / Defense</td><td>defense.html</td><td><a href="../defense.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
-                <tr><td>التقنيات / Tech</td><td>tech.html</td><td><a href="../tech.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
-                <tr><td>الصحة / Health</td><td>health.html</td><td><a href="../health.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
-                <tr><td>عرض الواقع الافتراضي / VR View</td><td>project-vr.html</td><td><a href="../project-vr.html" target="_blank" class="link-btn"><i class="fas fa-external-link-alt"></i></a></td></tr>
-              </tbody>
-            </table>
+          <div class="panel-body">
+            <div id="projectsList" class="projects-list"></div>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="site">
-        <div class="card">
-          <div class="card-header">
-            <h2><span class="ar">معلومات الموقع</span><span class="en">Site Information</span></h2>
+      <section class="tab" id="contact-tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>معلومات التواصل</h2>
           </div>
-          <div class="card-body">
-            <div class="form-row">
-              <div class="form-group">
-                <label><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></label>
-                <input type="email" id="siteEmail" value="">
-              </div>
-              <div class="form-group">
-                <label><span class="ar">رقم الهاتف</span><span class="en">Phone</span></label>
-                <input type="text" id="sitePhone" value="">
-              </div>
+          <div class="panel-body grid2">
+            <div class="field">
+              <label>البريد الإلكتروني</label>
+              <input id="cEmail">
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label><span class="ar">العنوان - عربي</span><span class="en">Address - Arabic</span></label>
-                <input type="text" id="siteAddrAr" value="">
-              </div>
-              <div class="form-group">
-                <label><span class="ar">العنوان - إنجليزي</span><span class="en">Address - English</span></label>
-                <input type="text" id="siteAddrEn" value="">
-              </div>
+            <div class="field">
+              <label>رقم الهاتف</label>
+              <input id="cPhone">
+            </div>
+            <div class="field full">
+              <label>العنوان بالعربية</label>
+              <input id="cAddrAr">
+            </div>
+            <div class="field full">
+              <label>العنوان بالإنجليزية</label>
+              <input id="cAddrEn">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab" id="vision-tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>محتوى صفحة الرؤية</h2>
+          </div>
+          <div class="panel-body">
+            <div class="field">
+              <label>عنوان الصفحة - عربي</label>
+              <input id="vTitleAr" value="الرؤية">
+            </div>
+            <div class="field">
+              <label>عنوان الصفحة - إنجليزي</label>
+              <input id="vTitleEn" value="Vision">
+            </div>
+            <div class="field">
+              <label>محتوى الرؤية - عربي</label>
+              <textarea id="vBodyAr" rows="6">نسعى لإحياء التراث الفكري العربي وربطه بالابتكار التقني لبناء مستقبل معرفي مزدهر، يكون فيه الفكر العربي رافداً عالمياً للحلول المستدامة.</textarea>
+            </div>
+            <div class="field">
+              <label>محتوى الرؤية - إنجليزي</label>
+              <textarea id="vBodyEn" rows="6">We strive to revive Arab intellectual heritage and connect it with technological innovation to build a prosperous knowledge-based future, where Arab thought serves as a global source of sustainable solutions.</textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab" id="about-tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>محتوى صفحة من نحن</h2>
+          </div>
+          <div class="panel-body">
+            <div class="field">
+              <label>عنوان الصفحة - عربي</label>
+              <input id="aTitleAr" value="من نحن">
+            </div>
+            <div class="field">
+              <label>عنوان الصفحة - إنجليزي</label>
+              <input id="aTitleEn" value="About Us">
+            </div>
+            <div class="field">
+              <label>نبذة عن المجموعة - عربي</label>
+              <textarea id="aBodyAr" rows="7">مجموعة الابتكار والنهضة هي كيان معرفي يعمل عند تقاطع التراث الفكري العربي والابتكار التقني والتصميم المعاصر. نؤمن بأن النهضة الحقيقية تبدأ بإعادة قراءة موروثنا وإعادة صياغته بأدوات العصر، لبناء مشاريع ذات أثر مستدام في مجالات الصناعات الدفاعية والتقنيات والصحة.</textarea>
+            </div>
+            <div class="field">
+              <label>نبذة عن المجموعة - إنجليزي</label>
+              <textarea id="aBodyEn" rows="7">Innovation & Renaissance Group is a knowledge-driven entity working at the intersection of Arab intellectual heritage, technological innovation, and contemporary design. We believe true renaissance begins by revisiting our legacy and reimagining it through modern tools to build sustainable projects in defense, technology, and healthcare.</textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab" id="home-tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>محتوى الصفحة الرئيسية</h2>
+          </div>
+          <div class="panel-body">
+            <div class="field">
+              <label>عنوان الهيرو - عربي</label>
+              <input id="hTitleAr">
+            </div>
+            <div class="field">
+              <label>عنوان الهيرو - إنجليزي</label>
+              <input id="hTitleEn">
+            </div>
+            <div class="field">
+              <label>وصف الهيرو - عربي</label>
+              <textarea id="hSubAr" rows="4"></textarea>
+            </div>
+            <div class="field">
+              <label>وصف الهيرو - إنجليزي</label>
+              <textarea id="hSubEn" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab" id="pages-tab">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>روابط سريعة للصفحات</h2>
+          </div>
+          <div class="panel-body">
+            <div class="links-grid">
+              <a class="link-card" href="../index.html" target="_blank"><i class="fas fa-home"></i><span>الصفحة الرئيسية</span></a>
+              <a class="link-card" href="../projects.html" target="_blank"><i class="fas fa-th-large"></i><span>المشاريع</span></a>
+              <a class="link-card" href="../defense.html" target="_blank"><i class="fas fa-shield-alt"></i><span>الصناعات الدفاعية</span></a>
+              <a class="link-card" href="../tech.html" target="_blank"><i class="fas fa-microchip"></i><span>التقنيات</span></a>
+              <a class="link-card" href="../health.html" target="_blank"><i class="fas fa-heartbeat"></i><span>الصحة</span></a>
+              <a class="link-card" href="../project-vr.html" target="_blank"><i class="fas fa-vr-cardboard"></i><span>غرفة الواقع الافتراضي</span></a>
             </div>
           </div>
         </div>
@@ -206,9 +244,9 @@
     </main>
   </div>
 
-  <div class="toast" id="toast">  </div>
-
+  <div class="toast" id="toast"></div>
   <script src="assets/js/config.js"></script>
-  <script src="assets/js/admin-pro.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="assets/js/admin-panel.js"></script>
 </body>
 </html>
