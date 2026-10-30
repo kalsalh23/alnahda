@@ -1,0 +1,138 @@
+{
+  "site": {
+    "nameAr": "مجموعة الابتكار والنهضة",
+    "nameEn": "Innovation & Renaissance Group",
+    "email": "info@irg.group",
+    "phone": "+966 00 000 0000",
+    "addressAr": "حماه، سوريا",
+    "addressEn": "Hama, Syria",
+    "logo": "logo.jpg"
+  },
+  "home": {
+    "heroTitleAr": "نُعيد صياغة النهضة بلغة هذا العصر",
+    "heroTitleEn": "Reframing the Renaissance in a modern tongue",
+    "heroSubtitleAr": "مجموعة تُعنى بالتقاطع بين التراث الفكري والابتكار التقني والتصميم — نبني مشاريع تُعيد للمعرفة العربية حضورها في المستقبل.",
+    "heroSubtitleEn": "A group working at the intersection of intellectual heritage, technology and design — building projects that restore Arab knowledge to its place in the future.",
+    "bookTitleAr": "مجسم كتاب يحمل هوية المجموعة",
+    "bookTitleEn": "A sculpted codex of our identity"
+  },
+  "projects": [
+    {
+      "id": 101,
+      "category": "defense",
+      "titleAr": "منصة المراقبة الذكية",
+      "titleEn": "Smart Surveillance Platform",
+      "tagAr": "الصناعات الدفاعية",
+      "tagEn": "Defense Industries",
+      "descAr": "نظام مراقبة ذكي قائم على الذكاء الاصطناعي لكشف وتحليل التهديدات في الوقت الفعلي.",
+      "descEn": "AI-powered surveillance system for real-time threat detection and analysis.",
+      "img": "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "منصة المراقبة الذكية نظام متكامل يعتمد على الذكاء الاصطناعي لرصد المناطق الحساسة وتحليل الحركة. يستطيع النظام التعرف على الأنماط غير الطبيعية وإصدار تنبيهات فورية. يوفر تكاملاً آمنًا مع مراكز القيادة لاتخاذ قرارات سريعة ودقيقة.",
+      "detailsEn": "Smart Surveillance Platform is an integrated AI system for monitoring sensitive areas and analyzing movement. It detects unusual patterns and issues instant alerts. It integrates securely with command centers for fast and accurate decisions."
+    },
+    {
+      "id": 102,
+      "category": "defense",
+      "titleAr": "نظام الاتصالات الآمن",
+      "titleEn": "Secure Communications System",
+      "tagAr": "الصناعات الدفاعية",
+      "tagEn": "Defense Industries",
+      "descAr": "شبكة اتصالات مشفرة عالية الأمان للعمليات الحساسة والتنسيق الميداني.",
+      "descEn": "Encrypted high-security communication network for sensitive operations.",
+      "img": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "نظام الاتصالات الآمن شبكة مشفرة من طرف إلى طرف تضمن سرية التواصل في العمليات الحساسة. مصمم للعمل في البيئات الصعبة مع مقاومة للتشويش. يدعم التنسيق بين الوحدات الميدانية ومراكز القيادة بأعلى مستويات الأمان.",
+      "detailsEn": "Secure Communications System provides end-to-end encrypted network for sensitive operations. Designed for harsh environments with anti-jamming capability. Enables secure coordination between field units and command centers."
+    },
+    {
+      "id": 103,
+      "category": "defense",
+      "titleAr": "روبوتات الاستطلاع الذكية",
+      "titleEn": "Intelligent Reconnaissance Robots",
+      "tagAr": "الصناعات الدفاعية",
+      "tagEn": "Defense Industries",
+      "descAr": "روبوتات آلية موجهة عن بعد لأداء مهام الاستطلاع في البيئات الصعبة والخطرة.",
+      "descEn": "Remotely operated robotic platforms for reconnaissance in hazardous environments.",
+      "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "روبوتات الاستطلاع الذكية منصات آلية ذاتية الحركة قادرة على أداء مهام الاستطلاع في المناطق الخطرة. مزودة بأجهزة استشعار متقدمة ورؤية ذكية. تنقل البيانات بشكل آمن في الوقت الفعلي دون تعريض الأرواح للخطر.",
+      "detailsEn": "Intelligent Reconnaissance Robots are autonomous platforms for hazardous area reconnaissance. Equipped with advanced sensors and smart vision. Transmit secure real-time data without risking human lives."
+    },
+    {
+      "id": 201,
+      "category": "tech",
+      "titleAr": "منصة الذكاء الاصطناعي المؤسسي",
+      "titleEn": "Enterprise AI Platform",
+      "tagAr": "التقنيات",
+      "tagEn": "Technologies",
+      "descAr": "منصة شاملة لدمج الذكاء الاصطناعي في العمليات المؤسسية مع حلول مخصصة لكل قطاع.",
+      "descEn": "Comprehensive platform for integrating AI into enterprise operations with tailored solutions.",
+      "img": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "منصة الذكاء الاصطناعي المؤسسي تجمع بين نماذج ذكية وأتمتة متقدمة لرفع كفاءة المؤسسات. تدعم التكامل مع الأنظمة الحالية وتوفر تحليلات تنبؤية. تساعد على اتخاذ قرارات مبنية على بيانات دقيقة في كل مستوى.",
+      "detailsEn": "Enterprise AI Platform combines smart models and advanced automation to boost efficiency. Integrates with existing systems and provides predictive analytics. Enables data-driven decisions across all levels."
+    },
+    {
+      "id": 202,
+      "category": "tech",
+      "titleAr": "البنية التحتية السحابية الآمنة",
+      "titleEn": "Secure Cloud Infrastructure",
+      "tagAr": "التقنيات",
+      "tagEn": "Technologies",
+      "descAr": "حلول سحابية آمنة وقابلة للتوسع مع أنظمة حماية متقدمة للبيانات الحساسة.",
+      "descEn": "Secure scalable cloud solutions with advanced protection for sensitive data.",
+      "img": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "البنية التحتية السحابية الآمنة حلول مرنة وقابلة للتوسع مع حماية متعددة الطبقات للبيانات. تضمن التوفر العالي والنسخ الاحتياطي الذكي. متوافقة مع أعلى معايير الأمان والامتثال التنظيمي.",
+      "detailsEn": "Secure Cloud Infrastructure offers flexible scalable solutions with multi-layer protection. Ensures high availability and intelligent backup. Meets top security and compliance standards."
+    },
+    {
+      "id": 203,
+      "category": "tech",
+      "titleAr": "إنترنت الأشياء الصناعي",
+      "titleEn": "Industrial IoT Solutions",
+      "tagAr": "التقنيات",
+      "tagEn": "Technologies",
+      "descAr": "شبكات ذكية للمصانع والمدن تجمع البيانات وتحسن الكفاءة التشغيلية.",
+      "descEn": "Smart networks for factories and cities collecting data to optimize operations.",
+      "img": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "إنترنت الأشياء الصناعي شبكة من الأجهزة الذكية تراقب وتُحسّن العمليات الصناعية والمدنية. تتيح الصيانة التنبؤية وتقليل الهدر. تحول البيانات إلى قرارات فورية لتحسين الكفاءة والإنتاجية.",
+      "detailsEn": "Industrial IoT Solutions connect smart devices to monitor and optimize operations. Enables predictive maintenance and waste reduction. Turns data into instant decisions for better efficiency."
+    },
+    {
+      "id": 301,
+      "category": "health",
+      "titleAr": "نظام التشخيص الذكي",
+      "titleEn": "AI Diagnostic System",
+      "tagAr": "الصحة",
+      "tagEn": "Health",
+      "descAr": "نظام تشخيص مدعوم بالذكاء الاصطناعي يساعد الأطباء في الكشف المبكر عن الأمراض بدقة عالية.",
+      "descEn": "AI-powered diagnostic system assisting clinicians in early disease detection with high accuracy.",
+      "img": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "نظام التشخيص الذكي مدعوم بالذكاء الاصطناعي لمساعدة الأطباء في الكشف المبكر عن الأمراض. يحلل الصور الطبية بدقة عالية ويقترح احتمالات التشخيص. يسرع الإجراءات الطبية ويحسن دقة النتائج ويقلل الأخطاء.",
+      "detailsEn": "AI Diagnostic System assists clinicians in early disease detection. Analyzes medical images with high accuracy and suggests diagnoses. Speeds up care and improves diagnostic precision."
+    },
+    {
+      "id": 302,
+      "category": "health",
+      "titleAr": "منصة الرعاية الصحية عن بعد",
+      "titleEn": "Telemedicine Platform",
+      "tagAr": "الصحة",
+      "tagEn": "Health",
+      "descAr": "منصة متكاملة لتقديم الاستشارات الطبية عن بعد ومتابعة المرضى عن بُعد بأمان كامل.",
+      "descEn": "Integrated platform for secure remote consultations and patient monitoring.",
+      "img": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "منصة الرعاية الصحية عن بعد تتيح الاستشارات الطبية الآمنة من أي مكان. تدعم السجلات الرقمية والوصفات الإلكترونية والمتابعة عن بُعد. توسع الوصول للرعاية الصحية خاصة في المناطق النائية.",
+      "detailsEn": "Telemedicine Platform enables secure remote consultations anywhere. Supports digital records, e-prescriptions and remote monitoring. Expands healthcare access to remote areas."
+    },
+    {
+      "id": 303,
+      "category": "health",
+      "titleAr": "تقنيات التصوير الطبي المتقدمة",
+      "titleEn": "Advanced Medical Imaging",
+      "tagAr": "الصحة",
+      "tagEn": "Health",
+      "descAr": "أجهزة وتقنيات تصوير طبي متطورة مع معالجة ذكية للصور لتحسين دقة التشخيص.",
+      "descEn": "Advanced medical imaging technologies with intelligent image processing for better diagnosis.",
+      "img": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80&auto=format&fit=crop",
+      "detailsAr": "تقنيات التصوير الطبي المتقدمة أجهزة حديثة ومعالجة ذكية لتحسين جودة الصور ودقة التشخيص. تقلل وقت الفحص وتقلل التعرض للإشعاع. توفر تحليلاً مدعوماً بالذكاء الاصطناعي لدعم القرار الطبي.",
+      "detailsEn": "Advanced Medical Imaging delivers high-quality scans with smart processing. Reduces scan time and radiation exposure. Provides AI-assisted analysis to support clinical decisions."
+    }
+  ]
+}
