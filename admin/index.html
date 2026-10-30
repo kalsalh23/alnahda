@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>لوحة التحكم | مجموعة الابتكار والنهضة</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="assets/css/admin.css">
 </head>
@@ -12,11 +14,15 @@
   <div class="login-wrapper" id="loginScreen">
     <div class="login-card">
       <div class="login-header">
-        <img src="../logo.jpg" alt="IRG Logo">
-        <h1>لوحة تحكم مجموعة الابتكار والنهضة</h1>
+        <img src="../logo.jpg" alt="IRG Logo" class="login-logo">
+        <div class="brand-text">
+          <h1 class="ar">مجموعة الابتكار والنهضة</h1>
+          <h1 class="en">Innovation & Renaissance Group</h1>
+          <span>لوحة التحكم</span>
+        </div>
         <p>يرجى تسجيل الدخول للمتابعة</p>
       </div>
-      <form id="loginForm">
+      <form id="loginForm" class="login-form">
         <div class="form-group">
           <label>البريد الإلكتروني</label>
           <input type="email" id="email" value="alnahda27@gmail.com" required>
@@ -25,44 +31,50 @@
           <label>كلمة المرور</label>
           <input type="password" id="password" value="reda@2027" required>
         </div>
-        <button type="submit" class="login-btn">تسجيل الدخول</button>
+        <button type="submit" class="btn-primary login-submit">تسجيل الدخول</button>
         <p class="error-msg" id="loginError"></p>
       </form>
     </div>
   </div>
 
   <div class="dashboard" id="dashboard" style="display:none">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <img src="../logo.jpg" alt="IRG">
-        <div>
-          <h2>لوحة التحكم</h2>
-          <span>IRG Admin</span>
+    <header class="admin-header">
+      <div class="header-inner">
+        <a href="../index.html" class="brand">
+          <img src="../logo.jpg" class="mark" alt="IRG">
+          <span class="brand-txt">
+            <b class="ar">مجموعة الابتكار والنهضة</b><b class="en">Innovation &amp; Renaissance</b>
+            <span>Group · IRG</span>
+          </span>
+        </a>
+        <nav class="admin-nav">
+          <button class="nav-item active" data-section="overview"><span class="ar">نظرة عامة</span><span class="en">Overview</span></button>
+          <button class="nav-item" data-section="pages"><span class="ar">الصفحات</span><span class="en">Pages</span></button>
+          <button class="nav-item" data-section="projects"><span class="ar">المشاريع</span><span class="en">Projects</span></button>
+          <button class="nav-item" data-section="gallery"><span class="ar">المعرض</span><span class="en">Gallery</span></button>
+          <button class="nav-item" data-section="settings"><span class="ar">الإعدادات</span><span class="en">Settings</span></button>
+          <button class="nav-item" data-section="users"><span class="ar">المستخدمين</span><span class="en">Users</span></button>
+        </nav>
+        <div class="header-actions">
+          <a href="../index.html" target="_blank" class="view-site"><span class="ar">عرض الموقع</span><span class="en">View Site</span> <i class="fas fa-external-link-alt"></i></a>
+          <div class="admin-user">
+            <div class="user-info">
+              <span class="user-name">alnahda27@gmail.com</span>
+              <span class="user-role">مدير النظام</span>
+            </div>
+            <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+          </div>
         </div>
       </div>
-      <nav class="sidebar-nav">
-        <a href="#overview" class="nav-item active" data-section="overview"><i class="fas fa-chart-line"></i> نظرة عامة</a>
-        <a href="#pages" class="nav-item" data-section="pages"><i class="fas fa-file-alt"></i> الصفحات</a>
-        <a href="#projects" class="nav-item" data-section="projects"><i class="fas fa-project-diagram"></i> المشاريع</a>
-        <a href="#gallery" class="nav-item" data-section="gallery"><i class="fas fa-images"></i> معرض الصور</a>
-        <a href="#settings" class="nav-item" data-section="settings"><i class="fas fa-cog"></i> الإعدادات</a>
-        <a href="#users" class="nav-item" data-section="users"><i class="fas fa-users"></i> المستخدمين</a>
-      </nav>
-      <div class="sidebar-footer">
-        <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
-      </div>
-    </aside>
+    </header>
 
     <main class="main-content">
-      <header class="topbar">
-        <div class="topbar-left">
+      <div class="page-header">
+        <div class="page-title">
           <h1 id="pageTitle">نظرة عامة</h1>
+          <p>إدارة محتوى موقع مجموعة الابتكار والنهضة</p>
         </div>
-        <div class="topbar-right">
-          <span class="admin-info"><i class="fas fa-user-circle"></i> alnahda27@gmail.com</span>
-          <a href="../index.html" target="_blank" class="view-site"><i class="fas fa-external-link-alt"></i> عرض الموقع</a>
-        </div>
-      </header>
+      </div>
 
       <section class="content-section active" id="overview">
         <div class="stats-grid">
@@ -70,40 +82,58 @@
             <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
             <div class="stat-info">
               <h3>5</h3>
-              <p>عدد الصفحات</p>
+              <p><span class="ar">الصفحات النشطة</span><span class="en">Active Pages</span></p>
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
             <div class="stat-info">
               <h3>9</h3>
-              <p>عدد المشاريع</p>
+              <p><span class="ar">المشاريع</span><span class="en">Projects</span></p>
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-icon"><i class="fas fa-images"></i></div>
             <div class="stat-info">
-              <h3>12</h3>
-              <p>الصور</p>
+              <h3>2</h3>
+              <p><span class="ar">صور المعرض</span><span class="en">Gallery Images</span></p>
             </div>
           </div>
           <div class="stat-card">
             <div class="stat-icon"><i class="fas fa-eye"></i></div>
             <div class="stat-info">
               <h3>1,248</h3>
-              <p>زيارات اليوم</p>
+              <p><span class="ar">زيارات اليوم</span><span class="en">Today's Views</span></p>
             </div>
           </div>
         </div>
         <div class="card">
           <div class="card-header">
-            <h2>آخر التحديثات</h2>
+            <h2><span class="ar">أحدث النشاطات</span><span class="en">Recent Activity</span></h2>
           </div>
           <div class="card-body">
             <ul class="activity-list">
-              <li><i class="fas fa-check-circle"></i> تم تحديث صفحة المشاريع <span>منذ 2 ساعة</span></li>
-              <li><i class="fas fa-check-circle"></i> تم إضافة قسم الواقع الافتراضي <span>منذ 4 ساعات</span></li>
-              <li><i class="fas fa-check-circle"></i> تم توحيد شريط التنقل <span>منذ 6 ساعات</span></li>
+              <li>
+                <div class="activity-dot"></div>
+                <div class="activity-content">
+                  <p><span class="ar">تم تحديث صفحة المشاريع وربطها بالواقع الافتراضي</span><span class="en">Projects page updated with VR experience</span></p>
+                  <span class="activity-time"><span class="ar">منذ ساعتين</span><span class="en">2 hours ago</span></span>
+                </div>
+              </li>
+              <li>
+                <div class="activity-dot"></div>
+                <div class="activity-content">
+                  <p><span class="ar">تم إضافة قسم كتاب الهوية في الصفحة الرئيسية</span><span class="en">Identity Codex section added to homepage</span></p>
+                  <span class="activity-time"><span class="ar">منذ 4 ساعات</span><span class="en">4 hours ago</span></span>
+                </div>
+              </li>
+              <li>
+                <div class="activity-dot"></div>
+                <div class="activity-content">
+                  <p><span class="ar">تم توحيد شريط التنقل في جميع الصفحات</span><span class="en">Navigation unified across all pages</span></p>
+                  <span class="activity-time"><span class="ar">منذ 6 ساعات</span><span class="en">6 hours ago</span></span>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -112,49 +142,64 @@
       <section class="content-section" id="pages">
         <div class="card">
           <div class="card-header">
-            <h2>إدارة الصفحات</h2>
-            <button class="btn-primary"><i class="fas fa-plus"></i> إضافة صفحة</button>
+            <h2><span class="ar">إدارة الصفحات</span><span class="en">Page Management</span></h2>
+            <button class="btn-primary"><i class="fas fa-plus"></i> <span class="ar">إضافة صفحة</span><span class="en">Add Page</span></button>
           </div>
           <div class="card-body">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>اسم الصفحة</th>
-                  <th>الرابط</th>
-                  <th>الحالة</th>
-                  <th>الإجراءات</th>
+                  <th><span class="ar">اسم الصفحة</span><span class="en">Page Name</span></th>
+                  <th><span class="ar">الرابط</span><span class="en">URL</span></th>
+                  <th><span class="ar">الحالة</span><span class="en">Status</span></th>
+                  <th><span class="ar">الإجراءات</span><span class="en">Actions</span></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>الرئيسية</td>
-                  <td>index.html</td>
-                  <td><span class="badge success">منشور</span></td>
-                  <td><button class="btn-icon"><i class="fas fa-edit"></i></button><button class="btn-icon"><i class="fas fa-eye"></i></button></td>
+                  <td><span class="ar">الرئيسية</span><span class="en">Home</span></td>
+                  <td>/index.html</td>
+                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
+                  <td class="table-actions">
+                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                  </td>
                 </tr>
                 <tr>
-                  <td>المشاريع</td>
-                  <td>projects.html</td>
-                  <td><span class="badge success">منشور</span></td>
-                  <td><button class="btn-icon"><i class="fas fa-edit"></i></button><button class="btn-icon"><i class="fas fa-eye"></i></button></td>
+                  <td><span class="ar">المشاريع</span><span class="en">Projects</span></td>
+                  <td>/projects.html</td>
+                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
+                  <td class="table-actions">
+                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                  </td>
                 </tr>
                 <tr>
-                  <td>الصناعات الدفاعية</td>
-                  <td>defense.html</td>
-                  <td><span class="badge success">منشور</span></td>
-                  <td><button class="btn-icon"><i class="fas fa-edit"></i></button><button class="btn-icon"><i class="fas fa-eye"></i></button></td>
+                  <td><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></td>
+                  <td>/defense.html</td>
+                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
+                  <td class="table-actions">
+                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                  </td>
                 </tr>
                 <tr>
-                  <td>التقنيات</td>
-                  <td>tech.html</td>
-                  <td><span class="badge success">منشور</span></td>
-                  <td><button class="btn-icon"><i class="fas fa-edit"></i></button><button class="btn-icon"><i class="fas fa-eye"></i></button></td>
+                  <td><span class="ar">التقنيات</span><span class="en">Technologies</span></td>
+                  <td>/tech.html</td>
+                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
+                  <td class="table-actions">
+                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                  </td>
                 </tr>
                 <tr>
-                  <td>الصحة</td>
-                  <td>health.html</td>
-                  <td><span class="badge success">منشور</span></td>
-                  <td><button class="btn-icon"><i class="fas fa-edit"></i></button><button class="btn-icon"><i class="fas fa-eye"></i></button></td>
+                  <td><span class="ar">الصحة</span><span class="en">Health</span></td>
+                  <td>/health.html</td>
+                  <td><span class="badge success"><span class="ar">منشور</span><span class="en">Published</span></span></td>
+                  <td class="table-actions">
+                    <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -165,41 +210,44 @@
       <section class="content-section" id="projects">
         <div class="card">
           <div class="card-header">
-            <h2>إدارة المشاريع</h2>
-            <button class="btn-primary"><i class="fas fa-plus"></i> إضافة مشروع</button>
+            <h2><span class="ar">إدارة المشاريع</span><span class="en">Project Management</span></h2>
+            <button class="btn-primary"><i class="fas fa-plus"></i> <span class="ar">إضافة مشروع</span><span class="en">Add Project</span></button>
           </div>
           <div class="card-body">
             <div class="projects-grid">
               <div class="project-item">
-                <div class="project-thumb" style="background:linear-gradient(135deg,#001A16,#054239)"></div>
+                <div class="project-thumb" style="background:linear-gradient(135deg,rgba(0,26,22,.9) 0%,rgba(5,66,57,.9) 100%)"></div>
                 <div class="project-info">
-                  <h3>منصة المراقبة الذكية</h3>
-                  <span>الصناعات الدفاعية</span>
+                  <h3><span class="ar">منصة المراقبة الذكية</span><span class="en">Smart Surveillance Platform</span></h3>
+                  <span class="project-category"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></span>
                   <div class="project-actions">
-                    <button class="btn-sm">تعديل</button>
-                    <button class="btn-sm danger">حذف</button>
+                    <button class="btn-sm"><span class="ar">تعديل</span><span class="en">Edit</span></button>
+                    <button class="btn-sm danger"><span class="ar">حذف</span><span class="en">Delete</span></button>
+                    <button class="btn-sm"><span class="ar">عرض VR</span><span class="en">View VR</span></button>
                   </div>
                 </div>
               </div>
               <div class="project-item">
-                <div class="project-thumb" style="background:linear-gradient(135deg,#002623,#2E7A6E)"></div>
+                <div class="project-thumb" style="background:linear-gradient(135deg,rgba(0,38,35,.9) 0%,rgba(46,122,110,.9) 100%)"></div>
                 <div class="project-info">
-                  <h3>نظام الاتصالات الآمن</h3>
-                  <span>الصناعات الدفاعية</span>
+                  <h3><span class="ar">نظام الاتصالات الآمن</span><span class="en">Secure Communications</span></h3>
+                  <span class="project-category"><span class="ar">الصناعات الدفاعية</span><span class="en">Defense Industries</span></span>
                   <div class="project-actions">
-                    <button class="btn-sm">تعديل</button>
-                    <button class="btn-sm danger">حذف</button>
+                    <button class="btn-sm"><span class="ar">تعديل</span><span class="en">Edit</span></button>
+                    <button class="btn-sm danger"><span class="ar">حذف</span><span class="en">Delete</span></button>
+                    <button class="btn-sm"><span class="ar">عرض VR</span><span class="en">View VR</span></button>
                   </div>
                 </div>
               </div>
               <div class="project-item">
-                <div class="project-thumb" style="background:linear-gradient(135deg,#054239,#B9A779)"></div>
+                <div class="project-thumb" style="background:linear-gradient(135deg,rgba(5,66,57,.9) 0%,rgba(185,167,121,.7) 100%)"></div>
                 <div class="project-info">
-                  <h3>منصة الذكاء الاصطناعي</h3>
-                  <span>التقنيات</span>
+                  <h3><span class="ar">منصة الذكاء الاصطناعي المؤسسي</span><span class="en">Enterprise AI Platform</span></h3>
+                  <span class="project-category"><span class="ar">التقنيات</span><span class="en">Technologies</span></span>
                   <div class="project-actions">
-                    <button class="btn-sm">تعديل</button>
-                    <button class="btn-sm danger">حذف</button>
+                    <button class="btn-sm"><span class="ar">تعديل</span><span class="en">Edit</span></button>
+                    <button class="btn-sm danger"><span class="ar">حذف</span><span class="en">Delete</span></button>
+                    <button class="btn-sm"><span class="ar">عرض VR</span><span class="en">View VR</span></button>
                   </div>
                 </div>
               </div>
@@ -211,13 +259,23 @@
       <section class="content-section" id="gallery">
         <div class="card">
           <div class="card-header">
-            <h2>معرض الصور</h2>
-            <button class="btn-primary"><i class="fas fa-upload"></i> رفع صور</button>
+            <h2><span class="ar">معرض الصور</span><span class="en">Image Gallery</span></h2>
+            <button class="btn-primary"><i class="fas fa-upload"></i> <span class="ar">رفع صور</span><span class="en">Upload Images</span></button>
           </div>
           <div class="card-body">
             <div class="gallery-grid">
-              <div class="gallery-item"><img src="../logo.jpg" alt=""></div>
-              <div class="gallery-item"><img src="../logo.png" alt=""></div>
+              <div class="gallery-item">
+                <img src="../logo.jpg" alt="IRG Logo">
+                <div class="gallery-overlay">
+                  <button class="gallery-btn"><i class="fas fa-trash"></i></button>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="../logo.png" alt="IRG Logo PNG">
+                <div class="gallery-overlay">
+                  <button class="gallery-btn"><i class="fas fa-trash"></i></button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -226,30 +284,30 @@
       <section class="content-section" id="settings">
         <div class="card">
           <div class="card-header">
-            <h2>إعدادات الموقع</h2>
+            <h2><span class="ar">إعدادات الموقع</span><span class="en">Site Settings</span></h2>
           </div>
           <div class="card-body">
             <div class="form-row">
               <div class="form-group">
-                <label>اسم الموقع</label>
+                <label><span class="ar">اسم الموقع</span><span class="en">Site Name</span></label>
                 <input type="text" value="مجموعة الابتكار والنهضة">
               </div>
               <div class="form-group">
-                <label>البريد الإلكتروني</label>
+                <label><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></label>
                 <input type="email" value="info@irg.group">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label>رقم الهاتف</label>
+                <label><span class="ar">رقم الهاتف</span><span class="en">Phone</span></label>
                 <input type="text" value="+966 00 000 0000">
               </div>
               <div class="form-group">
-                <label>العنوان</label>
+                <label><span class="ar">العنوان</span><span class="en">Address</span></label>
                 <input type="text" value="حماه، سوريا">
               </div>
             </div>
-            <button class="btn-primary"><i class="fas fa-save"></i> حفظ التغييرات</button>
+            <button class="btn-primary"><i class="fas fa-save"></i> <span class="ar">حفظ التغييرات</span><span class="en">Save Changes</span></button>
           </div>
         </div>
       </section>
@@ -257,24 +315,24 @@
       <section class="content-section" id="users">
         <div class="card">
           <div class="card-header">
-            <h2>إدارة المستخدمين</h2>
+            <h2><span class="ar">إدارة المستخدمين</span><span class="en">User Management</span></h2>
           </div>
           <div class="card-body">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>المستخدم</th>
-                  <th>البريد الإلكتروني</th>
-                  <th>الدور</th>
-                  <th>الحالة</th>
+                  <th><span class="ar">المستخدم</span><span class="en">User</span></th>
+                  <th><span class="ar">البريد الإلكتروني</span><span class="en">Email</span></th>
+                  <th><span class="ar">الدور</span><span class="en">Role</span></th>
+                  <th><span class="ar">الحالة</span><span class="en">Status</span></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>المدير العام</td>
+                  <td><span class="ar">المدير العام</span><span class="en">Administrator</span></td>
                   <td>alnahda27@gmail.com</td>
-                  <td><span class="badge primary">مدير</span></td>
-                  <td><span class="badge success">نشط</span></td>
+                  <td><span class="badge primary"><span class="ar">مدير</span><span class="en">Admin</span></span></td>
+                  <td><span class="badge success"><span class="ar">نشط</span><span class="en">Active</span></span></td>
                 </tr>
               </tbody>
             </table>

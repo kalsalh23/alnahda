@@ -16,10 +16,10 @@ loginForm.addEventListener('submit', (e) => {
   const password = document.getElementById('password').value.trim();
   if (email === validEmail && password === validPass) {
     loginScreen.style.display = 'none';
-    dashboard.style.display = 'grid';
+    dashboard.style.display = 'block';
     localStorage.setItem('irg_admin_auth', 'true');
   } else {
-    loginError.textContent = 'بيانات الدخول غير صحيحة';
+    loginError.textContent = 'بيانات الدخول غير صحيحة / Invalid credentials';
   }
 });
 
@@ -34,26 +34,26 @@ logoutBtn.addEventListener('click', () => {
 });
 
 navItems.forEach(item => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
+  item.addEventListener('click', () => {
     navItems.forEach(i => i.classList.remove('active'));
     item.classList.add('active');
     const target = item.dataset.section;
     sections.forEach(sec => sec.classList.remove('active'));
-    document.getElementById(target).classList.add('active');
+    const el = document.getElementById(target);
+    if (el) el.classList.add('active');
     const titles = {
-      overview: 'نظرة عامة',
-      pages: 'إدارة الصفحات',
-      projects: 'إدارة المشاريع',
-      gallery: 'معرض الصور',
-      settings: 'إعدادات الموقع',
-      users: 'إدارة المستخدمين'
+      overview: 'نظرة عامة / Overview',
+      pages: 'إدارة الصفحات / Pages',
+      projects: 'إدارة المشاريع / Projects',
+      gallery: 'معرض الصور / Gallery',
+      settings: 'إعدادات الموقع / Settings',
+      users: 'إدارة المستخدمين / Users'
     };
-    pageTitle.textContent = titles[target] || 'لوحة التحكم';
+    pageTitle.textContent = titles[target] || 'لوحة التحكم / Dashboard';
   });
 });
 
 if (localStorage.getItem('irg_admin_auth') === 'true') {
   loginScreen.style.display = 'none';
-  dashboard.style.display = 'grid';
+  dashboard.style.display = 'block';
 }
