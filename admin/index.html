@@ -8,136 +8,152 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'IBM Plex Sans Arabic',sans-serif}
-    :root{--s:#001a16;--bg:#f5f4ee;--card:#fff;--b:#e7e3d8}
-    body{background:var(--bg);color:#1f1f1f}
-    .login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f5f4ee,#ece7dd)}
-    .login-box{width:380px;background:#fff;border:1px solid var(--b);border-radius:14px;box-shadow:0 40px 80px -60px #000;overflow:hidden}
-    .login-h{text-align:center;padding:34px 28px 14px}
-    .login-h img{width:68px;height:68px;border-radius:50%;margin-bottom:10px}
-    .login-h h1{font-family:'Noto Kufi Arabic',sans-serif}
-    .login-h p{color:#666;margin-top:4px}
-    .login-f{display:flex;flex-direction:column;gap:12px;padding:10px 28px 34px}
-    .login-f label{display:block;margin-bottom:6px}
-    .login-f input{width:100%;border:1px solid #d9d5c7;border-radius:10px;padding:10px 12px}
-    .login-f button{background:#054239;color:#fff;border:none;border-radius:10px;padding:11px}
-    .err{color:#d22;text-align:center;min-height:16px}
-    .app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
-    .sb{background:var(--s);color:#e7e6df;display:flex;flex-direction:column}
-    .sb-h{display:flex;align-items:center;gap:12px;padding:18px;border-bottom:1px solid rgba(185,167,121,.3)}
-    .sb-h img{width:44px;height:44px;border-radius:50%}
-    .sb-h strong{display:block;font-family:'Noto Kufi Arabic',sans-serif}
-    .sb-h small{opacity:.7}
-    .sb-nav{display:flex;flex-direction:column;gap:2px;padding:10px;flex:1}
-    .sb-nav button{display:flex;align-items:center;gap:10px;background:none;border:none;color:#c9c6be;text-align:right;padding:9px 12px;border-radius:8px;cursor:pointer}
-    .sb-nav button.on,.sb-nav button:hover{background:rgba(185,167,121,.18);color:#fff}
-    .sb-f{padding:12px 16px;border-top:1px solid rgba(185,167,121,.3);display:flex;flex-direction:column;gap:6px}
-    .sb-f a,.sb-f button{background:none;border:none;color:#c9c6be;text-decoration:none;cursor:pointer;text-align:right;display:flex;align-items:center;gap:10px}
-    .mn{display:flex;flex-direction:column}
-    .tp{display:flex;align-items:center;justify-content:space-between;padding:14px 26px;background:#fff;border-bottom:1px solid var(--b)}
-    .tp h1{font-family:'Noto Kufi Arabic',sans-serif;font-size:1.2rem}
-    .tp-r{display:flex;align-items:center;gap:12px}
-    .sv{background:#054239;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:8px}
-    .pg{display:none;padding:24px 26px;flex-direction:column;gap:18px}
-    .pg.on{display:flex}
-    .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .c{background:#fff;border:1px solid var(--b);border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:14px}
-    .c i{color:var(--gold);font-size:1.5rem}
-    .p{background:#fff;border:1px solid var(--b);border-radius:12px;overflow:hidden}
-    .ph{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--b)}
-    .ph h2{font-family:'Noto Kufi Arabic',sans-serif}
-    .pb{padding:18px 20px;display:flex;flex-direction:column;gap:12px}
-    .pr{border:1px solid var(--b);border-radius:10px;padding:14px 18px;display:flex;flex-direction:column;gap:10px}
-    .pr-h{display:flex;align-items:center;justify-content:space-between}
-    .pr-b{display:none;flex-direction:column;gap:10px}
-    .pr-b.o{display:flex}
-    .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .f{display:flex;flex-direction:column;gap:6px}
-    .f input,.f textarea,.f select{border:1px solid #d7d3c7;border-radius:8px;padding:9px 12px}
-    .f textarea{min-height:80px}
-    .b{border:1px solid var(--b);background:#fff;border-radius:8px;padding:7px 14px;cursor:pointer}
-    .bp{background:#054239;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer}
-    .tst{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#001a16;color:#fff;padding:9px 22px;border-radius:999px;opacity:0}
-    .tst.s{opacity:1}
+    :root{--bg:#f8f7f3;--side:#001a16;--card:#fff;--border:#e7e4db}
+    body{background:var(--bg);color:#1f1f1f;line-height:1.8}
+    .auth{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f8f7f3,#ebe7df)}
+    .auth-box{width:360px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 40px 70px -60px #000;overflow:hidden}
+    .auth-head{text-align:center;padding:32px 28px 16px}
+    .auth-head img{width:66px;height:66px;border-radius:50%;margin-bottom:10px}
+    .auth-head h1{font-family:'Noto Kufi Arabic',sans-serif;font-size:1.25rem}
+    .auth-form{display:flex;flex-direction:column;gap:12px;padding:10px 28px 32px}
+    .auth-form label{display:block;margin-bottom:6px;font-weight:500}
+    .auth-form input{width:100%;border:1px solid #d9d5c7;border-radius:10px;padding:10px 12px}
+    .auth-form button{background:#054239;color:#fff;border:none;border-radius:10px;padding:11px;cursor:pointer}
+    .err{color:#d33;text-align:center;min-height:18px}
+    .wrap{display:none;grid-template-columns:260px 1fr;min-height:100vh}
+    .sidebar{background:var(--side);color:#e9e7e2;display:flex;flex-direction:column}
+    .sb-top{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid rgba(185,167,121,.3)}
+    .sb-top img{width:44px;height:44px;border-radius:50%}
+    .sb-top strong{display:block;font-family:'Noto Kufi Arabic',sans-serif}
+    .sb-top small{opacity:.7}
+    .menu{display:flex;flex-direction:column;gap:2px;padding:10px 12px;flex:1}
+    .menu button{display:flex;align-items:center;gap:10px;background:none;border:none;color:#c9c6bf;text-align:right;padding:9px 12px;border-radius:8px;cursor:pointer}
+    .menu button.on,.menu button:hover{background:rgba(185,167,121,.2);color:#fff}
+    .sb-bot{padding:12px 16px;border-top:1px solid rgba(185,167,121,.3);display:flex;flex-direction:column;gap:6px}
+    .sb-bot a,.sb-bot button{background:none;border:none;color:#c9c6bf;text-decoration:none;text-align:right;display:flex;align-items:center;gap:10px;cursor:pointer}
+    .main{display:flex;flex-direction:column}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#fff;border-bottom:1px solid var(--border)}
+    .topbar h1{font-family:'Noto Kufi Arabic',sans-serif}
+    .top-actions{display:flex;align-items:center;gap:12px}
+    .save{background:#054239;color:#fff;border:none;border-radius:9px;padding:9px 18px;display:flex;align-items:center;gap:8px;cursor:pointer}
+    .content{padding:26px 28px;display:flex;flex-direction:column;gap:20px}
+    .view{display:none;flex-direction:column;gap:20px}
+    .view.on{display:flex}
+    .panel{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .panel-head{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--border)}
+    .panel-head h2{font-family:'Noto Kufi Arabic',sans-serif}
+    .panel-body{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field input,.field textarea{border:1px solid #d8d5c8;border-radius:9px;padding:10px 12px}
+    .field textarea{min-height:110px;resize:vertical}
+    .btn{border:1px solid var(--border);background:#fff;border-radius:9px;padding:8px 16px;cursor:pointer}
+    .btn.pri{background:#054239;color:#fff;border:none}
+    .list{display:flex;flex-direction:column;gap:12px}
+    .item{border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center}
+    .modal.on{display:flex}
+    .modal-box{width:min(680px,94vw);background:#fff;border-radius:12px;overflow:hidden}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--border)}
+    .modal-body{padding:18px 22px;display:flex;flex-direction:column;gap:12px;max-height:80vh;overflow:auto}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#001a16;color:#fff;padding:9px 22px;border-radius:999px;opacity:0;pointer-events:none;transition:.3s}
+    .toast.show{opacity:1}
   </style>
 </head>
 <body>
-  <div class="login" id="lg">
-    <div class="login-box">
-      <div class="login-h"><img src="../logo.jpg"><h1>مجموعة الابتكار والنهضة</h1><p>لوحة التحكم</p></div>
-      <form class="login-f" id="lf"><div><label>البريد</label><input id="em" value="alnahda27@gmail.com"></div><div><label>كلمة المرور</label><input id="pw" type="password" value="reda@2027"></div><button>دخول</button><div class="err" id="le"></div></form>
+  <div class="auth" id="auth">
+    <div class="auth-box">
+      <div class="auth-head"><img src="../logo.jpg"><h1>مجموعة الابتكار والنهضة</h1><p>لوحة التحكم</p></div>
+      <form class="auth-form" id="loginForm"><div><label>البريد الإلكتروني</label><input id="email" value="alnahda27@gmail.com"></div><div><label>كلمة المرور</label><input id="pass" type="password" value="reda@2027"></div><button>دخول</button><div class="err" id="err"></div></form>
     </div>
   </div>
-  <div class="app" id="ap" style="display:none">
-    <aside class="sb">
-      <div class="sb-h"><img src="../logo.jpg"><div><strong>مجموعة الابتكار والنهضة</strong><small>لوحة التحكم</small></div></div>
-      <nav class="sb-nav">
-        <button class="on" data-p="d"><i class="fas fa-home"></i> الرئيسية</button>
-        <button data-p="p"><i class="fas fa-th-large"></i> المشاريع</button>
-        <button data-p="c"><i class="fas fa-phone"></i> معلومات التواصل</button>
-        <button data-p="v"><i class="fas fa-bullseye"></i> الرؤية</button>
-        <button data-p="a"><i class="fas fa-users"></i> من نحن</button>
-        <button data-p="h"><i class="fas fa-image"></i> الصفحة الرئيسية</button>
+
+  <div class="wrap" id="wrap">
+    <aside class="sidebar">
+      <div class="sb-top"><img src="../logo.jpg"><div><strong>مجموعة الابتكار والنهضة</strong><small>لوحة التحكم</small></div></div>
+      <nav class="menu">
+        <button class="on" data-tab="proj"><i class="fas fa-th-large"></i> المشاريع</button>
+        <button data-tab="contact"><i class="fas fa-address-book"></i> معلومات التواصل</button>
+        <button data-tab="vision"><i class="fas fa-eye"></i> الرؤية</button>
+        <button data-tab="about"><i class="fas fa-users"></i> من نحن</button>
+        <button data-tab="home"><i class="fas fa-home"></i> الصفحة الرئيسية</button>
       </nav>
-      <div class="sb-f">
+      <div class="sb-bot">
         <a href="../index.html" target="_blank"><i class="fas fa-external-link-alt"></i> عرض الموقع</a>
-        <button id="lo"><i class="fas fa-sign-out-alt"></i> خروج</button>
+        <button id="logout"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
       </div>
     </aside>
-    <main class="mn">
-      <header class="tp"><h1 id="ht">الرئيسية</h1><div class="tp-r"><span>alnahda27@gmail.com</span><button class="sv" id="sv"><i class="fas fa-save"></i> حفظ</button></div></header>
-      <section class="pg on" id="d">
-        <div class="row">
-          <div class="c"><i class="fas fa-th-large"></i><div><h2 id="cnt">0</h2><p>المشاريع</p></div></div>
-          <div class="c"><i class="fas fa-check"></i><div><h2>متصل</h2><p>Supabase</p></div></div>
-        </div>
-      </section>
-      <section class="pg" id="p">
-        <div class="p">
-          <div class="ph"><h2>إدارة المشاريع</h2><button class="bp" id="ap"><i class="fas fa-plus"></i> إضافة مشروع</button></div>
-          <div class="pb" id="pl"></div>
-        </div>
-      </section>
-      <section class="pg" id="c">
-        <div class="p">
-          <div class="ph"><h2>معلومات التواصل</h2></div>
-          <div class="pb">
-            <div class="g2"><div class="f"><label>البريد</label><input id="ce"></div><div class="f"><label>الهاتف</label><input id="cp"></div></div>
-            <div class="g2"><div class="f"><label>العنوان عربي</label><input id="ca"></div><div class="f"><label>العنوان إنجليزي</label><input id="cen"></div></div>
+    <main class="main">
+      <header class="topbar"><h1 id="pageTitle">المشاريع</h1><div class="top-actions"><span>alnahda27@gmail.com</span></div></header>
+      <div class="content">
+        <section class="view on" id="proj">
+          <div class="panel">
+            <div class="panel-head"><h2>قائمة المشاريع</h2><button class="btn pri" id="addNew"><i class="fas fa-plus"></i> إضافة مشروع جديد</button></div>
+            <div class="panel-body list" id="projList"></div>
           </div>
-        </div>
-      </section>
-      <section class="pg" id="v">
-        <div class="p">
-          <div class="ph"><h2>صفحة الرؤية</h2></div>
-          <div class="pb">
-            <div class="f"><label>المحتوى عربي</label><textarea id="va"></textarea></div>
-            <div class="f"><label>المحتوى إنجليزي</label><textarea id="ve"></textarea></div>
+        </section>
+        <section class="view" id="contact">
+          <div class="panel">
+            <div class="panel-head"><h2>معلومات التواصل</h2><button class="btn pri" onclick="saveContact()"><i class="fas fa-save"></i> حفظ</button></div>
+            <div class="panel-body">
+              <div class="grid"><div class="field"><label>البريد الإلكتروني</label><input id="ce"></div><div class="field"><label>رقم الهاتف</label><input id="cp"></div></div>
+              <div class="grid"><div class="field"><label>العنوان بالعربية</label><input id="ca"></div><div class="field"><label>العنوان بالإنجليزية</label><input id="cen"></div></div>
+            </div>
           </div>
-        </div>
-      </section>
-      <section class="pg" id="a">
-        <div class="p">
-          <div class="ph"><h2>صفحة من نحن</h2></div>
-          <div class="pb">
-            <div class="f"><label>المحتوى عربي</label><textarea id="aa"></textarea></div>
-            <div class="f"><label>المحتوى إنجليزي</label><textarea id="ae"></textarea></div>
+        </section>
+        <section class="view" id="vision">
+          <div class="panel">
+            <div class="panel-head"><h2>صفحة الرؤية</h2><button class="btn pri" onclick="saveVision()"><i class="fas fa-save"></i> حفظ</button></div>
+            <div class="panel-body">
+              <div class="field"><label>المحتوى بالعربية</label><textarea id="va"></textarea></div>
+              <div class="field"><label>المحتوى بالإنجليزية</label><textarea id="ve"></textarea></div>
+            </div>
           </div>
-        </div>
-      </section>
-      <section class="pg" id="h">
-        <div class="p">
-          <div class="ph"><h2>الصفحة الرئيسية</h2></div>
-          <div class="pb">
-            <div class="g2"><div class="f"><label>عنوان عربي</label><input id="hta"></div><div class="f"><label>عنوان إنجليزي</label><input id="hte"></div></div>
-            <div class="g2"><div class="f"><label>نص عربي</label><textarea id="hsa"></textarea></div><div class="f"><label>نص إنجليزي</label><textarea id="hse"></textarea></div></div>
+        </section>
+        <section class="view" id="about">
+          <div class="panel">
+            <div class="panel-head"><h2>صفحة من نحن</h2><button class="btn pri" onclick="saveAbout()"><i class="fas fa-save"></i> حفظ</button></div>
+            <div class="panel-body">
+              <div class="field"><label>المحتوى بالعربية</label><textarea id="aa"></textarea></div>
+              <div class="field"><label>المحتوى بالإنجليزية</label><textarea id="ae"></textarea></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+        <section class="view" id="home">
+          <div class="panel">
+            <div class="panel-head"><h2>الصفحة الرئيسية</h2><button class="btn pri" onclick="saveHome()"><i class="fas fa-save"></i> حفظ</button></div>
+            <div class="panel-body">
+              <div class="grid"><div class="field"><label>العنوان بالعربية</label><input id="hta"></div><div class="field"><label>العنوان بالإنجليزية</label><input id="hte"></div></div>
+              <div class="grid"><div class="field"><label>الوصف بالعربية</label><textarea id="hsa"></textarea></div><div class="field"><label>الوصف بالإنجليزية</label><textarea id="hse"></textarea></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   </div>
-  <div class="tst" id="tst"></div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <div class="modal-head"><h2>إضافة / تعديل مشروع</h2><button class="btn" onclick="closeModal()">إغلاق</button></div>
+      <div class="modal-body">
+        <input type="hidden" id="pid">
+        <div class="row2"><div class="field"><label>عنوان المشروع بالعربية</label><input id="ptar"></div><div class="field"><label>عنوان المشروع بالإنجليزية</label><input id="pten"></div></div>
+        <div class="row2"><div class="field"><label>التصنيف</label><select id="pct"><option value="defense">الصناعات الدفاعية</option><option value="tech">التقنيات</option><option value="health">الصحة</option></select></div><div class="field"><label>رابط الصورة</label><input id="pimg"></div></div>
+        <div class="row2"><div class="field"><label>وسم بالعربية</label><input id="ptgar"></div><div class="field"><label>وسم بالإنجليزية</label><input id="ptgen"></div></div>
+        <div class="field"><label>وصف مختصر بالعربية</label><textarea id="pdar"></textarea></div>
+        <div class="field"><label>وصف مختصر بالإنجليزية</label><textarea id="pden"></textarea></div>
+        <div class="field"><label>تفاصيل المشروع بالعربية</label><textarea id="pdtar"></textarea></div>
+        <div class="field"><label>تفاصيل المشروع بالإنجليزية</label><textarea id="pdten"></textarea></div>
+        <button class="btn pri" onclick="saveProject()">حفظ المشروع</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
   <script src="assets/js/config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="assets/js/app.js"></script>
+  <script src="assets/js/panel.js"></script>
 </body>
 </html>
