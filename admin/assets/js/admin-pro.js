@@ -1,4 +1,7 @@
 let contentData = null;
+const SUPABASE_URL = window.ORG_CONFIG.SUPABASE_URL;
+const SUPABASE_ANON_KEY = window.ORG_CONFIG.SUPABASE_ANON_KEY;
+let supabaseClient = null;
 
 const loginForm = document.getElementById('loginForm');
 const loginScreen = document.getElementById('loginScreen');
@@ -14,11 +17,22 @@ const toast = document.getElementById('toast');
 const validEmail = 'alnahda27@gmail.com';
 const validPass = 'reda@2027';
 
-loginForm.addEventListener('submit', (e) => {
+async function initSupabase(){
+  if(typeof window.supabase === 'undefined'){
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+    document.head.appendChild(script);
+    await new Promise(r=>script.onload=r);
+  }
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value.trim();
   if (email === validEmail && password === validPass) {
+    await initSupabase();
     loginScreen.style.display = 'none';
     dashboard.style.display = 'block';
     localStorage.setItem('irg_admin_auth', 'true');
@@ -52,11 +66,23 @@ navItems.forEach(item => {
 
 async function loadContent(){
   try{
+    if(!supabaseClient) await initSupabase();
+    const { data, error } = await supabaseClient.from('site_content').select('*').eq('key', 'main').single();
+    if(data && data.content){
+      contentData = data.content;
+    }else{
+      const res = await fetch('data/content.json?v=' + Date.now());
+      contentData = await res.json();
+      await supabaseClient.from('site_content').upsert({key:'main', content: contentData}, {onConflict:'key'});
+    }
+    fillForms();
+    renderProjects();
+  }catch(e){
     const res = await fetch('data/content.json?v=' + Date.now());
     contentData = await res.json();
     fillForms();
     renderProjects();
-  }catch(e){}
+  }
 }
 
 function fillForms(){
@@ -84,15 +110,15 @@ function renderProjects(){
       </div>
       <div class="project-edit-body">
         <div class="form-row">
-          <div class="form-group"><label>العنوان - عربي</label><input value="${p.titleAr.replace(/"/g,'&quot;')}" onchange="contentData.projects[${idx}].titleAr=this.value"></div>
-          <div class="form-group"><label>العنوان - إنجليزي</label><input value="${p.titleEn.replace(/"/g,'&quot;')}" onchange="contentData.projects[${idx}].titleEn=this.value"></div>
+          <div class="form-group"><label>العنوان - عربي</label><input value="${(p.titleAr||'').replace(/"/g,'&quot;')}" onchange="contentData.projects[${idx}].titleAr=this.value"></div>
+          <div class="form-group"><label>العنوان - إنجليزي</label><input value="${(p.titleEn||'').replace(/"/g,'&quot;')}" onchange="contentData.projects[${idx}].titleEn=this.value"></div>
         </div>
         <div class="form-row">
           <div class="form-group"><label>التصنيف</label><select onchange="contentData.projects[${idx}].category=this.value"><option value="defense" ${p.category==='defense'?'selected':''}>الصناعات الدفاعية</option><option value="tech" ${p.category==='tech'?'selected':''}>التقنيات</option><option value="health" ${p.category==='health'?'selected':''}>الصحة</option></select></div>
-          <div class="form-group"><label>صورة</label><input value="${p.img.replace(/"/g,'&quot;')}" onchange="contentData.projects[${idx}].img=this.value"></div>
+          <div class="form-group"><label>رابط الصورة</label><input value="${(p.img||'').replace(/"/g,'&quot;')}" onchange="contentData.projects[${idx}].img=this.value"></div>
         </div>
-        <div class="form-group"><label>وصف مختصر - عربي</label><textarea onchange="contentData.projects[${idx}].descAr=this.value">${p.descAr}</textarea></div>
-        <div class="form-group"><label>وصف مختصر - إنجليزي</label><textarea onchange="contentData.projects[${idx}].descEn=this.value">${p.descEn}</textarea></div>
+        <div class="form-group"><label>وصف مختصر - عربي</label><textarea onchange="contentData.projects[${idx}].descAr=this.value">${p.descAr||''}</textarea></div>
+        <div class="form-group"><label>وصف مختصر - إنجليزي</label><textarea onchange="contentData.projects[${idx}].descEn=this.value">${p.descEn||''}</textarea></div>
       </div>
     `;
     editor.appendChild(card);
@@ -134,14 +160,10 @@ saveAll.addEventListener('click', async () => {
   contentData.site.phone = document.getElementById('sitePhone').value;
   contentData.site.addressAr = document.getElementById('siteAddrAr').value;
   contentData.site.addressEn = document.getElementById('siteAddrEn').value;
-  const json = JSON.stringify(contentData, null, 2);
-  const blob = new Blob([json], {type: 'application/json'});
-  const url = window.URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'content.json';
-  a.click();
-  showToast('تم تحميل ملف content.json. قم برفعه إلى مجلد admin/data/ في GitHub');
+  if(!supabaseClient) await initSupabase();
+  const { error } = await supabaseClient.from('site_content').upsert({key:'main', content: contentData}, {onConflict:'key'});
+  if(error){ showToast('حدث خطأ أثناء الحفظ'); return; }
+  showToast('تم حفظ جميع التعديلات بنجاح في قاعدة البيانات');
 });
 
 function showToast(msg){
@@ -150,8 +172,11 @@ function showToast(msg){
   setTimeout(()=>toast.classList.remove('show'), 4000);
 }
 
-if (localStorage.getItem('irg_admin_auth') === 'true') {
-  loginScreen.style.display = 'none';
-  dashboard.style.display = 'block';
-  loadContent();
-}
+(async()=>{
+  if (localStorage.getItem('irg_admin_auth') === 'true') {
+    loginScreen.style.display = 'none';
+    dashboard.style.display = 'block';
+    await initSupabase();
+    loadContent();
+  }
+})();
